@@ -11,6 +11,6 @@ class JSG3
 		System.out.println(c+3);
 		float f=(float)(3.14*10*10);
 		System.out.println(f);
-		float q=1.9;
+		// float q=1.9; erroneous since, implict narrowing is not possible (double -> float)
 	}
 }

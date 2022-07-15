@@ -4,7 +4,7 @@ class BANK
 	void setBal(int S,int C)
 	{
 		SB=S;
-		CB=C
+		CB=C;
 	}
 	void Party(BANK Rref)
 	{
@@ -24,8 +24,6 @@ class BANK
 	}
 };
 class PRRR15
-{
-};
 {
 	public static void main(String[] args) 
 	{

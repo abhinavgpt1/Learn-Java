@@ -38,7 +38,7 @@ class OC extends Base {
     
     static class SNC {
         // OC ref = OC.this; // error: no OC object is associated with SNC
-        // tech4_accessOCFromIC.java:37: error: non-static variable this cannot be referenced from a static context
+        // tech4_accessOCInNCAndMain.java:37: error: non-static variable this cannot be referenced from a static context
         void testOCFieldsAccess() {
             // oc_x; fun(); privFun(); bx; // cannot access non-static members
             System.out.println("Currently oc_y: " + OC.oc_y);
@@ -59,9 +59,9 @@ class DriverClass {
         OC.IC ic = oc.new IC();
         ic.testOCFieldsAccess();
         OC.drawline();
-        // System.out.println(ic.oc_x); // tech4_accessOCFromIC.java:25: error: cannot find symbol
-        // System.out.println(ic.oc_y); // tech4_accessOCFromIC.java:26: error: cannot find symbol
-        // System.out.println(ic.bx); // tech4_accessOCFromIC.java:26: error: cannot find symbol
+        // System.out.println(ic.oc_x); // tech4_accessOCInNCAndMain.java:25: error: cannot find symbol
+        // System.out.println(ic.oc_y); // tech4_accessOCInNCAndMain.java:26: error: cannot find symbol
+        // System.out.println(ic.bx); // tech4_accessOCInNCAndMain.java:26: error: cannot find symbol
         ic.alterOCFields();
         System.out.println("After ic alteration, oc_x: " + oc.oc_x);
         System.out.println("After ic alteration, oc_y: " + OC.oc_y);
@@ -81,9 +81,9 @@ class DriverClass {
         OC.drawline();
         OC.SNC snc = new OC.SNC();
         snc.testOCFieldsAccess();
-        // System.out.println(snc.oc_x); // tech4_accessOCFromIC.java:42: error: cannot find symbol
-        // System.out.println(snc.oc_y); // tech4_accessOCFromIC.java:43: error: cannot find symbol
-        // System.out.println(snc.bsx); // tech4_accessOCFromIC.java:43: error: cannot find symbol
+        // System.out.println(snc.oc_x); // tech4_accessOCInNCAndMain.java:42: error: cannot find symbol
+        // System.out.println(snc.oc_y); // tech4_accessOCInNCAndMain.java:43: error: cannot find symbol
+        // System.out.println(snc.bsx); // tech4_accessOCInNCAndMain.java:43: error: cannot find symbol
         
         // snc.ref; //Error: snc can't have ref of OC as snc isn't instance specific
         OC.drawline();
@@ -94,7 +94,7 @@ class DriverClass {
     /**
      * Executing Command:
      * -----------------
-     * CW core java> javac .\Technicalities\tech4_accessOCFromIC.java
+     * CW core java> javac .\Technicalities\tech4_accessOCInNCAndMain.java
      * CW core java\Technicalities> java DriverClass
      *
      * Error in "...\CW core java> java Technicalities.DriverClass" as there is no package involved

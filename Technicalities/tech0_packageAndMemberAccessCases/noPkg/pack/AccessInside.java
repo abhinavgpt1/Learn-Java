@@ -1,19 +1,30 @@
-package Technicalities.tech0_packageAndMemberAccessCases.noPkg.pack;
-
-public class AccessInside extends PublicClass { //.\noPkg\pack\AccessInside.java:3: error: cannot access PublicClass
+public class AccessInside {
 	public static void main(String[] args) {
-		// no point in testing as pkg is undetectable - default package can't be used inside package
+		// PublicClass is undetectable if you compile driver class as |> javac .\Tech..\..\AccessInside
+		//	compilation works if done like |> javac ".\Tech..\..\AccessInside"
+
+		// If these conditions are satisfied, then PublicClass can be accessed
+		// 1. both classes need to be under default package
+		// 2. Driver class must be executed from its parent location in terminal.
+		// If not, then compile as javac ".\Technicalities\tech0_packageAndMemberAccessCases\noPkg\pack\AccessInside.java"
+		PublicClass publicClass = new PublicClass();
+		System.out.println(publicClass.pub);
 		// same results for PLA class
 	}
 }
 /**
+ * Classes Formed:
+ * 	-> AccessInside.class
+ * 	-> PublicClass.class
+ *
  * Execution Commands:
  * -------------------
- * CW core java> javac .\Technicalities\tech0_packageAndMemberAccessCases\noPkg\pack\AccessInside.java
+ * CW core java\Technicalities\tech0_packageAndMemberAccessCases\noPkg\pack> javac AccessInside.java
+ * CW core java\Technicalities\tech0_packageAndMemberAccessCases\noPkg\pack> java AccessInside
  * 
  * Output:
  * -------
- * Errors
+ * 90
  *
  * Warning: Javadoc dangling comment comes because javadoc comment is supposed to be on top of class declaration, a method declaration, or a field declaration
  * https://stackoverflow.com/questions/43375177/warning-dangling-javadoc-comment

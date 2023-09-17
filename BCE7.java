@@ -5,10 +5,10 @@ class BCE7 {
 		ref.bill(x);
 	}
 }
+
 class Product {
 	void bill(int price) {
 		int qty = 5;
 		System.out.println(qty * price);
 	}
 }
-

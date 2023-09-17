@@ -1,12 +1,9 @@
-class Testing  
-{
-	static
-	{
+class Testing {
+	static {
 		System.out.println("Inside Static Block");
 	}
-	public static void main(String[] args) 
-	{
-		
+
+	public static void main(String[] args) {
 		System.out.println("Inside Main");
 	}
 }

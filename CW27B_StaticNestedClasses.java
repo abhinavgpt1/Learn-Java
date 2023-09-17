@@ -9,10 +9,12 @@ class OC {
 
         void access() {
 
-            // System.out.println(a);//Error = Cannot make a static reference to the non-static field
+            // System.out.println(a);//Error = Cannot make a static reference to the
+            // non-static field
             System.out.println(b);
             // System.out.println(c);
         }
+
         void indirectAccess(OC obj) {
 
             System.out.println(obj.a);

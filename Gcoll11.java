@@ -14,6 +14,5 @@ class Gcoll11 {
 		p2 = p1;
 		p2 = null;
 		p1 = null;
-
 	}
 }

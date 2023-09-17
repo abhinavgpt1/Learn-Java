@@ -16,6 +16,5 @@ class BCE8 {
 		ref.price = 5;
 		ref.qty = 10;
 		System.out.println(ref.price * ref.qty);
-
 	}
 }

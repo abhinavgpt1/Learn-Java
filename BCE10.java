@@ -19,6 +19,5 @@ class BCE10 {
 	public static void main(String[] args) {
 		MALL mm = new MALL();
 		mm.bill();
-
 	}
 }

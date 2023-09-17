@@ -11,7 +11,6 @@ class Circle extends RECT {
 
 	void Rarea() {
 		area();
-
 		super.area();
 	}
 };
@@ -21,6 +20,5 @@ class Inh {
 		Circle obj = new Circle();
 		obj.area();
 		obj.Rarea();
-
 	}
 }

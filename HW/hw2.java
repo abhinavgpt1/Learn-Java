@@ -9,7 +9,7 @@ class fact {
 
 };
 
-class hw2 {
+public class hw2 {
 	public static void main(String[] args) {
 		int n = 4;
 		fact ref = new fact();

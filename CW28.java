@@ -1,5 +1,4 @@
 public class CW28 {
-
 	public static void main(String[] args) {
 		System.out.println("Start");
 		int d = 0;
@@ -14,5 +13,4 @@ public class CW28 {
 		}
 		System.out.println("End");
 	}
-
 }

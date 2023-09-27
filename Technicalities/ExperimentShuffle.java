@@ -1,17 +1,18 @@
 /**
  * For test cases
+ * ---------------TC1-------------
  * 20
  * 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
  * 10
- * and 
+ * ---------------TC2-------------
  * 10
  * 0 1 2 3 4 5 6 7 8 9
  * 5
- * Result is "Technique 1 is better"
+ * Result is Technique 1/2 is better - both almost same for tries at 100
  */
 import java.util.Scanner;
 
-public class ExperimentShuffle {
+public class Sample {
     public static void main(String args[]) {
         Scanner cin = new Scanner(System.in);
         // take array input
@@ -24,20 +25,24 @@ public class ExperimentShuffle {
         int tries, score = 0;
         tries = cin.nextInt();
         while (tries > 0) {
-            int tech1 = shuffleAndReturnSimilarityIndexTech1(arr.clone(), arr);
-            int tech2 = shuffleAndReturnSimilarityIndexTech2(arr.clone(), arr);
-            if (tech1 > tech2)
+            int tech1SimilarityMatch = shuffleAndReturnSimilarityIndexTech1(arr.clone(), arr);
+            int tech2SimilarityMatch = shuffleAndReturnSimilarityIndexTech2(arr.clone(), arr);
+//            System.out.println("tech1: " + tech1SimilarityMatch + " tech2: " + tech2SimilarityMatch); // -6
+            if (tech2SimilarityMatch < tech1SimilarityMatch)
                 score--; // tech2 wins
-            else
+            else if(tech1SimilarityMatch < tech2SimilarityMatch)
                 score++; // tech1 wins
 
             tries--;
         }
+        System.out.println("score: " + score);
         System.out.println("Tech " + (score > 0 ? "1" : score < 0 ? "2" : "none") + " is better");
         cin.close();
     }
 
     static int shuffleAndReturnSimilarityIndexTech1(int[] arr, int[] orgArr) {
+        // this is not good, as the chances of same number getting fixated at the same
+        // from the end of array till [0] is high
         for (int i = 0; i < arr.length; i++) {
             int index = (int) (Math.random() * (arr.length - i));
             int temp = arr[i];
@@ -48,6 +53,8 @@ public class ExperimentShuffle {
     }
 
     static int shuffleAndReturnSimilarityIndexTech2(int[] arr, int[] orgArr) {
+        // this is better as it pushes/assigns a random number to the end of array,
+        // and never picks it during randomIndex generation
         for (int i = 0; i < arr.length; i++) {
             int index = (int) (Math.random() * (arr.length - i));
             int temp = arr[arr.length - i - 1];
@@ -59,14 +66,10 @@ public class ExperimentShuffle {
 
     static int getSimilarityIndex(int[] arr, int[] orgArr) {
         int similarityIndex = 0;
-        // printArr(arr);
-        // printArr(orgArr);
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == orgArr[i])
                 similarityIndex++;
         }
-        // System.out.println(similarityIndex);
-        // printDashedLine();
         return similarityIndex;
     }
 

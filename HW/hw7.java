@@ -11,6 +11,8 @@ public class hw7 {
 		for (int i = 0; i < ref.length; i++) {
 			int index = (int) (Math.random() * (ref.length - i));
 			int temp = ref[i];
+			// better assign it to ref[ref.length - i - 1]
+			// see Technicalities> ExperimentShuffle.java
 			ref[i] = ref[index];
 			ref[index] = temp;
 		}

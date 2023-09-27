@@ -1,17 +1,29 @@
+// Get filename and parent folder name from filepath input as string
 import java.util.Scanner;
 
-public class hw11 {
+public class Sample {
 	public static void main(String[] args) {
 		Scanner cin = new Scanner(System.in);
-		System.out.println("Input file path");
-		String s = cin.nextLine();
-		int last = s.lastIndexOf('\\');
+		System.out.print("Input file path: ");
+		String filepath = cin.nextLine();
+		cin.close();
+		int bkslshIndexBeforeFileName = filepath.lastIndexOf('\\');
+		// lastIndexOf operates from right to left
+		// hence, adding (bkslshIndexBeforeFileName - 1) would start search from there towards [0]
+		int bkslshIndexBeforeParentDir = filepath.lastIndexOf('\\', bkslshIndexBeforeFileName - 1);
 
-		String file = s.substring(last + 1);
-
-		int secondLast = s.lastIndexOf('\\', last - 1);
-		String folder = s.substring(secondLast + 1, last);
-		System.out.println("file=" + file);
-		System.out.println("folder=" + folder);
+		// Result
+		String filename = filepath.substring(bkslshIndexBeforeFileName + 1);
+		// end index is non-inclusive
+		String parentDirectoryName = filepath.substring(bkslshIndexBeforeParentDir + 1, bkslshIndexBeforeFileName);
+		System.out.println("file = " + filename);
+		System.out.println("Parent directory name = " + parentDirectoryName);
 	}
+	/**
+	 * Output:
+	 * -------
+	 * Input file path: Q:\Users\randomUser\archive\myphoto.jpg
+	 * file = myphoto.jpg
+	 * Parent directory name = archive
+	 */
 }

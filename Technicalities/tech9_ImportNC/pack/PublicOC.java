@@ -18,7 +18,9 @@ public class PublicOC {
         protected int protx = 60;
         int plax = 70;
         private int privx = 80;
-        //constructor is default protected. For protected inner class to be instantiated outside package, we need to specify public constructor
+        // constructor is default protected. So, it is not visible outside package => object can't be created by either PublicOC or AccessOutside
+        // For protected inner class to be instantiated outside package, we need to specifically create a public constructor
+        // This will lead to *PublicOC* and AccessOutside classes to create this class's object
         public ProtectedIC(){}
     }
     protected static class ProtectedSNC {

@@ -18,10 +18,13 @@ public class AccessOutside extends PublicOC {
         // Accessing protected NC by extending PublicOC
         // -------------------------------------------------
         // PublicOC.ProtectedIC ppic = publicOC.new ProtectedIC(); 
-        // error: not visible 
-            // unless PublicOC is not extended (by definition, protected members can be accessed outside only after class extension)
-            // +
-            // constructor of ProtectedIC is not made public
+        // error: not visible because of following reasons
+        // 1. visible to only subclass which is AccessOutside (by definition, protected members can be accessed outside only after class extension)
+        // 2. constructor of ProtectedIC is not made public 
+        //  - this will stop AccessOutside to create object of ProtectedIC
+        //  - Downside is that PublicOC and AccessOutside both now can create object of ProtectedIC
+        
+        // OC can now instantiate Protected IC, SNC
         PublicOC.ProtectedIC pubProtectedIC = publicOC.new ProtectedIC();
         System.out.println("protectedIC pubx:" + pubProtectedIC.pubx);
         // System.out.println(pubProtectedIC.protx); //error: not visible. similarly for private and pla
@@ -29,14 +32,17 @@ public class AccessOutside extends PublicOC {
         System.out.println("protectedSNC pubx:" + protectedSNC.pubx);
         // System.out.println(protectedSNC.protx); //error: not visible. similarly for private and pla
 
-        // Base class can also instantiate as NC is a member of enclosing class
-        PublicOC.ProtectedIC protectedIC2 = new AccessOutside().new ProtectedIC();
+        // Subclass can (and should) instantiate Protected IC, SNC
+        AccessOutside.ProtectedIC protectedIC2 = new AccessOutside().new ProtectedIC();
         System.out.println("protectedIC pubx from Driver:" + protectedIC2.pubx);
-        // System.out.println(protectedIC2.protx); //error: not visible. similarly for private and pla
-        PublicOC.ProtectedSNC protectedSNC2 = new AccessOutside.ProtectedSNC();
+        // System.out.println("protectedIC pubx from Driver:" + protectedIC2.protx); //not visible since, ProtectedIC is not a subclass of AccessOutside
+        AccessOutside.ProtectedSNC protectedSNC2 = new AccessOutside.ProtectedSNC();
         System.out.println("protectedSNC pubx from Driver:" + protectedSNC2.pubx);
         // System.out.println(protectedSNC2.protx); //error: not visible. similarly for private and pla
-
+        System.out.println(protectedIC2 instanceof PublicOC.ProtectedIC); // true
+        System.out.println(protectedIC2 instanceof AccessOutside.ProtectedIC); // true
+        System.out.println(protectedSNC2 instanceof PublicOC.ProtectedSNC); // true
+        System.out.println(protectedSNC2 instanceof AccessOutside.ProtectedSNC); // true
     }
     /**
      * Classed Formed:

@@ -20,11 +20,11 @@ public class tech5_NestedClassInstanceOf {
 
         System.out.println(icObj instanceof OC.IC);
         // System.out.println(icObj instanceof IC); // IC type cannot be resolved
-        // System.out.println(icObj instanceof OC); // error: incompatible types: OC.IC
+        // System.out.println(icObj instanceof OC); // error: incompatible conditional operand types OC.IC and OC
         // cannot be converted to OC
 
         System.out.println(sncObj instanceof OC.SNC);
-        // System.out.println(sncObj instanceof OC); // error: incompatible types: SNC
+        // System.out.println(sncObj instanceof OC); // error: incompatible conditional operand types OC.SNC and OC
         // cannot be converted to OC
     }
     /**

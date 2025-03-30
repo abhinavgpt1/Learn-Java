@@ -30,7 +30,7 @@ public class tech8_AnonymousInnerClass {
             }
             void norefdirect(){
                 System.out.println("norefOutside: "+norefOutside);
-                System.out.println("norefstatOutside: "+norefstatOutside);
+                System.out.println("norefstatOutside: "+norefstatOutside + " <- IMP.");
             }
             void bogusFunction(){ //overriding and introducing class level members' usage
                 System.out.println("-------------inside bogus-------------");
@@ -55,8 +55,8 @@ public class tech8_AnonymousInnerClass {
      *  -> Base.class
      *  -> tech8_AnonymousInnerClass.class
      *  -> tech8_AnonymousInnerClass$1.class
-     *  -> tech8_AnonymousInnerClass$1@norefclass.class
-     *  -> tech8_AnonymousInnerClass$1@norefinterface.class
+     *  -> tech8_AnonymousInnerClass$1@norefclass.class     --not able to use, but it is formed
+     *  -> tech8_AnonymousInnerClass$1@norefinterface.class --not able to use, but it is formed
      * Output:
      * -------
      * Initial statements before static block call in AIC
@@ -65,6 +65,6 @@ public class tech8_AnonymousInnerClass {
      * overriding definition in AIC
      * -------------inside bogus-------------
      * norefOutside: 10
-     * norefstatOutside: 90
+     * norefstatOutside: 90 <- IMP.
      */
 }

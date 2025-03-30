@@ -1,7 +1,7 @@
 // Get filename and parent folder name from filepath input as string
 import java.util.Scanner;
 
-public class Sample {
+public class hw11 {
 	public static void main(String[] args) {
 		Scanner cin = new Scanner(System.in);
 		System.out.print("Input file path: ");

@@ -3,7 +3,7 @@ package Technicalities.tech0_packageAndMemberAccessCases.pkgPLA.pack;
 class PLAClass //pla level class
 {
 	// public members
-	public int pub = 90;
+	public int pub = 9;
 	public void instancePublic()
 	{
 		System.out.println("inside public member");
@@ -14,7 +14,7 @@ class PLAClass //pla level class
 	}
 
 	// protected members
-	protected int pro = 90;
+	protected int pro = 91;
 	protected void instanceProtected()
 	{
 		System.out.println("inside protected member");
@@ -25,7 +25,7 @@ class PLAClass //pla level class
 	}
 
 	// PLA access members
-	int pla = 90;
+	int pla = 911;
 	void instancePLA()
 	{
 		System.out.println("inside PLA member");
@@ -36,7 +36,7 @@ class PLAClass //pla level class
 	}
 
 	// private members
-	private int priv = 90;
+	private int priv = 9112;
 	private void instancePrivate()
 	{
 		System.out.println("inside private member");

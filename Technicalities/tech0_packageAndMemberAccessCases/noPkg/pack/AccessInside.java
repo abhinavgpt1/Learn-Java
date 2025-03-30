@@ -9,6 +9,10 @@ public class AccessInside {
 		// If not, then compile as javac ".\Technicalities\tech0_packageAndMemberAccessCases\noPkg\pack\AccessInside.java"
 		PublicClass publicClass = new PublicClass();
 		System.out.println(publicClass.pub);
+		System.out.println(publicClass.pro);
+		System.out.println(publicClass.pla);
+		// System.out.println(publicClass.priv); //not visible
+
 		// same results for PLA class
 	}
 }
@@ -24,7 +28,9 @@ public class AccessInside {
  * 
  * Output:
  * -------
- * 90
+ * 9
+ * 91
+ * 911
  *
  * Warning: Javadoc dangling comment comes because javadoc comment is supposed to be on top of class declaration, a method declaration, or a field declaration
  * https://stackoverflow.com/questions/43375177/warning-dangling-javadoc-comment

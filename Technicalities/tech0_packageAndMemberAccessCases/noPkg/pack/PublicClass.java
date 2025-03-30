@@ -2,7 +2,7 @@
 public class PublicClass
 {
 	// public members
-	public int pub = 90;
+	public int pub = 9;
 	public void instancePublic()
 	{
 		System.out.println("inside public member");
@@ -13,7 +13,7 @@ public class PublicClass
 	}
 
 	// protected members
-	protected int pro = 90;
+	protected int pro = 91;
 	protected void instanceProtected()
 	{
 		System.out.println("inside protected member");
@@ -24,7 +24,7 @@ public class PublicClass
 	}
 
 	// PLA access members
-	int pla = 90;
+	int pla = 911;
 	void instancePLA()
 	{
 		System.out.println("inside PLA member");
@@ -35,7 +35,7 @@ public class PublicClass
 	}
 
 	// private members
-	private int priv = 90;
+	private int priv = 9112;
 	private void instancePrivate()
 	{
 		System.out.println("inside private member");

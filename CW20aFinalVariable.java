@@ -6,9 +6,11 @@ class B {
     // B(){ // error says z is not intialized here
     // must intialize all final variables
     // }
-    B(final int y) {
+    B(final int y) { //LPFV: just for demonstration; not really a final is required to init z
         // y = 3; //won't work if final int y
-        z = y;
+        z = y; 
+            //need not require "final int y" in constructor; z = 10; would have worked too. No need of final in constructor either.
+            //once assigned to z, another assignment is not possible
         // z = 10;//initialization once only
     }
 

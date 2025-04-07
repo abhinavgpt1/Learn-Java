@@ -17,11 +17,14 @@ public class CW36 {
         System.out.println(
                 "Milliseconds stored internally: " + (dtestMillisecondStorage.getTime() - dUnixEpoch.getTime()));
 
-        Date dConstructor = new Date(2023 - 1900, 1, 28);
+        Date dConstructor = new Date(2023 - 1900, 1, 28); //month is 0-indexed
         System.out.println("Deprecated constructor: " + dConstructor);
 
         Date dConstructorWithExtendedDate = new Date(2023 - 1900, 1, 31);
         System.out.println("Deprecated constructor with date extended: " + dConstructorWithExtendedDate);
+        
+        Date dateNegativeMilliseconds = new Date(-1000);
+        System.out.println("Date with negative millisecond: " + dateNegativeMilliseconds); //1sec minus epoch time = Thu Jan 01 05:29:59 IST 1970
     }
 
     /**

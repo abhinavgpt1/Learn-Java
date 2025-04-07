@@ -23,3 +23,15 @@ public class CW31 {
 		System.out.println("In doDiv()");
 	}
 }
+
+/**
+ * Output:
+ * Start
+ * java.lang.ArithmeticException: / by zero
+ * 	at CW31.doDiv(CW31.java:16)
+ * 	at CW31.main(CW31.java:6)
+ * java.lang.ArrayIndexOutOfBoundsException: Index 10 out of bounds for length 2
+ * 	at CW31.doDiv(CW31.java:22)
+ * 	at CW31.main(CW31.java:6)
+ * End
+ */

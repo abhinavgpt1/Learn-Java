@@ -61,11 +61,14 @@ public class CW35b_SuperDeclaresException {
 		try {
 			refBase.method3();
 		} catch (IOException ex) {
+			// no need of this handling; runtime polymorphism calls method3() of SubClass
 			System.out.println("Needs handling as refBase.method3() is tied to \"throws\"");
 		}
 		refDer.method4(); // no need of handling checked exception, though can handle NullPointerException
 	}
 	/**
+	 * Tip: run from terminal for correct results
+	 * 
 	 * Output:
 	 * -------
 	 * SubClass method

@@ -14,3 +14,9 @@ public class CW30 {
 		}
 	}
 }
+/**
+ * Output:
+ * Start
+ * java.lang.ArithmeticException: / by zero
+ * End
+ */

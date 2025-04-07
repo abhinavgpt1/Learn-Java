@@ -20,3 +20,18 @@ public class CW32 {
 		}
 	}
 }
+
+/**
+ * Output
+ * ------
+ * Start
+ * java.lang.ArithmeticException: Float division by zero not allowed, Sir
+ * End
+ */
+
+/*
+ * Output (without msg in ArithmeticException):
+ * Start
+ * java.lang.ArithmeticException
+ * End
+ */

@@ -6,7 +6,8 @@ import java.util.HashMap;
 // so there's a risk that it will delete files unintentinaally (wherever the requirement of package path or default package is met)
 
 public class HW13_CountFilesWithDifferentExtension {
-	// To do this recursively i.e. to count files in Dir1, use DFS approach.
+	// To do this recursively i.e. to count files in Dir1, use DFS/BFS approach.
+	// check HW14_GetFolderStructureFullInfo.java for more details on how to do this recursively.
 	public static void main(String[] args) {
 		HashMap<String, Integer> fileExtensionMap = new HashMap<String, Integer>();
 

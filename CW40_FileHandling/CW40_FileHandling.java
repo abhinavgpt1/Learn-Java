@@ -17,16 +17,17 @@ public class CW40_FileHandling {
         // Way 2
         File file_parent_path_as_str = new File(parent_location_path, "example.txt"); // Using parent and child where parent path is string
         // Way 3        
-        File file_parent_path_as_file = new File(parent_path_file, "example.txt"); // Using parent and child where parent path is string
+        File file_parent_path_as_file = new File(parent_path_file, "example.txt"); // Using parent and child where parent path is File
         
         // getPath(), getAbsolutePath(), getCanonicalPath()
         // getPath() returns the path as specified in the constructor, which may be relative or absolute
-        // getCanonicalPath() returns path after resolving any symbolic links and relative paths
         // getAbsolutePath() returns the absolute path of the file, which may include symbolic links and relative paths
+        // getCanonicalPath() returns path after resolving any symbolic links and relative paths
         
         // NOTE: This particular case will be w.r.t. \core-java.git i.e. current working directory
+        // file_pathname output:
         System.out.println("Path: " + file_pathname.getPath()); 
-        System.out.println("Absolute Path: " + file_pathname.getAbsolutePath());
+        System.out.println("Absolute Path: " + file_pathname.getAbsolutePath()); //resolves relative path by adding location from drive...but doesn't resolve relative paths
         try {
             System.out.println("Canonical Path: " + file_pathname.getCanonicalPath()); //throws IOException which is checked exception
         } catch (IOException e) {
@@ -35,6 +36,7 @@ public class CW40_FileHandling {
 
         System.out.println();
         
+        // file_parent_path_as_file output:
         System.out.println("Path: " + file_parent_path_as_file.getPath());
         System.out.println("Absolute Path: " + file_parent_path_as_file.getAbsolutePath());
         try {
@@ -93,13 +95,13 @@ public class CW40_FileHandling {
         System.out.println("filePath: isFile: " + file.isFile()); //true
         System.out.println("filePath: isDirectory: " + file.isDirectory());//false
         System.out.println("Directory: isDirectory: " + parent_path_file.isDirectory());//true
-        System.out.println("Directory: isFile: " + parent_path_file.isFile());//true
+        System.out.println("Directory: isFile: " + parent_path_file.isFile());//false
 
         System.out.println();
 
         // list() & listFiles() & mkdir()
         // ------------------------------
-        String[] files = parent_path_file.list(); //returns empty array path of file is directory and if directory is empty
+        String[] files = parent_path_file.list(); //returns empty array if directory is empty
         System.out.println("list(): Files found in directory: \\" + parent_path_file.getName() + " : " + files.length); 
         //returns 3 since .class, .java and example.text are in existence for Output run 1
         //returns 4 since .class, .java, example.text and emptyDirectory are in existence for Output run 2
@@ -109,7 +111,7 @@ public class CW40_FileHandling {
 
         System.out.println();
 
-        File[] files_list = parent_path_file.listFiles(); //returns empty array path of file is directory and if directory is empty
+        File[] files_list = parent_path_file.listFiles(); //returns empty array if directory is empty
         System.out.println("listFiles(): Files found in directory: \\" + parent_path_file.getName() + " : " + files_list.length);
 
         File[] files_Null_again = file.listFiles(); //returns null if File is not a directory
@@ -182,8 +184,8 @@ public class CW40_FileHandling {
 /**
  * Execution commands:
  * ------------------
- * javac .\CW40_FileHandling\CW40_FileHandling.java
- * java CW40_FileHandling.CW40_FileHandling
+ * core-java.git> javac .\CW40_FileHandling\CW40_FileHandling.java
+ * core-java.git> java CW40_FileHandling.CW40_FileHandling
  * 
  * Output (1st run):
  * -----------------

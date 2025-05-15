@@ -87,7 +87,8 @@ public class CW40_FileHandling {
             }
         }
         System.out.println("getName() for directory returns name: " + parent_path_file.getName());
-
+        // PTR: exists() works for both file and directory
+        //      if the path is incorrect / parent path doesn't exist, it returns false
         System.out.println();
 
         // isFile() & isDirectory()

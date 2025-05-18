@@ -27,6 +27,8 @@ public class CW43_BufferedOutputStream {
 
             byte[] b = { 98, 99, 100, 101, 102 };
             bos.write(b, 0, b.length); // this doesn't writes immediately. It rather waits for the underlying buffer to be filled, unless provoked by flush() or close().
+            // Q- what happens if buffer is almost full, say 20 bytes left, and I try writing 50 bytes?
+            // A- Immediately, write happens taking the 20 from 50. Rest 30 bytes are stored in buffer. Hence, it is a good practice to flush (atleast in c++ I see now).
             bos.flush();
 
             // --------say, here was a demand to have above data been sent already to downstream system, then flush() would be helpful--------
@@ -40,6 +42,15 @@ public class CW43_BufferedOutputStream {
              * However, the correct and safe way is to close the outermost stream (bos). 
              * bos calls the linked InputStream object to close -> just like a chain reaction eg. linked list deletion.
              * When you call bos.close(), it will automatically close the underlying stream (fos) as well.
+             */
+
+            // Q- Given, String s = "T".repeat(9000); What, if I try writing a very big string? Can windows crash?
+            // A- Consider, it this way, can it happen if I write for infinty? No, right, we'll get OutOfMemory issue, but windows is reliable enough to not crash.
+            /**
+             * Gpt's answer:
+             * If you try to create a very large object in memory (e.g., String s = "T".repeat(2_000_000_000);),
+             * your program may crash with an OutOfMemoryError, but this will not crash Windows itself.
+             * The file system may run out of disk space, causing an IOException, but again, this will not crash Windows.
              */
         } catch (FileNotFoundException e) {
             e.printStackTrace();

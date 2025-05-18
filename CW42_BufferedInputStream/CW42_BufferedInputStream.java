@@ -16,8 +16,7 @@ public class CW42_BufferedInputStream {
         // methods
         // int available() // returns the number of bytes that can be read from the input stream
         // int read() // reads a byte of data from the input stream
-        // int read(byte[] b, int off, int len) // reads up to len bytes of data from
-        // the input stream into an array of bytes b, starting at offset off
+        // int read(byte[] b, int off, int len) // reads up to len bytes of data from the input stream into an array of bytes b, starting at offset off
         // int read(byte[] b) // this version of read doesn't belong to BufferedInputStream, and is defined in FilterInputStream -> doens't buffer
         // void mark(int readAheadLimit) // marks the current position in the input stream // readAheadLimit is the maximum number of bytes that you promise to read once mark(readAheadLimit) is called
             // not your traditional seek() method to jump to any position in the file
@@ -26,8 +25,7 @@ public class CW42_BufferedInputStream {
         // void reset() // resets the input stream to the last marked position. If you read more than readAheadLimit bytes after calling mark(), the mark is invalidated and reset() will throw an IOException.
         // int skip(long n) // skips n bytes of data from the input stream
 
-        // common concrete functions from InputStream (abstract class) like
-        // readAllBytes(), readNBytes() are available
+        // common concrete functions from InputStream (abstract class) like readAllBytes(), readNBytes() are available
 
         basicFunctionsAndProgram();
         markAndReset();

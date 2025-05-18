@@ -20,8 +20,8 @@ public class CW43_BufferedOutputStream {
         // synchronized void flush() // forces any buffered data to be written to the underlying output stream
 
         try {
-            FileOutputStream fos = new FileOutputStream("CW43_sampleBufferedOutput.txt");
-            // FileOutputStream fos = new FileOutputStream("CW43_sampleBufferedOutput.txt", true); // append mode -> this param isn't available in BufferedOutputStream
+            // FileOutputStream fos = new FileOutputStream("CW43_appendedBufferedOutput.txt"); // creates file, or replace contents when write() is called
+            FileOutputStream fos = new FileOutputStream("CW43_appendedBufferedOutput.txt", true); // append mode -> this param isn't available in BufferedOutputStream
             BufferedOutputStream bos = new BufferedOutputStream(fos);
             bos.write(97);
 
@@ -36,7 +36,7 @@ public class CW43_BufferedOutputStream {
             bos.write(103); //g
             // fos.close(); // not recommended to just close the underlying stream, and not the outer streams
             bos.close();
-            System.out.println("written abcdefg to file CW43_sampleBufferedOutput.txt");
+            System.out.println("Appended \"abcdefg\" to file CW43_appendedBufferedOutput.txt");
             /**
              * When you close the underlying stream (fos), the BufferedInputStream (bos) will no longer be able to read from it, and further operations on bos may throw an exception.
              * However, the correct and safe way is to close the outermost stream (bos). 
@@ -63,5 +63,5 @@ public class CW43_BufferedOutputStream {
 /**
  * Output:
  * -------
- * 
+ * Appended "abcdefg" to file CW43_appendedBufferedOutput.txt
  */

@@ -29,6 +29,11 @@ public class CW42_BufferedInputStream {
 
         basicFunctionsAndProgram();
         markAndReset();
+
+        // PTR: 
+        // To read I/O 
+        // - use System.in (InputStream) directly in BufferedInputStream.
+        // eg. new BufferedInputStream(System.in); // refer tech13_readIOUsingStream.java
     }
 
     public static void basicFunctionsAndProgram() {

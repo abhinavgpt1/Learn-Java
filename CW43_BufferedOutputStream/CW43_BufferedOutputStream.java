@@ -57,6 +57,11 @@ public class CW43_BufferedOutputStream {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // PTR: 
+        // To write I/O 
+        // - use System.out (PrintStream aka OutputStream) directly in BufferedOutputStream.
+        // eg. new BufferedOutputStream(System.out); // refer tech13_readIOUsingStream.java
     }
 }
 

@@ -81,7 +81,7 @@ public class tech13_readIOUsingStream {
         // try {
         //     int ch;
         //     while ((ch = bis.read()) != -1 && ch != '\n') { // read until newline
-        //         sb.append((char) ch); // append character to StringBuilder
+        //         sb.append((char) ch); // append character to StringBuilder -> this is correct as far as input is english character/integer (48-57, 97-122) aka lies in ASCII [0-127]. Was the input beyond this, then collaboration of bytes as single entity need to be done
         //     }
         // } catch (IOException e) {
         //     e.printStackTrace();

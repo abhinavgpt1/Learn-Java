@@ -15,6 +15,9 @@ public class tech13_readIOUsingStream {
         // A- That's simply the nature of the underlying operating system constructs that Java streams represent. A stream is essentially a data conduit. Once you close it, it no longer exists.
         // https://stackoverflow.com/questions/33555283/why-is-not-possible-to-reopen-a-closed-standard-stream
         usingCharStream();
+        
+        // usingPrintStream(); -> use System.out 
+        // eg. PrintStream ps = new PrintStream(System.out, true); // see CW46_StreamMiscellaneous.java@printStreamExample
     }
     public static void usingByteStream() {
         // FilterInputStream, BufferedInputStream and DataInputStream accepts InputStream aka System.in
@@ -107,6 +110,7 @@ public class tech13_readIOUsingStream {
             e.printStackTrace();
         }
         // br.close(); // Avoid when bw wraps System.in
+            // this is valid for Scanner(System.in) as well
 
         System.out.println("STARTED: writing to console using BufferedWriter");
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));

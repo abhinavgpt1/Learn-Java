@@ -26,7 +26,7 @@ public class CW46_StreamsMiscellaneous {
         // ref: https://www.geeksforgeeks.org/java/java-io-printstream-class-java-set-2/
         
         // PrintStream never throws IOException. flush() is invoked automatically after byte array is written.
-        // Helps write formatted data to OutputStream. eg. primitive types liek int and long are formatted as text rather than bytes.
+        // Helps write formatted data to OutputStream. eg. primitive types like int and long are formatted as text rather than bytes.
         // All characters printed by a PrintStream are converted into bytes using the platform's default character encoding
         // It can create a file if it doesn't exist
         // By default no buffering happens, unless the underlying OutputStream supports it.
@@ -227,6 +227,7 @@ public class CW46_StreamsMiscellaneous {
             // In this example, when a User object is serialized, the username field will be included in the byte stream, 
             // but the password field will be excluded due to the transient keyword.
             // Upon deserialization, the password field in the reconstructed User object will be null.
+            // -> Rule: default value is set in such cases.
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -236,6 +237,7 @@ public class CW46_StreamsMiscellaneous {
 }
 class Student implements Serializable { //this implementation is required for OIS and OOS to work, else NotSerializableException is thrown.
     int rollNo;
+    // transient int rollNo; //default value is taken on deserialization.
     String name;
     Student(int rollNo, String name) {
         this.rollNo = rollNo;

@@ -37,6 +37,7 @@ class QuickSort implements SortingAlgo {
 	/*
 	 * This function focuses on finding the pivot index first.
 	 * Only then it focuses on rearranging the elements. Hence a 2 step process.
+	 * It's less efficient since loop from startIndex to endIndex is done twice.
 	 */
 	private int partition_less_efficient(final String arr[], final int startIndex, final int endIndex) {
 		int pivotIndex = startIndex;
@@ -83,8 +84,8 @@ class QuickSort implements SortingAlgo {
 	}
 
 	/*
-	 * This function mainly focuses on rearranging the elements. Its secondary goal
-	 * is to find pivotIndex parallely.
+	 * This function mainly focuses on rearranging the elements. 
+	 * Its secondary goal is to find pivotIndex parallely.
 	 */
 	private int partition(final String arr[], final int startIndex, final int endIndex) {
 		String pivot = arr[endIndex];

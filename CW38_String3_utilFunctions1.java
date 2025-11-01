@@ -81,7 +81,7 @@ public class CW38_String3_utilFunctions1 {
         String s_boolean = String.valueOf(true); // "true"
         String s_object = String.valueOf(new Object()); // "java.lang.Object@<hashcode>"
         
-        System.out.println("On sout of any object, toString() is called. The defintion can be overridden in the class though.");
+        System.out.println("On String.valueOf() and sout() of any Object, toString() is called. The definition can be overridden in the class though.");
         System.out.println("In case of Object, it is the class name and hashcode. For String, it is the string itself.");
         System.out.println("String.valueOf(new Object()): " + s_object); // java.lang.Object@<hashcode>
     }

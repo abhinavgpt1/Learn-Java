@@ -176,20 +176,30 @@ public class CW46_StreamsMiscellaneous {
 
         // internally OOS passes to FOS to write in bytes to the file/stream. Similarly for OIS (see diagram in book).
 
-        // constructor (just 1):
+        // constructor (just 1 public constructor):
         // --------------------
+        // new ObjectOutputStream() - helpful when implementing subclass from scratch (check gfg article)
         // new ObjectOutputStream(OutputStream out)
+
+        // PTR: Serialization in Java is designed to save the state of an object's instance variables, not the class's static variables.
+        // => transient and static variables are not serialized. Static fields are however loaded from class, hence we'll see the default value on deserialization.
+        // => final variables are serialized
+        // transient keyword has no impact on static and final variables.
         
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("CW46_OIS_OOS_example.txt"));
-            oos.writeObject(new Student(1,"John Doe")); //written as bytes to the file...hence file isn't human readable.
+            Student john = new Student(1,"John Doe");
+            oos.writeObject(john); //written as bytes to the file...hence file isn't human readable.
+            oos.writeObject(john); //write the same object to check hashcode at deserialization
+            // oos.writeUnshared(john); //write "unshared" i.e. new object => hashcode is different
             oos.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         
-        // constructor (just 1):
+        // constructor (just 1 public constructor):
         // --------------------
+        // new ObjectInputStream() - helpful when implementing sbuclass from scratch (check gfg article)
         // new ObjectInputStream(InputStream in)
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("CW46_OIS_OOS_example.txt"));
@@ -199,9 +209,14 @@ public class CW46_StreamsMiscellaneous {
             // ois.read(byte[] b)
             // ois.readAllBytes()
             // ois.readUTF()
-            Student student = (Student)(ois.readObject());
+            Student student = (Student)(ois.readObject()); //constructor is not called on deserialization
             System.out.println(student.rollNo + " " + student.name);
+            System.out.println(student.hashCode()); //233530418
+            Student studentAgain = (Student)(ois.readObject());
+            System.out.println(studentAgain.hashCode()); //233530418 (same)
             ois.close();
+
+            // PTR: object reference/identity is preserved during serialization and deserialization.
             
             // qq -  What if the class is not serializable?
             // ans - If the class is not serializable, you will get a java.io.NotSerializableException at runtime when you try to serialize an instance of that class.
@@ -233,11 +248,20 @@ public class CW46_StreamsMiscellaneous {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        // good read on serialization/deserialization - https://www.geeksforgeeks.org/java/serialization-and-deserialization-in-java/
+        // check gfg articles on OIS/OOS for deep study.
     }
 }
 class Student implements Serializable { //this implementation is required for OIS and OOS to work, else NotSerializableException is thrown.
     int rollNo;
-    // transient int rollNo; //default value is taken on deserialization.
+    // transient int rollNo; //not serialized. A default value is assigned on deserialization.
+    // static int rollNo = 90; // not serialized but loaded from class. Static variables belong to the class itself, not to individual instances (objects) of that class. Serialization focuses on capturing the state of a specific object.
+    // final int rollNo = 90; //serialized
+    // transient static int rollNo = 90; // not serialized since class variable (no impact of transient on static)
+    // transient final int rollNo = 90; //serialized (no impact of transient on final)
+
+    // ref: https://www.geeksforgeeks.org/java/transient-keyword-java/
+
     String name;
     Student(int rollNo, String name) {
         this.rollNo = rollNo;
@@ -255,4 +279,6 @@ class Student implements Serializable { //this implementation is required for OI
  * 
  * ----------------ObjectInputStream and ObjectOutputStream Example-----------------
  * 1 John Doe
+ * 233530418
+ * 233530418
  */

@@ -5,12 +5,13 @@ Corresponding notes: https://engineeringdigest.medium.com/multithreading-in-java
 
 CPU is brain of computer; inputs instructions.
 What's so special about CPU? - core. Core is the processing unit within CPU. Modern CPUs can have multiple cores to process multiple tasks simultaneously.
-4 cores means 4 processing units, each capable of executing tasks independently. One is running web browser, another is running a game, another music, and so on.program is a set of instructions. eg. On a high level, ms word.
+4 cores means 4 processing units, each capable of executing tasks independently. One is running web browser, another is running a game, another music, and so on. Program is a set of instructions. eg. On a high level, ms word.
 
 Process is an instance of a program in execution. When a program runs, the OS creates a process for it. Each process has its own memory space and resources.
 PTR: when we open a program (eg. MS word), is becomes a process in the OS.
+qq: Resources? => A process requires both hardware and software resources to run, including the CPU, memory, and I/O devices, as well as operating systems, libraries, sockets, ports and application software (program code).
 
-A thread is the smallest unit of execution within a process. A process can have multiple threads, each capable of executing independently.
+A thread is the (smallest) unit of execution WITHIN a process. A process can have multiple threads, each capable of executing independently.
 Threads share the same memory space and resources of the process, which allows for efficient communication and data sharing between them.
 eg. each tab in chrome runs as a separate thread.
 
@@ -18,11 +19,9 @@ Multitasking allows OS to run multiple procesess simultaneously. On a single-cor
 On a multi-core CPU, true parallelism can be achieved, allowing multiple processes to run simultaneously on different cores.
 OS scheduler balances the load across cores, ensuring efficient and responsive system performance.
 
------------------ main concepts now -----------------
-
 Def: Multithreading is the ability to execute multiple threads within a process concurrently.
 eg. web browser can use multithreading by rendering page, running js, managing inputs, etc.
-multithreading enhances efficiency by breaking down individual tasks into smaller sub-tasks which can be executed concurrently, making better use of CPU capabilities.
+Multithreading enhances efficiency by breaking down individual tasks into smaller sub-tasks which can be executed concurrently, making better use of CPU capabilities.
 => multithreading is not necessary for multitasking.
 
 PTR: multithreading is possible within a single process, while multitasking involves multiple processes.
@@ -30,7 +29,7 @@ PTR: multithreading is possible within a single process, while multitasking invo
 PTR: parallel running of processes/programs:multitasking :: efficient program running using threads:multithreading
 eg. multitasking (managed by OS)
 |->process 1 = ms word ---multithreading---> t1=user input, t2=spell check
-|->process 2 = chrome ---multithreading---> t1=rendering, t2=youtube
+|->process 2 = chrome ---multithreading---> t1=pade rendering, t2=data loading BTS
 
 Def: time slicing divides CPU time into small intervals called time slices or time quanta. Time slice in itself is a small unit of computation time.
 OS allocates these time slices to different processes or threads, ensuring that each gets a fair share of CPU time.
@@ -38,8 +37,10 @@ OS allocates these time slices to different processes or threads, ensuring that 
 Def: context switching is the process of saving the state of a currently running thread and loading/restoring the state of another thread.
 When a process or thread's time slice expires, the OS performs a context switch to allow another thread to run.
 
-JVM and OS handle multithreading. In multicore env, JVM can distribute threads across multiple cores for true parallel execution.
+JVM and OS handle multithreading. In multicore env., JVM can distribute threads across multiple cores for true parallel execution.
 When a Java program is executed, one thread begins running immediately, which is the main thread. This thread is responsible for executing the main method of the program.
+
+----------------- basic concepts done, check codes now -----------------
 
 Basic program using Thread:
 ---------------------------

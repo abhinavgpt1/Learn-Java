@@ -9,7 +9,7 @@ class Counter {
         // ...some task is happening
         synchronized (this) { //synchronized block: if you don't want to make a synchronized method 
             // here this refers to Counter object => at a time only one thread can use this object.
-            // If there was another COunter obj like Counter counter2 = new Counter(); then lock on counter1 won't affect counter2
+            // If there was another Counter obj like Counter counter2 = new Counter(); then lock on counter1 won't affect counter2
             count++;
         }
     }
@@ -21,6 +21,10 @@ public class CW51_Synchronization_LockInstance {
     /**
      * The entire theory on synchronization you need is as follows:
      * -------------------------------------------------------------
+     * Def: Synchronization: is the mechanism to control the access of multiple threads to SHARED RESOURCES (CRITICAL SECTION), to prevent data inconsistency and ensure THREAD SAFETY in a multi-threaded environment.
+     * 
+     * Def: Thread safety: means when multiple threads access the same object or piece of code at the same time, the program still behaves correctly, without data corruption or unexpected results.
+     * 
      * We can use the synchronized keyword on different levels:
      *  Instance methods
      *  Static methods
@@ -51,7 +55,11 @@ public class CW51_Synchronization_LockInstance {
      * Extra:
      * ------
      * Process synchronization != thread synchronization
-     * Definition: Mutual exlcusion states that "no two processes can exist in the critical section at any given point of time". The term was first coined by Dijkstra.
+     *
+     * Mutual exclusion is the principle that only one process can access a shared resource at any given time to prevent conflicts, such as a race condition. 
+     * It is commonly implemented using a mutex (mutual exclusion lock), which a thread must acquire before entering a critical section of code and release when it leaves. 
+     * This ensures that a thread operating on a shared resource temporarily excludes all other threads from accessing it until it is finished.
+     * The term was first coined by Dijkstra.
      */
     public static void main(String[] args) {
         Counter counter = new Counter(); // shared resource
@@ -96,7 +104,7 @@ public class CW51_Synchronization_LockInstance {
         System.out.println(counter.getCount()); // 1258159 
 
         // qq - does passing same runnable instance to multiple threads make a difference?
-        // ans - passing same runnable is absolutely fine - https://stackoverflow.com/questions/9849109/passing-single-runnable-object-to-multiple-thread-constructors
+        // ans - passing same runnable is absolutely fine. Remember to use synchronization since the common runnable defintion contains shared data/fields. - https://stackoverflow.com/questions/9849109/passing-single-runnable-object-to-multiple-thread-constructors
         // qq - why ans != 2e6? 
         // ans - if count=x and t1 makes it x+1, then t2 might still see it as x since updation by t1 wasn't completed. t2 updates x to x+1, hence the work done by t1 is lost.
 
@@ -137,7 +145,7 @@ public class CW51_Synchronization_LockInstance {
  * Semaphore in Java
  * -----------------
  * Java provides the java.util.concurrent.Semaphore class, which manages a counter of permits. 
- * Core concept: A semaphore controls access to resources by maintaining a count of available "permits." 
+ * Core concept: A semaphore controls access to resources by maintaining a count of available "permits". 
  * Threads request a permit to access the resource and release it when they are finished.
  * Types of Semaphores:
  *  Counting Semaphore: Initialized with a count greater than 1, it manages a pool of multiple resources.

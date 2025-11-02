@@ -2,8 +2,11 @@
 // meaning that when all user threads finish their execution, the JVM automatically terminates the daemon thread.
 // To put it simply, daemon threads serve user threads by handling background tasks and have no role other than supporting the main execution.
 // Examples of daemon threads in Java include garbage collection (gc) and finalizer.
-// ref: https://www.geeksforgeeks.org/java/daemon-thread-java/
+// Must ref: https://www.geeksforgeeks.org/java/daemon-thread-java/
 // ref: https://www.youtube.com/watch?v=4aYvLz4E1Ts
+
+// Def: A daemon thread is a low-priority background thread that does not prevent the JVM from exiting when the program finishes execution.
+// Note: Daemon threads should not be used for tasks requiring completion, such as writing to a file or updating a database.
 public class CW48_DaemonThread {
     public static void main(String[] args) {
         Thread daemon = new Thread(()->{

@@ -38,8 +38,7 @@ public class CW52_Synchronization_LockClass {
         Thread classBThread1 = new Thread(taskB);
         Thread classBThread2 = new Thread(taskB);
 
-        // goal: since Counter has class property count accessible by all threads of various instances of Counter object,
-        // we want synchronized behavior for all instanes of Counter class while performing actions on static properties.
+        // Goal: Since Counter has class property "count" accessible by all threads, we want synchronized behavior for all 4 threads. The lock is no more per instance, but per class.
         classAThread1.start();
         classAThread2.start();
         classBThread1.start();

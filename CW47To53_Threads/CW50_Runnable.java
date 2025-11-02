@@ -31,7 +31,11 @@ public class CW50_Runnable {
         t1.start();
         t2.start();
 
-        // not adding join here
+        // not adding join here, but this doesn't mean JVM will exit before t1 and t2 finish.
+        // PTR: JVM will run main thread alongside t1 and t2 before exiting. Join is used when you want main thread to wait for t1 and t2 to finish before proceeding.
+        // This is a fundamental distinction between user threads (also known as non-daemon threads) and daemon threads in Java:
+        // User Threads: These are considered critical to the application's functionality. The JVM will not exit as long as any user thread is still running. It will wait for each user thread to finish its tasks naturally.
+        // Daemon Threads: These are background threads that provide services to user threads (e.g., garbage collector). The JVM does not wait for daemon threads to complete.
 
         // Another way to create thread from runnable is to use lambda expression, thanks to runnable being @FunctionalInterface
         Thread lamdbThread = new Thread(() -> System.out.println("Hello from lambda thread"));

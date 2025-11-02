@@ -107,10 +107,10 @@ public class CW49_Thread {
   */
 
 /**
- * Output (daemon threads and no join()):
- * ---------------------------------------
+ * Output (t1 and t2 set as daemon threads, and no join()):
+ * --------------------------------------------------------
  * main - Message from main thread
- * t1 state after join(): RUNNABLE
- * t2 state after join(): RUNNABLE
+ * t1 state <<ignore>after join()>: RUNNABLE
+ * t2 state <<ignore>after join()>: RUNNABLE
  * Main thread finished after waiting for t1 and t2 to be finished
  */

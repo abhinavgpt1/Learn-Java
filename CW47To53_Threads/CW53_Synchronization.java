@@ -19,6 +19,7 @@ class User extends Thread {
 		this.n = n;
 	}
 
+	@Override
 	public void run() {
 		printer.printTable(n);
 	}
@@ -26,7 +27,7 @@ class User extends Thread {
 
 public class CW53_Synchronization {
 	public static void main(String[] args) {
-		Printer tablePrinter = new Printer();
+		Printer tablePrinter = new Printer(); // shared resource
 		User th1 = new User(tablePrinter, 5);
 		User th2 = new User(tablePrinter, 10);
 		th1.start();

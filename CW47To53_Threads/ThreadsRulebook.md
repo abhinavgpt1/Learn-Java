@@ -103,3 +103,32 @@ Def: daemon thread - Daemon threads are background threads which JVM doesn't wai
 -> Check CW51_Synchronization_LockInstance.java
 -> Check CW52_Synchronization_LockClass.java
 -> Check CW53_Synchronization.java
+
+Synchronization can be achieved using locks. Locks can be of 2 types - Intrinsic and Explicit
+* Intrinsic locks are built-in locks provided by Java. Every object in Java has an intrinsic lock associated with it. When a thread enters a synchronized method or block, it acquires the intrinsic lock of the object.
+* Explicit locks are provided by the java.util.concurrent.locks package. They offer more flexibility (we can when to lock/unlock) and features compared to intrinsic locks, such as tryLock() and lockInterruptibly().
+-> Check CW54_ExplicitLocks.java
+
+Demerits of using synchronized keyword - threads in line (t2,t3,...) have wait till the acquirer (t1) finishes executing the function (and might have to wait indefinitely). Hence other threads should be given a chance after some time. Here comes the need of explicit locks. 
+So, indefinite blocking, no interruptibility, no timeout and no read/write locking.
+
+Remember these functions on Lock class:
+* tryLock()
+* tryLock(time, unit)
+* unlock()
+* lockInterruptibly()
+* lock()
+-> Check CW55_ReentrantLock.java
+
+Fairness of locks - by default, locks are unfair, meaning threads can acquire locks in random order.
+To make locks fair, use ReentrantLock(true) constructor. This prevents thread starvation.
+-> Check CW56_FairnessOfLocks.java
+
+Merits of using explicit locks over synchronized keyword:
+---------------------------------------------------------
+1. Fairness - explicit locks can be made fair, preventing thread starvation.
+2. Timeout - tryLock() allows threads to attempt to acquire a lock without blocking indefinitely.
+3. Interruptibility - lockInterruptibly() allows threads to be interrupted while waiting for a lock.
+4. Read/Write Locking - explicit locks can be implemented as read/write locks, allowing for more granular control over access to shared resources.
+    - a normal lock allows only one thread to access a resource at a time, regardless of whether the access is for reading or writing.
+    - a read/write lock allows multiple threads to read a resource simultaneously (shared access), but only one thread can write to the resource at a time (exclusive access). This improves concurrency and performance in scenarios where reads are more frequent than writes.

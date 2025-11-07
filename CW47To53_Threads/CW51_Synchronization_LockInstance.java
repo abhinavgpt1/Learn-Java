@@ -113,8 +113,7 @@ public class CW51_Synchronization_LockInstance {
         System.out.println(counter.getCount()); // 2000000
 
         // Def: Critical section: Code where shared resources are accessed and modified is called critical section.
-        // Def: Race condition is a situation that may occur in critical section. 
-        //      A race condition happens when two or more processes try to access the same resource at the same time without proper coordination. 
+        // Def: Race condition is a situation that may occur in critical section where two or more processes try to access the same resource at the same time without proper coordination leading to improper results.
         //      This “race” can lead to incorrect results or unpredictable behavior because the order of execution is not controlled.
 
         // Def: Mutual exclusion = mutex: A mutex is like a lock that ensures only one process can access a resource at a time. 

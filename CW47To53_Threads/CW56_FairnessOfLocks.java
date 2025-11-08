@@ -51,4 +51,10 @@ public class CW56_FairnessOfLocks {
 /**
  * Output:
  * -------
+ * Thread-1: acquired lock
+ * Thread-1: releasing lock
+ * Thread-3: acquired lock
+ * Thread-3: releasing lock
+ * Thread-2: acquired lock
+ * Thread-2: releasing lock
  */

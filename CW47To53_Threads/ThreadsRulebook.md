@@ -152,3 +152,61 @@ Starvation is the problem that occurs when high priority processes keep executin
 
 Checkout methods to prevent deadlock & livelock, Dining philosophers problem, stavation:
 -> Check CW59_DeadlockResolution.java
+
+Thread Communication
+----------------------
+Inter-thread communication allows synchronized threads to communicate with each other. This is achieved through methods from Object class:
+PTR: These methods reside in Object class and not Thread class.
+
+1. wait():
+   - Causes current thread to wait until another thread invokes notify() or notifyAll()
+   - MUST be called from within synchronized context
+   - Releases the lock on the object while waiting
+   - Common usage: producer waits when buffer is full, consumer waits when buffer is empty
+
+2. notify():
+   - Wakes up a single waiting thread
+   - If multiple threads are waiting, choice is arbitrary
+   - MUST be called from synchronized context
+   - Lock is not released immediately - only after synchronized block completes
+
+3. notifyAll():
+   - Wakes up all waiting threads
+   - Threads compete for the lock
+   - More commonly used than notify() to avoid thread starvation
+   - MUST be called from synchronized context
+
+Key Points:
+- All three methods must be called from within synchronized block/method
+- These methods are instance methods of Object class
+- IllegalMonitorStateException if called without synchronization
+- wait() throws InterruptedException
+
+Example Pattern:
+```java
+synchronized void produce() {
+    while (isBufferFull()) {
+        wait();  // wait if buffer is full
+    }
+    // produce item
+    notifyAll();  // notify consumers which are waiting on the Object monitor in this synchronized method <- IMP
+}
+
+synchronized void consume() {
+    while (isBufferEmpty()) {
+        wait();  // wait if buffer is empty
+    }
+    // consume item
+    notifyAll();  // notify producers which are waiting on the Object monitor in this synchronized method <- IMP
+}
+```
+
+Best Practices:
+1. Always use wait() in a while loop (not if)
+2. Prefer notifyAll() over notify()
+3. Keep synchronized blocks as short as possible
+4. Handle InterruptedException appropriately
+5. Avoid calling these methods on constant objects like String literals
+
+Producer-Consumer problem is a classic example of inter-thread communication using wait() and notify()/notifyAll().
+-> Check CW60_ThreadCommunication.java

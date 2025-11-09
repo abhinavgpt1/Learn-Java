@@ -131,4 +131,24 @@ Merits of using explicit locks over synchronized keyword:
 3. Interruptibility - lockInterruptibly() allows threads to be interrupted while waiting for a lock.
 4. Read/Write Locking - explicit locks can be implemented as read/write locks, allowing for more granular control over access to shared resources.
     - a normal lock allows only one thread to access a resource at a time, regardless of whether the access is for reading or writing.
-    - a read/write lock allows multiple threads to read a resource simultaneously (shared access), but only one thread can write to the resource at a time (exclusive access). This improves concurrency and performance in scenarios where reads are more frequent than writes.
+    - a read/write lock allows multiple threads to read a resource simultaneously (shared access), but only one thread can write to the resource at a time (exclusive access). This improves concurrency and performance in scenarios where reads are more frequent than writes. Resources are unlocked in way better manner than when a single lock or synchronized keyword is used.
+-> Check CW57_ReadWriteLocks.java
+
+Deadlock - a situation where two or more threads are blocked forever, each waiting for the other to release a resource.
+-> Check CW58_Deadlock.java
+
+Deadlock occurs when following 4 conditions hold simultaneously:
+1. Mutual Exclusion: At least one resource must be held in a non-sharable mode. Only one thread can use the resource at any given time.
+2. Hold and Wait: A thread holding at least one resource is waiting to acquire additional resources held by other threads.
+3. No Preemption: Resources cannot be forcibly removed from threads holding them. A resource can only be released voluntarily by the thread holding it.
+4. Circular Wait: A set of threads are waiting for each other in a circular chain. Each thread is waiting for a resource held by the next thread in the chain.
+
+Dining philosophers problem is a classic deadlock example 
+- https://www.baeldung.com/java-dining-philoshophers
+
+Livelock is a situation where processes are not blocked (like in deadlock) but they continuously change their state in response to each other, without making any real progress. In short, processes keep moving but never reach completion.
+
+Starvation is the problem that occurs when high priority processes keep executing and low priority processes get blocked for indefinite time
+
+Checkout methods to prevent deadlock & livelock, Dining philosophers problem, stavation:
+-> Check CW58_DeadlockResolution.java

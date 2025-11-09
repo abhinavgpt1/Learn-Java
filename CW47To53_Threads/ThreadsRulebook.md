@@ -151,4 +151,4 @@ Livelock is a situation where processes are not blocked (like in deadlock) but t
 Starvation is the problem that occurs when high priority processes keep executing and low priority processes get blocked for indefinite time
 
 Checkout methods to prevent deadlock & livelock, Dining philosophers problem, stavation:
--> Check CW58_DeadlockResolution.java
+-> Check CW59_DeadlockResolution.java

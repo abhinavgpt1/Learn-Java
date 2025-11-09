@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 class Pen {
 	public synchronized void writeWithPenAndPaper(Paper p){ // locks Pen object
 		System.out.println(Thread.currentThread().getName() + " is using pen " + this + " and trying to acquire paper: " + p);
@@ -20,7 +18,7 @@ class Paper {
 	}
 }
 
-public class CW58_DeadlockResolution {
+public class CW59_DeadlockResolution {
 	
 	public static void main(String[] args) {
 		Pen pen = new Pen();

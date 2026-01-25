@@ -25,6 +25,7 @@ class B extends Thread {
             System.out.println(getName() + ":" + i);
             try {
                 Thread.sleep(1000);
+                // Thread.sleep(10000); // enable this statement with t2.join(10000) to see different behavior.
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -55,8 +56,24 @@ public class CW49_Thread {
         // you may use join() while t1 and t2 are daemon, but avoid it in general otherwise it defeats the purpose of daemon threads.
         try {
             t1.join();
-            t2.join(); // waits indefinitely for t2 to finish
-            // t2.join(10000); // waits for max 10 seconds for t2 to finish
+            // t2.join(); // waits indefinitely for t2 to finish
+            // t2.join(10000); // waits for max 10 seconds, else move's on. But, finally the main JVM would wait for t2 to finish since it's a user thread.
+                // Output:-> make sure the task in t2 takes 10000ms each
+                // -------
+                // main - Message from main thread
+                // Thread-A:1
+                // Thread-B:6
+                // Thread-A:2
+                // Thread-A:3
+                // Thread-A:4
+                // Thread-A:5
+                // Thread-B:7
+                // t1 state after join(): TERMINATED
+                // t2 state after join(): TIMED_WAITING
+                // Main thread finished after waiting for t1 and t2 to be finished
+                // Thread-B:8
+                // Thread-B:9
+                // Thread-B:10
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

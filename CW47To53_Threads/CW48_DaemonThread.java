@@ -18,7 +18,7 @@ public class CW48_DaemonThread {
         daemon.start(); //might print some statements after "Main done" since JVM needs to check if all user threads are done before closing the program.
         System.out.println("Main done");
 
-        // say there was user thread (t1) at line 9 (i.e. after daemon.start()), then JVM would wait for main and t1 to complete before terminating the program.
+        // say there was user thread (t1) at line 18 (i.e. after daemon.start()), then JVM would wait for main and t1 to complete before terminating the program.
     }    
 }
 /**

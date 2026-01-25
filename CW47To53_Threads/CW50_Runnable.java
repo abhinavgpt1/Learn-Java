@@ -53,7 +53,7 @@ public class CW50_Runnable {
         // To execute a task multiple times or concurrently, new Thread instances should be created for each execution. Each new Thread instance can then be started independently.
 
         // uncomment following code to see the exception
-        // PTR: the other threads don't terminate.
+        // PTR: the other threads (t1, t2, main) don't terminate.
         // System.out.println("lamdbThread state presently:" + lamdbThread.getState());
         // lamdbThread.start();
 

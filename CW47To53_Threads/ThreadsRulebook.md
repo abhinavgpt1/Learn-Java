@@ -22,14 +22,14 @@ OS scheduler balances the load across cores, ensuring efficient and responsive s
 Def: Multithreading is the ability to execute multiple threads within a process concurrently.
 eg. web browser can use multithreading by rendering page, running js, managing inputs, etc.
 Multithreading enhances efficiency by breaking down individual tasks into smaller sub-tasks which can be executed concurrently, making better use of CPU capabilities.
-=> multithreading is not necessary for multitasking.
+=> multithreading is not necessary for multitasking, but vice-versa is true.
 
 PTR: multithreading is possible within a single process, while multitasking involves multiple processes.
 
 PTR: parallel running of processes/programs:multitasking :: efficient program running using threads:multithreading
 eg. multitasking (managed by OS)
 |->process 1 = ms word ---multithreading---> t1=user input, t2=spell check
-|->process 2 = chrome ---multithreading---> t1=pade rendering, t2=data loading BTS
+|->process 2 = chrome ---multithreading---> t1=page rendering, t2=data loading BTS
 
 Def: time slicing divides CPU time into small intervals called time slices or time quanta. Time slice in itself is a small unit of computation time.
 OS allocates these time slices to different processes or threads, ensuring that each gets a fair share of CPU time.

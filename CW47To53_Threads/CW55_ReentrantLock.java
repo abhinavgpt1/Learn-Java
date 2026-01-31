@@ -9,9 +9,8 @@ public class CW55_ReentrantLock {
 			lock.lock(); // just like synchronized method/block - waits till lock is available 
 						 // i.e. count of locks acquired = 0
 
-			// You can use lock.lockInterruptibly() here instead of lock.lock() if you want
-			// to be able to interrupt the thread while waiting for the lock - add a catch
-			// for InterruptedException in this case
+			// use lock.lockInterruptibly() here instead of lock.lock() if you want to
+			// interrupt the thread while waiting for the lock - add a catch for InterruptedException in this case
 
 			System.out.println("Inside outerMethod");
 			innerMethod(); // no deadlock occurs as same thread can acquire lock multiple times, hence re-entrant

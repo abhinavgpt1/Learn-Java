@@ -50,10 +50,11 @@ run method is overriden, and start() is called.
 Basic program using Runnable:
 -----------------------------
 let your class implement Runnable interface.
-run method is implemented, and Thread class is instantiated with your class as an argument.
+run method is implemented, and Thread object is instantiated with your class's object as an argument.
 start() is called to begin execution.
 Thread.currentThread() returns the currently executing thread object. 
 Thread.currentThread().getName() returns the name of the currently executing thread. eg. main, Thread-0, etc.
+PTR: getName() function is available in Thread class and not in Runnable. So, use Thread.currentThread() in Runnable's context.
 
 Check Thread lifecycle theory and program from video: 
 State enum: NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED
@@ -148,7 +149,7 @@ Dining philosophers problem is a classic deadlock example
 
 Livelock is a situation where processes are not blocked (like in deadlock) but they continuously change their state in response to each other, without making any real progress. In short, processes keep moving but never reach completion.
 
-Starvation is the problem that occurs when high priority processes keep executing and low priority processes get blocked for indefinite time
+Starvation is the problem that occurs when high priority processes keep executing and low priority processes get blocked for indefinite time.
 
 Checkout methods to prevent deadlock & livelock, Dining philosophers problem, stavation:
 -> Check CW59_DeadlockResolution.java
@@ -206,7 +207,7 @@ Best Practices:
 2. Prefer notifyAll() over notify()
 3. Keep synchronized blocks as short as possible
 4. Handle InterruptedException appropriately
-5. Avoid calling these methods on constant objects like String literals
+5. Avoid calling these methods on constant objects like String literals because those objects are shared globally by the JVM, and other code may also synchronize on the same literal. 
 
 Producer-Consumer problem is a classic example of inter-thread communication using wait() and notify()/notifyAll().
 -> Check CW60_ThreadCommunication.java

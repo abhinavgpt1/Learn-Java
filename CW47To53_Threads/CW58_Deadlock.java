@@ -44,7 +44,7 @@ public class CW58_Deadlock {
 		// Pen-person is using pen Pen@50aa20fd and trying to acquire paper: Paper@3cb46987
 		// Paper-person is using paper Paper@3cb46987 and trying to acquire pen: Pen@50aa20fd
 
-		// the program runs indefinitely as was stopped manually.
+		// the program runs indefinitely and was stopped manually.
 
 		// PTR: A common deadlock problem - Dining Philosophers Problem - https://www.baeldung.com/java-dining-philoshophers
 	}

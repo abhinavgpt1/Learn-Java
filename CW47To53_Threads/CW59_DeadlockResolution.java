@@ -53,12 +53,12 @@ public class CW59_DeadlockResolution {
 		// Ways to prevent it:
 		// 1. Avoid Nested Locks: This is the main reason for deadlock. Mainly happens when we give locks to multiple threads. Avoid giving lock to multiple threads if we already have given to one.
 			// synchronized inside synchronized
-		// 2. Avoid Unnecessary Locks: We should have lock only those members who are required. Having a lock on unnecessarily can lead to deadlock.
+		// 2. Avoid Unnecessary Locks: Lock only the resources you actually need — holding unnecessary locks can cause deadlock.
 		// 3. Using thread join: Deadlock condition appears when one thread is waiting for the other to finish. If this condition occurs we can use Thread.join(timeunit) the with the maximum time you think the execution will take.
 			// using time limit in join like t2_method { t1.join(1000); } can prevent deadlock since t2 will wait for t1 only for 1 second and then continue its execution.
 		// 4. Deadlock Detection: Periodically check for deadlocks and recover.
 			// https://www.geeksforgeeks.org/java/deadlock-in-java-multithreading/#:~:text=Detectecting%20Deadlocks
-		// 5. Don't execute foreign code while holding a lock.
+		// 5. Don't execute foreign code while holding a lock because the foreign code may block for a long time, throw unexpected exceptions, or try to acquire other locks in a different order.
 
 		/**
 		 * Solution to Dining Philosophers Problem:
@@ -73,7 +73,7 @@ public class CW59_DeadlockResolution {
 
 		// Extra: Deadlock vs Livelock - https://www.baeldung.com/java-deadlock-livelock
 		// Def: Livelock is a situation where two or more threads are actively responding to each other but are unable to make progress because they keep changing their state in response to the other threads.
-		// Def: Starvation is the problem that occurs when high priority processes keep executing and low priority processes get blocked for indefinite time
+		// Def: Starvation is the problem that occurs when high priority processes keep executing and low priority processes get blocked for indefinite time.
 
 		// Starvation vs Livelock - https://www.geeksforgeeks.org/operating-systems/deadlock-starvation-and-livelock/
 	}

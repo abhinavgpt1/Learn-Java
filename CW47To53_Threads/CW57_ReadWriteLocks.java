@@ -10,7 +10,7 @@ public class CW57_ReadWriteLocks {
 	private final Lock writeLock = lock.writeLock();
 
 	private int getCount() {
-		readLock.lock(); //multiple threads can enter and acquire this lock (iff no thread holds write lock)
+		readLock.lock(); // multiple threads can enter and acquire this lock (iff no thread holds write lock, else they wait here indefinitely)
 		try {
 			return count;
 		} finally {
@@ -22,7 +22,7 @@ public class CW57_ReadWriteLocks {
 		writeLock.lock();
 		try {
 			count++;
-			Thread.sleep(10); // add some delay so reader threads get chance to read
+			Thread.sleep(10); // reader threads would be able to read only after write lock is released. Till then they will be blocked at line 13.
 		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 			ex.printStackTrace();

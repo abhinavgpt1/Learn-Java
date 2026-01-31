@@ -55,6 +55,7 @@ public class CW51_Synchronization_LockInstance {
      * Extra:
      * ------
      * Process synchronization != thread synchronization
+     * Process Synchronization: A mechanism to coordinate the execution order and resource access of multiple independent processes running in separate memory spaces to prevent conflicts and ensure correct behavior.
      *
      * Mutual exclusion is the principle that only one process can access a shared resource at any given time to prevent conflicts, such as a race condition. 
      * It is commonly implemented using a mutex (mutual exclusion lock), which a thread must acquire before entering a critical section of code and release when it leaves. 

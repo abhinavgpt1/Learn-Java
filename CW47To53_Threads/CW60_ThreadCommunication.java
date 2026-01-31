@@ -6,6 +6,7 @@ class SharedResource {
 		while(hasData) {
 			try {
 				// gfg says that a notify() can be added here as well so as to wake up waiting consumer (if any).
+				System.out.println(Thread.currentThread().getName() + ": Waiting as data not yet consumed");
 				wait(); // no more production until data is consumed
 			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
@@ -14,13 +15,18 @@ class SharedResource {
 		data = value;
 		hasData = true;
 		System.out.println(Thread.currentThread().getName() + ": Produced " + data);
-		notify(); // notify the waiting consumer (waiting on this SharedResource object monitor)
-		// This thread would be consumer only as no other producer would be waiting since synchronized is used by one producer alone.
+		notify(); // notify the waiting thread (waiting on this SharedResource object monitor)
+		// This thread would be consumer only (only in this one consumer scenario) as no other producer(s) would be waiting since synchronized is used by only one producer at a time.
+
+		// PTR: if there are multiple consumers, notify may wake up the consumer and not producer leading to infinite waiting
+			// hence use notifyAll() in multiple consumer/producer scenario.
+		
 	}
 	public synchronized int consume() {
 		// no if block, no return; Use while loop to recheck condition after being notified.
 		while(!hasData) {
 			try {
+				System.out.println(Thread.currentThread().getName() + ": Waiting as data not yet produced");
 				wait(); // no more consumption until data is populated
 			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
@@ -28,7 +34,7 @@ class SharedResource {
 		}
 		hasData = false;
 		System.out.println(Thread.currentThread().getName() + ": Consumed " + data);
-		notify(); // notify the waiting producer (waiting on this SharedResource object monitor)
+		notify();
 		return data;
 	}
 }
@@ -56,6 +62,7 @@ public class CW60_ThreadCommunication {
 		};
 		Thread producer = new Thread(producerTask, "Producer");
 		Thread consumer = new Thread(consumerTask, "Consumer");
+		// Thread consumer2 = new Thread(consumerTask, "Consumer2"); // use notifyAll() in such case since notify() may invoke any thread waiting on SharedResource monitor.
 
 		producer.start();
 		consumer.start();

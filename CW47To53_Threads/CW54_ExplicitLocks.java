@@ -13,14 +13,14 @@ class BankAccount {
 			// needs try catch since it waits for the lock to be available and meanwhile thread can be interrupted
 		
 		// IMP Sonar suggestion: logging error when thread interrupts isn't sufficient. This way you're losing important information about the interruption.
-		// Handling this exception means wither re-throw it or manually re-interrupt the thread by calling Thread.currentThread().interrupt().
-		// Simply loggin it counts as ignoring it.
+		// Handling this exception means either re-throw it or manually re-interrupt the thread by calling Thread.currentThread().interrupt().
+		// Simply logging it counts as ignoring it.
 		// Potential impact:
 		// It risks delaying thread shutdown + loses the info that thread was interrupted.
 		// Hence, it's better to re-interrupt the thread after catching InterruptedException & restore the state so that higher-level interrupt handlers can deal with it appropriately.
 
 		try { // to handle any interruption since thread is waiting
-			if (lock.tryLock(5000, TimeUnit.MILLISECONDS)) { // waits till 5sec to acquire lock. This was t2 doesn't have to wait indefinitely on t1.
+			if (lock.tryLock(5000, TimeUnit.MILLISECONDS)) { // waits till 5sec to acquire lock. This way t2 doesn't have to wait indefinitely on t1.
 				try { // IMP: encapsulate critical section task with try-catch-finally so as to release lock
 					if (balance >= amount) {
 						System.out.println(Thread.currentThread().getName() + ": Acquired lock, proceeding with withdrawal");
@@ -56,7 +56,8 @@ class BankAccount {
 		/**
 		 * Extra methods for lock class:
 		 * -----------------------------
- 		 * lock.lockInterruptibly() - acquires the lock unless the current thread is interrupted
+ 		 * lock.lockInterruptibly() - lockInterruptibly() may block if the the lock is already held by another thread and will wait until the lock is aquired. This is the same as with regular lock(). But if another thread interrupts the waiting thread lockInterruptibly() will throw InterruptedException.
+		 * 	src - https://stackoverflow.com/questions/17811544/actual-use-of-lockinterruptibly-for-a-reentrantlock
  		 * lock.lock() - acquires the lock, waits indefinitely if not available. It is similar to synchronized keyword.
 		 */
 	}
@@ -78,7 +79,7 @@ public class CW54_ExplicitLocks {
 		Thread t1 = new Thread(task, "Thread-1");
 		Thread t2 = new Thread(task, "Thread-2");
 		t1.start(); // acquires lock at T0, withdraws for 3sec, releases lock at T3
-		t2.start(); // waits for 5sec at T0, acquires lock at T3, withdraws for 3sec, releases lock at T6
+		t2.start(); // waits for 5sec max. at T0, acquires lock at T3, withdraws for 3sec, releases lock at T6
 		try {
 			t1.join();
 			t2.join();

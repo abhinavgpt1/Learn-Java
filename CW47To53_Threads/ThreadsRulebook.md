@@ -211,3 +211,134 @@ Best Practices:
 
 Producer-Consumer problem is a classic example of inter-thread communication using wait() and notify()/notifyAll().
 -> Check CW60_ThreadCommunication.java
+
+Def: Functional interface 
+- An interface with only one abstract member function is called a functional interface, or a Single Abstract Method (SAM) interface. 
+- The functional interface can have several non-abstract member functions but only one abstract member function
+
+Lambda expression 
+- is an Anonymous function
+- returns a Functional Interface.
+- Any variable used in lambda expression should be final or effectively final
+    - effectively final means that the variable is not explicitly declared as final, but its value is never changed after it is initialized. In other words, an effectively final variable behaves like a final variable because it is assigned a value only once and does not get modified thereafter.
+
+Runnable is a functional interface, therefore threads can be created using lambda function as ```Thread t1 = new Thread(() -> sout("hello"))```
+
+qq: but why does lambda expression return functional interface?
+ans - because functional interface has only one abstract method, so the lambda expression thus written, provides the implementation for that single method.
+
+Thread Pool
+-----------
+Def: Thread pool is a collection of pre-initialized, reusable threads that are ready to perform tasks. Instead of creating new threads for each task, tasks are submitted to the pool where waiting threads pick them up.
+
+Benefits of Thread Pools:
+1. Better Resource Management
+   - Reduces overhead of thread creation/destruction
+   - Controls number of threads in application
+   - Prevents resource exhaustion
+
+2. Improved Performance
+   - Faster response time (no thread creation overhead)
+   - Better resource utilization
+   - Prevents thread-related memory leaks
+
+3. Control over Thread count
+   - Allows setting maximum and minimum number of threads in the pool
+
+4. Task Management
+   - Queue tasks when all threads are busy
+   - Control task execution order
+   - Handle task completion and failures
+
+Executors Framework
+-------------------
+Def: The Executors Framework is a high-level API in Java that simplifies the management of thread pools and task execution. It provides factory methods to create different types of thread pools and manages the lifecycle of threads.
+
+Problems prior to Executors Framework:
+1. Manual Thread Management - Manual creation/destruction of threads, complex lifecycle management, and lack of standardized thread handling.
+2. Resource Inefficiency - High overhead from thread creation/destruction, memory wastage, and excessive context switching.
+3. Scalability Issues - No task queuing, poor load handling, and performance degradation with too many threads.
+4. Thread Reuse Problems - No thread recycling mechanism, requiring new thread creation for each task.
+5. Error Handling Challenges - Poor exception propagation and lack of standardized error recovery mechanisms.
+
+Types of Thread Pools (via Executors):
+1. Fixed Thread Pool
+   ```java
+   ExecutorService fixed = Executors.newFixedThreadPool(5);
+   // Creates pool with 5 threads that stay constant
+   ```
+
+2. Cached Thread Pool
+   ```java
+   ExecutorService cached = Executors.newCachedThreadPool();
+   // Creates pool that adds threads as needed and removes idle ones
+   ```
+
+3. Single Thread Executor
+   ```java
+   ExecutorService single = Executors.newSingleThreadExecutor();
+   // One thread executing tasks sequentially
+   ```
+
+4. Scheduled Thread Pool
+   ```java
+   ScheduledExecutorService scheduled = Executors.newScheduledThreadPool(3);
+   // For tasks that need to run periodically or with delay
+   ```
+
+Key Methods:
+1. submit() vs execute():
+   - submit(): returns Future<?> for tracking task completion
+   - execute(): void return type, fire-and-forget
+
+2. shutdown() vs shutdownNow():
+   - shutdown(): stops accepting new tasks, completes queued ones
+   - shutdownNow(): stops new tasks, interrupts running ones
+
+Best Practices:
+1. Choose appropriate pool size:
+   - CPU-intensive tasks: number of CPU cores
+   - I/O-intensive tasks: can be much larger
+
+2. Handle task rejection:
+   ```java
+   ThreadPoolExecutor executor = new ThreadPoolExecutor(
+       5, 10, 60, TimeUnit.SECONDS,
+       new ArrayBlockingQueue<>(100),
+       new ThreadPoolExecutor.CallerRunsPolicy()
+   );
+   ```
+
+3. Always shutdown pools properly:
+   ```java
+   try {
+       executor.shutdown();
+       if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
+           executor.shutdownNow();
+       }
+   } catch (InterruptedException e) {
+       executor.shutdownNow();
+   }
+   ```
+
+4. Use try-with-resources when possible:
+   ```java
+   try (ExecutorService executor = Executors.newFixedThreadPool(5)) {
+       // pool usage
+   } // auto shutdown
+   ```
+
+Industry Practice:
+- Avoid manual thread creation, use Executor Framework
+- Use appropriate thread pool type for the use case
+- Implement proper shutdown and error handling
+- Monitor pool performance and adjust as needed
+
+INTERVIEW QQ - Runnable vs Callable. 
+ans 
+- Callable returns template @ V call() vs Runnable doesn't @ void run()
+- one uses call() and other uses run()
+- call() declares throwing of Exception using throws, where run() doesn't eg. Thread.sleep() in run() can't 
+
+AtomicInteger is thread safe. So, you don't need locks or synchronized to share variables among multiple threads.
+https://www.youtube.com/watch?v=WDn_Bax0UFo

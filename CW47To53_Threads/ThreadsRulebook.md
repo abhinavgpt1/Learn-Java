@@ -342,3 +342,43 @@ ans
 
 AtomicInteger is thread safe. So, you don't need locks or synchronized to share variables among multiple threads.
 https://www.youtube.com/watch?v=WDn_Bax0UFo
+
+CountDownLatch - say you want specific number of threads/tasks to be completed before proceeding with next step (say main thread).
+--------------
+* Why - say you have 10 futures, doing a manual future.get() is tedious. All we need is for threads to complete before proceeding to next step. Kinda like a prerequisite for main task.
+* What: CountDownLatch (in java.util.concurrent) is a one-shot synchronization aid that lets one or more threads wait until a specified number of operations complete.
+* How it works: Construct with a count N; worker threads call countDown() (decrements); waiting threads call await() and block until count reaches zero.
+* Common uses: waiting for a group of worker threads to finish (startup/shutdown sequencing, tests, coordinating tasks).
+* Key properties: non-resettable (one-time use), thread-safe, await() throws InterruptedException, getCount() returns remaining count.
+
+Alternatives: use CyclicBarrier for reusable barriers or Phaser for more flexible coordination.
+
+```
+CountDownLatch latch = new CountDownLatch(3); 
+latch.await(); // main thread waits until count reaches zero
+sout("Msg in main after all threads complete");
+```
+There exists waited await() too -> waits for specified time, else proceeds. The threads would be running in background though.
+
+PTR: worker thread (using Thread class or ExecutorService) should call latch.countDown() once completed;
+
+Cyclic Barrier - say you want a group of threads to wait for each other at a common barrier point before proceeding.
+-----------------
+Working - Construct with a count N; threads call await() and block until N threads have called await(); once the last thread calls await(), all threads are released to continue execution.
+
+reset() method can be used to reuse the barrier for another round of synchronization.
+
+PTR: await() waits indefinitely until all threads reach the barrier, but there is also an overloaded version that takes a timeout parameter, allowing threads to proceed if the barrier is not reached within a specified time.
+
+Example: Say there are 4 independent subsystems - DB, Cache, Web Server and Messaging API Service which take a variable time in initialization. We want to start the main application only after all 4 subsystems are initialized. We can use CyclicBarrier with count 4, and each subsystem thread calls await() after initialization. Once all 4 threads call await(), the main application thread is released to start execution.
+
+PTR: CyclicBarrier cb = new CyclicBarrier(4, () -> sout("All subsystems initialized, starting main application...")); takes a Runnable as second argument which is executed once the barrier is tripped (i.e., when the last thread calls await()). This can be used to perform any action right before releasing the waiting threads.
+
+No such thing is available for CountDownLatch.
+
+Another example: Matrix multiplication using CyclicBarrier. I feel CyclicBarrier is not convenient, instead a ThreadPool should be enough to do this. CyclicBarrier would need a fixed number of threads to reach await. But here we don't know how many threads would be needed to do A*B*C operations.
+See: CW64_MatrixMultiplication_CyclicBarrier.java -> spinning up A*C threads seems inefficient. Re-using can be done using ExecutorService thread pool.
+https://codereview.stackexchange.com/questions/159724/java-matrix-multiplication-using-multithreading
+
+Good analogy:
+https://stackoverflow.com/questions/10156191/real-life-examples-for-countdownlatch-and-cyclicbarrier

@@ -271,7 +271,7 @@ Types of Thread Pools (via Executors):
 2. Cached Thread Pool
    ```java
    ExecutorService cached = Executors.newCachedThreadPool();
-   // Creates pool that adds threads as needed and removes idle ones
+   // Creates pool that adds threads as needed and removes idle ones. Use it when there's variable load, but make sure tasks are short-lived, otherwise whole CPU time will be consumed by this and system might crash due to resource exhaustion.
    ```
 
 3. Single Thread Executor

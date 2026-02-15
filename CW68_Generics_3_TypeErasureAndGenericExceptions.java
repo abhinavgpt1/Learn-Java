@@ -75,6 +75,7 @@ public class CW68_Generics_3_TypeErasureAndGenericExceptions {
          */
 
         /* Type erasure - T super Number */
+        // --------------------------------
         // PTR: The super keyword is only allowed with wildcards (?)
         // [CORRECT] T extends Number, ? extends Number, ? super Number
         // [WRONG] T super Number
@@ -87,7 +88,7 @@ public class CW68_Generics_3_TypeErasureAndGenericExceptions {
         // in the definition of the generic type itself.
         
         // For class definition, ? doesn't make sense:
-        // Wildcard ? is too vague: ? means "some unknown type," but it doesn't specify what that type is or its bounds. 
+        // Wildcard ? is too vague: ? means "some unknown type" but it doesn't specify what that type is or its bounds. 
         // For example:
         // - You couldn't define fields like private ? value; (what type is it?).
         // - Methods like public ? get() { return value; } wouldn't compile because the return type is unknown.

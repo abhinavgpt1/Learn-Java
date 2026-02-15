@@ -99,7 +99,8 @@ public class CW67_Generics_2_Wildcard {
         // - Use ? super T when you only need to write/consume T. 
         // - You can add T (and subtypes), but reads are only safe as Object or typecasted to T.
 
-        // Check /* Type erasure - T super Number */ section of CW68_Generics_3_TypeErasureAndGenericExceptions.java to know more on wildcard purpose.
+        // Check /* Type erasure - T super Number */ section of CW68_Generics_3_TypeErasureAndGenericExceptions.java to know more on wildcard incompatibility with class.
+        // Also, why wildcard support both extends and super, meanwhile type T can extend but not super in class definition.
     }
 
     // Added an upper bound to the wildcard to restrict it to Number and its subclasses.

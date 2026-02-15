@@ -147,7 +147,8 @@ public class CW66_Generics_1_IntroAndBoundedTypes {
         System.out.println("------------------");
 
         /* Bounded Type Parameters */
-        // We can put condition on T - either extends (upper bound) or super (lower bound).
+        // We can put condition on T to extend a class/interface (upper bound)
+        // super (lower bound) is available only for wildcard (?) - check CW68_Generics_3_TypeErasureAndGenericExceptions.java for explanation.        
         // IMP: There is no "implements"
         // Using N as per convention for number types.
         class NumberBox<N extends Number> { // N can be any subclass of Number (Integer, Double, etc) but not String or Object.

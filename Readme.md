@@ -1,7 +1,7 @@
 Useful commands
 ---------------
 Delete all .class files
-`del /S *.class`
+del /S *.class
 
 Delete all .bak files
-`del /S *.bak`
+del /S *.bak

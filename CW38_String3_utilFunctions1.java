@@ -6,21 +6,22 @@ public class CW38_String3_utilFunctions1 {
         String s2 = new String(); // default constructor
         String s3 = new String("abc"); // constructor with string literal
         String s4 = new String(s1); // constructor with string object
+
         char c[] = {'a', 'b', 'c', 'd', 'e'};
         String s5 = new String(c); // constructor with char array => "abcde"
         String s6 = new String(c, 2, 3); // constructor with char array and offset and length (not end index) => "cde"
         String s7 = "t".repeat(3); // string with character/string repeated n times (valid java 11+) => "ttt"
         
-        // other ways 
+        // Other ways
+        // - String(StringBuilder)
+        // - String(StringBuffer)
         // - String(byte [] bytes)
         // - String(byte[] bytes, int offset, int length)
-        // - String(StringBuffer)
-        // - String(StringBuilder)
 
         // length, equals, equalsIgnoreCase
         // --------------------------------
         System.out.println("s1.length(): " + s1.length());
-        System.out.println("equals compares reference too like == , but in String it is overridden to check content:");
+        System.out.println("equals compares reference (==), but in String it is overridden to check content:");
         // --------Precedence matters-------
         // System.out.println("s1 (literal) == s3 (dynamic object): " + s1==s3); 
         //  -> "s1 (literal) == s3 (dynamic object): abc" == s3 => so use brackets in comparison below
@@ -36,12 +37,12 @@ public class CW38_String3_utilFunctions1 {
         System.out.println("RULE: Use equals for strings. !equals() vs != :: content (for string only) vs ref inequality.");
         System.out.println();
 
-        // empty, blank :: size vs non space characters
+        // empty, blank :: size vs non-space characters
         // --------------------------------------------
         System.out.println("empty vs blank:");
         System.out.println("\ts2.isEmpty(): " + s2.isEmpty()); // true, empty string
-        System.out.println("\t\"   \".isEmpty():" + "    ".isEmpty()); // false, blank string with spaces
-        System.out.println("\t\"   \".isBlank():" + "    ".isBlank()); // true, empty string
+        System.out.println("\t\"   \".isEmpty(): " + "    ".isEmpty()); // false, blank string with spaces
+        System.out.println("\t\"   \".isBlank(): " + "    ".isBlank()); // true, empty string
         System.out.println("\t\"\0\".isEmpty(): " + "\0".isEmpty()); // false
         System.out.println("\t\"\0\".isBlank(): " + "\0".isBlank()); // false
         
@@ -50,15 +51,15 @@ public class CW38_String3_utilFunctions1 {
         System.out.println("there is no s1[0], use charAt() for String.class:");
         System.out.println("\ts1.charAt(0): " + s1.charAt(0)); // 'a', first character
         try {
-            System.out.println("\ts1.charAt(3): " + s1.charAt(3)); // exeption
+            System.out.println("\ts1.charAt(3): " + s1.charAt(3)); // exception
         } catch (StringIndexOutOfBoundsException e) {
             System.out.println("Catching purposeful runtime exception of string index out of bound access" + e); // exception, index out of range
         }
         
         System.out.println();
         
-        // set charAt()
-        // ------------
+        // set charAt(): workaround
+        // ------------------------
         System.out.println("RULE: no set function for String. Use StringBuilder for in-place modification.");
         // set charAt(1) as 'z'
         int indexAffected = 1;
@@ -90,30 +91,30 @@ public class CW38_String3_utilFunctions1 {
      * Output:
      * -------
      * s1.length(): 3
-     * equals compares reference too like == , but in String it is overridden to check content:
+     * equals compares reference (==), but in String it is overridden to check content:
      * 	s1 (literal) == s3 (dynamic object): false
      * 	s1 (literal) equals s3 (dynamic object): true
      * equals vs equalsIgnoreCase:
      * 	"abc".equals("aBc"): false
      * 	"abc".equalsIgnoreCase("aBc"): true
      * 
-     * RULE: Use equals for strings. !equals() vs != :: content vs ref inequality.
+     * RULE: Use equals for strings. !equals() vs != :: content (for string only) vs ref inequality.
      * 
      * empty vs blank:
      * 	s2.isEmpty(): true
-     * 	"   ".isEmpty():false
-     * 	"   ".isBlank():true
-     * 	"nul".isEmpty(): false
-     * 	"nul".isBlank(): false
-     *     there is no s1[0], use charAt() for String.class:
+     * 	"   ".isEmpty(): false
+     * 	"   ".isBlank(): true
+     * 	"nul".isEmpty():false
+     * 	"nul".isBlank():false
+     * there is no s1[0], use charAt() for String.class:
      * 	s1.charAt(0): a
-     * Catching purposeful runtime exception of string index out of bound accessjava.lang.StringIndexOutOfBoundsException: String index out of range: 3
+     * Catching purposeful runtime exception of string index out of bound accessjava.lang.StringIndexOutOfBoundsException: Index 3 out of bounds for length 3
      * 
      * RULE: no set function for String. Use StringBuilder for in-place modification.
      * (Using substring): sampleStrToBeModified: abc, modifiedString: azc
      * 
-     * On sout of any object, toString() is called. The defintion can be overridden in the class though.
+     * On String.valueOf() and sout() of any Object, toString() is called. The definition can be overridden in the class though.
      * In case of Object, it is the class name and hashcode. For String, it is the string itself.
-     * String.valueOf(new Object()): java.lang.Object@548c4f57
+     * String.valueOf(new Object()): java.lang.Object@8bcc55f
      */
 }

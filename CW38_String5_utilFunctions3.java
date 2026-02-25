@@ -6,14 +6,13 @@ import java.util.stream.Stream;
 public class CW38_String5_utilFunctions3 {
     public static void main(String args[]) {
         
-        // trim
-        // ----
+        // trim()
+        // ------
         String strHelloWorldWithSpaces = "  Hello World  ";
         System.out.println("Trimmed String: " + strHelloWorldWithSpaces.trim());
         
-        // concat of strings
-        // -----------------
-        // using concat()
+        // concat()
+        // --------
         // new reference/object is created every time we concatenate strings
         String strHello = "Hello";
         String strTo = "To";
@@ -23,7 +22,7 @@ public class CW38_String5_utilFunctions3 {
         // using + operator : syntactic sugar for string concatenation: low performance
         // In programming, "syntactic sugar" refers to syntax that makes code easier to read and write without changing its underlying functionality
         
-        // Use StringBuilder in case of loops; Streams when high no of strings are to be concatenated
+        // Use StringBuilder in case of loops; Streams when high no. of strings are to be concatenated
         String listStr[] = new String[] { strHello, strTo, strThe, str2World };
         String streamOutput1 = Arrays.stream(listStr).collect(Collectors.joining(","));
         System.out.println("Concatenated String using Arrays.stream: " + streamOutput1); // Hello,To,The,World1
@@ -38,23 +37,23 @@ public class CW38_String5_utilFunctions3 {
         
         System.out.println();
 
-        // contains
-        // --------
+        // contains()
+        // ----------
         // syntax: public boolean contains(CharSequence chars)
         // internally uses indexOf(chars) >= 0;
         String strHelloWorld = "Hello World";
         System.out.println("Contains: " + strHelloWorld.contains("Hello"));
         
-        // startsWith, endsWith
-        // --------------------
+        // startsWith() / endsWith()
+        // -------------------------
         // syntax: public boolean startsWith(String chars)
         System.out.println("Starts with: " + strHelloWorld.startsWith("Hello")); //true
         System.out.println("Starts with (using offset): " + strHelloWorld.startsWith("W", 6)); // true
-        System.out.println("Ends with (internally uses startsWith()): " + strHelloWorld.endsWith("d")); //true
-        // System.out.println("Ends with (using offset): " + strHelloWorld.endsWith("o", 4)); // this variation isn't possible
+        System.out.println("Ends with (internally uses startsWith()): " + strHelloWorld.endsWith("d")); // true
+        // System.out.println("Ends with (using offset): " + strHelloWorld.endsWith("o", 4)); // endsWith has no offset overloaded function
 
-        // replace, replaceAll, replaceFirst
-        // ---------------------------------
+        // replace() / replaceAll() / replaceFirst()
+        // ------------------------------------------
         System.out.println("Replaced string using replace(char, char): " + strHello.replace('l', 'L')); // HeLLo // replace all occurrences of 'l' with 'L'
         System.out.println("Replaced string using replace(string, string): " + strHello.replace("ll", "LLB")); // HeLLBo // replace all occurrences of 'll' with 'LLB'
         System.out.println("Replaced string using replaceAll(regex, string): " + strHello.replaceAll("[aeiou]", "X")); // HXllX // replace all occurrences of regex with 'X'
@@ -63,24 +62,28 @@ public class CW38_String5_utilFunctions3 {
 
         System.out.println();
         
-        // toCharArray() and getChars()
-        // ------------------------------
-        System.out.println("toCharArray(): " + Arrays.toString(strHelloWorld.toCharArray())); // [H, e, l, l, o,  , W, o, r, l, d]
+        // toCharArray()
+        // -------------
+        char helloWorld[] = strHelloWorld.toCharArray();
+        System.out.println("toCharArray(): " + Arrays.toString(helloWorld)); // [H, e, l, l, o,  , W, o, r, l, d]
+        
+        // getChars() : copies src(si, ei exclusive) to dest index
+        // --------------------------------------------------------
         char charAllAs[] = new char[10];
         Arrays.fill(charAllAs, 'a'); // fill with 'a'
-        strHelloWorld.getChars(6, 11, charAllAs, 2); // copies "World" into charAllAs[2] to charAllAs[6]
+        strHelloWorld.getChars(6, 11, charAllAs, 2); // copies src[6...10] "World" into charAllAs[2...6]
         System.out.println("getChars(): " + Arrays.toString(charAllAs)); // [a, a, W, o, r, l, d, a, a, a] // srcEnd not counted
 
         System.out.println();
         
-        // format
-        // ------
+        // format()
+        // --------
         // Theory - creates a formatted string using the specified format string and arguments. We can concatenate, format using options such as width, alignment, decimal places, and more.
         // src - https://www.geeksforgeeks.org/java/java-string-format-method-with-examples/
 
         // Example 1
         String formattedString = String.format("%.2f | %10s | %-5d|extra", 123.4567, "Hello", 42);
-        System.out.println("Formatted string output 1:" + formattedString); // 123.46 |      Hello | 42
+        System.out.println("Formatted string output 1: " + formattedString); // 123.46 |      Hello | 42   |extra
         // Explanation:
         // %.2f: The f specifier is for floating-point numbers, and .2 means the number should be rounded to two decimal places.
         // %10s: The s specifier is for strings, and 10 means the string should be right-aligned within a field of width 10. If the string is shorter than 10 characters, it will be padded with spaces on the left.
@@ -111,6 +114,8 @@ public class CW38_String5_utilFunctions3 {
          * 7.1f: This ensures that the floating-point number takes at least 7 characters in total, with 1 decimal place.
          * %2$s: Refers to the second argument i.e. "d" the distance. "s" is the format specifier for strings.
          */
+
+        System.out.println();
 
         // Extra examples
         // specifier for octals, hexadecimal
@@ -151,9 +156,13 @@ public class CW38_String5_utilFunctions3 {
      * toCharArray(): [H, e, l, l, o,  , W, o, r, l, d]
      * getChars(): [a, a, W, o, r, l, d, a, a, a]
      * 
-     * Formatted string output 1:123.46 |      Hello | 42   |extra   
+     * Formatted string output 1: 123.46 |      Hello | 42   |extra
      * Formatted string output 2: 1,200,345.68
      * Formatted string output 3:  150.8 kilometers
+     * 
+     * Octal representation of 255 is: 377
+     * Hexadecimal representation of 255 is: ff
+     * Current date and time: 2026-02-25 06:33:29
      */
 
     // Notable specifiers for format():

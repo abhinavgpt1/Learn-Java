@@ -1,7 +1,7 @@
 public class CW39_StringBuilder_StringBuffer {
     public static void main(String[] args) {
         // StringBuilder and StringBuffer functions are same. 
-        // Only difference is that all methods in StringBuffer are synchronized and in StringBuilder it is not.
+        // Only difference is that all methods in StringBuffer are synchronized and in StringBuilder, it is not.
         // Initialization ways
         // -------------------
         StringBuilder sb_default_const = new StringBuilder(); // default capacity is 16
@@ -17,19 +17,23 @@ public class CW39_StringBuilder_StringBuffer {
         System.out.println("\tcapacity:" + sb_with_capacity.capacity()); // 21
         System.out.println("\tlength:" + sb_with_capacity.length()); // 0
 
-        // append, insert, delete, replace, reverse
-        // ----------------------------------------
+        // append() / insert() / delete() / replace() / reverse()
+        // ------------------------------------------------------
+        
+        // PTR: all the above functions return StringBuilder, hence can be chained
+
         StringBuilder sb = new StringBuilder("Hello");
         sb.append(" World"); // append string to end of StringBuilder
         System.out.println("World append: " + sb); // Hello World
         sb.insert(11, "."); // insert string at index 11
         System.out.println(". insert: " + sb); // Hello World.
 
-        sb.append(" ").append("Yo!!").insert(0, "Hey! ");// append and insert chained
+        sb.append(" ").append("Yo!!").insert(0, "Hey! ");
         System.out.println("result after chaining append() and insert() together: " + sb); // Hey! Hello World. Yo!!
         
         System.out.println();
 
+        // sb = "Hey! Hello World. Yo!!" till here
         System.out.println("delete(): " + sb.delete(0, 5)); // delete from index 0 to 5 (exclusive) // Hello World. Yo.
         sb.deleteCharAt(sb.length() - 1).delete(0, 6); // delete last character & delete from index 0 to 6 (exclusive)
         System.out.println("chaining deleteCharAt() and delete(): " + sb); // World. Yo!
@@ -42,59 +46,63 @@ public class CW39_StringBuilder_StringBuffer {
 
         System.out.println();
 
-        // equals() and compareTo()
-        // ------------------------
+        // NOT SAFE: equals() and == : use compareTo()
+        // -------------------------------------------
         System.out.println("equals() in StringBuider compares references, not values -> so use them as String for comparison:");
         StringBuilder sb1 = new StringBuilder("Hello");
         StringBuilder sb2 = new StringBuilder("Hello");
-        System.out.println("\tsb1.equals(sb2): " + sb1.equals(sb2)); // false, because StringBuilder doesn't override equals() method
-        System.out.println("\tsb1.toString().equals(sb2.toString()): " + sb1.toString().equals(sb2.toString())); // true, because String class overrides equals() method
+        System.out.println("\t-  StringBuilder(Hello).equals(StringBuilder(Hello)): " + sb1.equals(sb2)); // false, because StringBuilder doesn't override equals() method
+        System.out.println("\t-  StringBuilder(Hello).toString().equals(StringBuilder(Hello).toString()): " + sb1.toString().equals(sb2.toString())); // true, because String class overrides equals() method
         
         System.out.println();
 
-        System.out.println("compareTo():");
-        System.out.println("\t" + sb1.compareTo(sb2)); // 0
-        System.out.println("\t" + new StringBuilder("hello").compareTo(sb2)); // 32
+        // SAFE: compareTo()
+        // ------------
+        System.out.println("compareTo() can be used for StringBuilder comparison:");
+        System.out.println("\t- StringBuilder(Hello).compareTo(StringBuilder(Hello)): " + sb1.compareTo(sb2)); // 0
+        System.out.println("\t- StringBuilder(hello).compareTo(StringBuilder(Hello)): " + new StringBuilder("hello").compareTo(sb2)); // 32
         // System.out.println(new StringBuilder("hello").compareToIgnoreCase(sb2)); // variation not available
         // System.out.println(new StringBuilder("hello").equalsIgnoreCase(sb2)); // variation not available
         
         System.out.println();
 
-        // charAt(), setCharAt()
-        // ---------------------
+        // charAt() / setCharAt()
+        // ----------------------
         System.out.println("charAt() and setCharAt():");
         StringBuilder sb3 = new StringBuilder("Hello World");
-        System.out.println("\tindex 0 char: " + sb3.charAt(0)); // H
+        System.out.println("\t- index 0 char: " + sb3.charAt(0)); // H
         sb3.setCharAt(0, 'h'); // set character at index 0 to 'h'
-        System.out.println("\tsetCharAt() at index 0: " + sb3); // hello World
+        System.out.println("\t- setCharAt() at index 0: " + sb3); // hello World
 
         System.out.println();
         
         // indexOf(), lastIndexOf()
         // ------------------------
         System.out.println("indexOf() and lastIndexOf():");
-        System.out.println("\tsb3.indexOf(\"o\"): " + sb3.indexOf("o")); // 4
-        System.out.println("\tsb3.lastIndexOf(\"o\"): " + sb3.lastIndexOf("o")); // 7
+        System.out.println("\t- StringBuilder(Hello World).indexOf(\"o\"): " + sb3.indexOf("o")); // 4
+        System.out.println("\t- StringBuilder(Hello World).lastIndexOf(\"o\"): " + sb3.lastIndexOf("o")); // 7
 
         System.out.println();
         
         // substring()
         // -----------
-        System.out.println("substring(startIndex, [non-inclusive endIndex]):");
-        System.out.println("\t" + sb3.substring(0, 5)); // Hello
-        System.out.println("\t" + sb3.substring(6)); // World
+        System.out.println("substring(startIndex, [endIndex EXCLUSIVE]):");
+        System.out.println("\t- StringBuilder(Hello World).substring(0,5): " + sb3.substring(0, 5)); // Hello
+        System.out.println("\t- StringBuilder(Hello World).substring(6): " + sb3.substring(6)); // World
         
         System.out.println();
 
         // setLength()
         // -----------
-        System.out.println("setLength():");
-        sb3.setLength(5); // set length to 5, truncates the string to "Hello"
-        System.out.println("\t length set to 5: " + sb3); // Hello
-        System.out.println("\t length(): " + sb3.length()); // 5
-        System.out.println("\t capacity (same): " + sb3.capacity()); // 21, capacity remains same
+        System.out.println("setLength(N):");
+        sb3.setLength(5); // set length to 5, truncates the string to "hello"
+        System.out.println("\t- length set to 5: " + sb3); // hello
+        // System.out.println("\t- charAt(6): " + sb3.charAt(6)); // StringIndexOutOfBoundsException: Index 6 out of bounds for length 5
+        System.out.println("\t- length(): " + sb3.length()); // 5
+        System.out.println("\t- capacity (same): " + sb3.capacity()); // 27, reamins same
+        // PTR: setLength(50) would result in string[5...50] to be filled with nul. Also, the capacity increases.
 
-        // functions like - replace, reverse, setLength and setCharAt() are not available in String class.
+        // PTR: replace()@index, reverse(), setLength() and setCharAt() are not available in String.class.
     }
 }
 
@@ -120,27 +128,27 @@ public class CW39_StringBuilder_StringBuffer {
  * reverse(): !oY .eheH
  * 
  * equals() in StringBuider compares references, not values -> so use them as String for comparison:
- * 	sb1.equals(sb2): false
- * 	sb1.toString().equals(sb2.toString()): true
+ * 	-  StringBuilder(Hello).equals(StringBuilder(Hello)): false
+ * 	-  StringBuilder(Hello).toString().equals(StringBuilder(Hello).toString()): true
  * 
- * compareTo():
- * 	0
- * 	32
+ * compareTo() can be used for StringBuilder comparison:
+ * 	- StringBuilder(Hello).compareTo(StringBuilder(Hello)): 0
+ * 	- StringBuilder(hello).compareTo(StringBuilder(Hello)): 32
  * 
  * charAt() and setCharAt():
- * 	index 0 char: H
- * 	setCharAt() at index 0: hello World
+ * 	- index 0 char: H
+ * 	- setCharAt() at index 0: hello World
  * 
  * indexOf() and lastIndexOf():
- * 	sb3.indexOf("o"): 4
- * 	sb3.lastIndexOf("o"): 7
+ * 	- StringBuilder(Hello World).indexOf("o"): 4
+ * 	- StringBuilder(Hello World).lastIndexOf("o"): 7
  * 
- * substring(startIndex, [non-inclusive endIndex]):
- * 	hello
- * 	World
+ * substring(startIndex, [endIndex EXCLUSIVE]):
+ * 	- StringBuilder(Hello World).substring(0,5): hello
+ * 	- StringBuilder(Hello World).substring(6): World
  * 
- * setLength():
- * 	 length set to 5: hello
- * 	 length(): 5
- * 	 capacity (same): 27
+ * setLength(N):
+ *	- length set to 5: hello
+ *	- length(): 5
+ *	- capacity (same): 27
  */

@@ -229,12 +229,13 @@ public class CW66_Generics_1_IntroAndBoundedTypes {
         System.out.println("------------------");
 
         /* Method overloading in generic methods */
+        // Recall: method overloading doesn't happen when function signature is same and return type is different. Either name or param type or param list should differ.
         class OverloadingGenericMethod {
             public <T> void print(T item) {
                 System.out.println("Generic method (overloaded) print: " + item);
             }
 
-            public void print(Integer item) { // This is not an overloaded method since erasure of above method will also be print(Object item). Therefore this will give compile time error: name clash: print(T) and print(String) have the same erasure.
+            public void print(Integer item) { // This is an overloaded method since erasure of above method will also be public void print(Object item){}
                 System.out.println("Integer method print: " + item);
             }
         }

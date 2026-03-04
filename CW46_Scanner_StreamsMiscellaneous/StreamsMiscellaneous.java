@@ -7,18 +7,18 @@ import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class CW46_StreamsMiscellaneous {
+public class StreamsMiscellaneous {
     public static void main(String[] args) {
         printStreamExample();
         printWriterExample();
-        
-        // theory: RandomAccessFile()
-            // -> a random access file behaves as a lareg array of bytes stored in file system. You can traverse using seek().
-            // -> read and write in bytes internally (Modes = read/read-write/synchronized mode read-write)
-            // -> readUTF() and writeUTF() methods are used to read and write strings.
-        
-        // scannerExample(); //enable it, compile and run to interact.
         objectInputOutputStreamExample();
+        
+        /**
+         * RandomAccessFile():
+         * - a random access file behaves as a lareg array of bytes stored in file system. You can traverse using seek().
+         * - read and write in bytes internally (Modes = read/read-write/synchronized mode read-write)
+         * - readUTF() and writeUTF() methods are used to read and write strings.
+         */
     }
     public static void printStreamExample() {
         System.out.println("----------------PrintStream Example-----------------");
@@ -80,86 +80,6 @@ public class CW46_StreamsMiscellaneous {
 
         // checkError() has a counterpart setError() which sets error state of PrintWriter/PrintStream instance.
         // codes from GFG ref as good enough.
-    }
-    public static void scannerExample() {
-        System.out.println("----------------Scanner Example-----------------");
-
-        // ref: https://www.geeksforgeeks.org/scanner-class-in-java/
-        // Allows user to read values of various types. 
-        // Helps read numeric values from keyboard/file without having to convert them from string.
-
-        // constructors:
-        // -------------
-        // new Scanner(InputStream in)
-        // new Scanner(File file)
-        // new Scanner(String source) != string path to file
-        
-        Scanner in = new Scanner("token1 token2 token3 token4");
-        while (in.hasNext()) {
-            String line = in.next(); // line separator regex = ".*(\r\n|[\n\r\u2028\u2029\u0085])|.+$"
-            // \r\n — matches a Windows-style line ending (carriage return + line feed, i.e., CRLF).
-            // [\n\r\u2028\u2029\u0085] — matches any one of the following single characters:
-            // \n — Line Feed (LF, Unix/Linux/Mac line ending)
-            // \r — Carriage Return (CR, old Mac line ending)
-            // \u2028 — Unicode Line Separator
-            // \u2029 — Unicode Paragraph Separator
-            // \u0085 — Unicode Next Line (NEL)
-            System.out.println(line);
-        }
-        in.close();
-            
-        Scanner sc = new Scanner(System.in);
-
-        // PTR: 
-        // 1. To read a single character, we use next().charAt(0)
-        // -> hasNextInt(): This method is used to check if the token is an integer.
-        // -> hasNextLine(): This method is used to check if there is an input in next line.
-        // -> useDelimiter(): This method changes the default whitespace delimiter.
-            // eg. sc.useDelimiter(",");
-            // https://stackoverflow.com/questions/28766377/how-do-i-use-a-delimiter-with-scanner-usedelimiter-in-java
-
-        // Sometimes, we have to check if the next value we read is of a certain type or if the input has ended (EOF marker encountered). 
-        // Then, we check if the scanner's input is of the type we want with the help of hasNextDataType() functions where DataType is the type we are interested in. 
-        // The function returns true if the scanner has a token of that type, otherwise false.
-
-        // Sample code:
-        // ------------
-        int sum = 0;
-        // works fine with whitespace and newline as delimiter
-        while (sc.hasNext()) {
-            if (sc.hasNextInt()) {
-                int x = sc.nextInt(); // works fine with whitespace and newline as delimiter
-                System.out.println(x);
-                sum += x;
-            } else {
-                String input = sc.next(); // works fine with whitespace and newline as delimiter
-                System.out.println(input);
-                if (input.equalsIgnoreCase("done")) {
-                    break;
-                } else {
-                    System.out.println("Invalid input. Please enter an integer or type 'done' to finish.");
-                }
-            }
-        }
-        System.out.println(sum);
-        sc.close();
-        /*
-         * > 1 2 3
-         * 1
-         * 2
-         * 3
-         * > 4 5
-         * 4
-         * 5
-         * > done
-         * done
-         * 15
-         */
-
-        // qq-does in.close() close System.in?
-        // ans- Yes, calling in.close() will also close System.in.
-        // calling close() on the Scanner, closes the underlying input stream (System.in). 
-        // After that, you cannot read from System.in again in your program.
     }
     public static void objectInputOutputStreamExample() {
         System.out.println("----------------ObjectInputStream and ObjectOutputStream Example-----------------");

@@ -1,0 +1,2 @@
+line1:,hey,this,is,a,delimited,no-space,input
+line2:,this,is,another,delimited,no-space,input

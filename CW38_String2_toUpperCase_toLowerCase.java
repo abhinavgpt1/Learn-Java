@@ -1,4 +1,4 @@
-public class CW38_String2_toUpper_toLower {
+public class CW38_String2_toUpperCase_toLowerCase {
     public static void main(String args[]) {
         String s1_upper = "BCE"; // ref1
         String s2_upper = new String("BCE"); // ref2

@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -10,6 +9,7 @@ public class CW38_String5_utilFunctions3 {
         // ------
         String strHelloWorldWithSpaces = "  Hello World  ";
         System.out.println("Trimmed String: " + strHelloWorldWithSpaces.trim());
+        // PTR: use strip() to remove unicode whitespace eg. String unicodeString = "\u2005Hello, World!\u2005"; -> trim gives:' Hello, World! ', strip gives:'Hello, World!'
         
         // concat()
         // --------

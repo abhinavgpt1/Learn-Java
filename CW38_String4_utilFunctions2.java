@@ -10,13 +10,11 @@ public class CW38_String4_utilFunctions2 {
         // split
         // -----
         System.out.println("split string (abc,abc,abc) via delimiter (,):");
-        // split via delimiter
         String splitStrAbc3times = "abc,abc,abc";
         for (String s : splitStrAbc3times.split(","))
             System.out.println("\t- " + s);
         
         System.out.println("split string (abc,abc,abc) via regex ([aeiou]):");
-        // split via regex
         for (String s : splitStrAbc3times.split("[aeiou]"))
             System.out.println("\t- " + s); // "" + "bc," + "bc," + "bc"
         
@@ -78,7 +76,7 @@ public class CW38_String4_utilFunctions2 {
         
         System.out.println();
 
-        // indexOf() / lastIndexOf() : returns -1 if not found
+        // indexOf() / indexOf(str, fromIndex) / lastIndexOf() : returns -1 if not found
         // ----------------------------------------------------
         String strNumDelimited = "012,45,78";
         System.out.println("indexOf(',') : left-to-right: " + strNumDelimited.indexOf(',')); // 3

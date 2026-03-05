@@ -1,9 +1,20 @@
 public class CW39_StringBuilder_StringBuffer {
     public static void main(String[] args) {
+        // Def: StringBuilder is a mutable sequence of characters that provides an efficient
+        // way to perform multiple string operations. Unlike String, StringBuilder
+        // objects can be modified without creating new objects, making it ideal for
+        // scenarios involving frequent string manipulations.
+
         // StringBuilder and StringBuffer functions are same. 
         // Only difference is that all methods in StringBuffer are synchronized and in StringBuilder, it is not.
+        // - StringBuffer = thread-safe, StringBuilder = thread-unsafe.
+
         // Initialization ways
         // -------------------
+        // | StringBuilder()
+        // | StringBuilder(int capacity)
+        // | StringBuilder(String str)
+        // | StringBuilder(CharSequence seq)
         StringBuilder sb_default_const = new StringBuilder(); // default capacity is 16
         StringBuilder sb_with_string = new StringBuilder("Hello"); // capacity = 16 + 5 = 21
         StringBuilder sb_with_capacity = new StringBuilder(5); // capacity = 5 + 16 = 21
@@ -17,8 +28,8 @@ public class CW39_StringBuilder_StringBuffer {
         System.out.println("\tcapacity:" + sb_with_capacity.capacity()); // 21
         System.out.println("\tlength:" + sb_with_capacity.length()); // 0
 
-        // append() / insert() / delete() / replace() / reverse()
-        // ------------------------------------------------------
+        // append() / insert() / delete() / deleteCharAt() / replace() / reverse()
+        // -----------------------------------------------------------------------
         
         // PTR: all the above functions return StringBuilder, hence can be chained
 
@@ -38,7 +49,7 @@ public class CW39_StringBuilder_StringBuffer {
         sb.deleteCharAt(sb.length() - 1).delete(0, 6); // delete last character & delete from index 0 to 6 (exclusive)
         System.out.println("chaining deleteCharAt() and delete(): " + sb); // World. Yo!
 
-        sb.replace(0, 5, "Hehe"); // replace from index 0 to 5 (exclusive) with "Hello"
+        sb.replace(0, 5, "Hello"); // replace from index 0 to 5 (exclusive) with "Hello"
         System.out.println("replace(): " + sb); // Hello. Yo!
 
         sb.reverse(); // reverse the string
@@ -76,11 +87,13 @@ public class CW39_StringBuilder_StringBuffer {
 
         System.out.println();
         
-        // indexOf(), lastIndexOf()
-        // ------------------------
+        // indexOf(), indexOf(str, fromIndex), lastIndexOf(), lastIndexOf(str, fromIndex)
+        // -------------------------------------------------------------------------------
         System.out.println("indexOf() and lastIndexOf():");
         System.out.println("\t- StringBuilder(Hello World).indexOf(\"o\"): " + sb3.indexOf("o")); // 4
+        System.out.println("\t- StringBuilder(Hello World).indexOf(\"o\", 5): " + sb3.indexOf("o", 5)); // 7
         System.out.println("\t- StringBuilder(Hello World).lastIndexOf(\"o\"): " + sb3.lastIndexOf("o")); // 7
+        System.out.println("\t- StringBuilder(Hello World).lastIndexOf(\"o\", 6): " + sb3.lastIndexOf("o", 6)); // 4
 
         System.out.println();
         
@@ -92,17 +105,32 @@ public class CW39_StringBuilder_StringBuffer {
         
         System.out.println();
 
-        // setLength()
-        // -----------
+        // setLength() / capacity() / length()
+        // -----------------------------------
         System.out.println("setLength(N):");
         sb3.setLength(5); // set length to 5, truncates the string to "hello"
         System.out.println("\t- length set to 5: " + sb3); // hello
         // System.out.println("\t- charAt(6): " + sb3.charAt(6)); // StringIndexOutOfBoundsException: Index 6 out of bounds for length 5
         System.out.println("\t- length(): " + sb3.length()); // 5
         System.out.println("\t- capacity (same): " + sb3.capacity()); // 27, reamins same
-        // PTR: setLength(50) would result in string[5...50] to be filled with nul. Also, the capacity increases.
+        // PTR: setLength(50) would result in string[5...50] to be filled with nul aka \0. Also, the capacity increases.
 
-        // PTR: replace()@index, reverse(), setLength() and setCharAt() are not available in String.class.
+        // trimToSize() - reduces capacity to match current length
+
+        // toString() - converts sb to string
+
+        /**
+         * Memory and Performance Tips:
+         * 1) Use StringBuilder for multiple concatenations in loops or complex operations
+         * 2) Initial Capacity: Set appropriate initial capacity to avoid frequent resizing
+         * 3) Trim to Size: Reduce memory footprint after building
+         *  - sb.trimToSize(); // Reduces capacity to current length
+         * 4) Reuse StringBuilder: Clear and reuse for multiple operations
+         *  - sb.setLength(0); // Clear content, keep capacity
+         * 
+         */ 
+
+        // PTR: replace() at particular index, reverse(), setLength() and setCharAt() are not available in String.class.
     }
 }
 
@@ -124,8 +152,8 @@ public class CW39_StringBuilder_StringBuffer {
  * 
  * delete(): Hello World. Yo!!
  * chaining deleteCharAt() and delete(): World. Yo!
- * replace(): Hehe. Yo!
- * reverse(): !oY .eheH
+ * replace(): Hello. Yo!
+ * reverse(): !oY .olleH
  * 
  * equals() in StringBuider compares references, not values -> so use them as String for comparison:
  * 	-  StringBuilder(Hello).equals(StringBuilder(Hello)): false
@@ -141,14 +169,16 @@ public class CW39_StringBuilder_StringBuffer {
  * 
  * indexOf() and lastIndexOf():
  * 	- StringBuilder(Hello World).indexOf("o"): 4
+ * 	- StringBuilder(Hello World).indexOf("o", 5): 7
  * 	- StringBuilder(Hello World).lastIndexOf("o"): 7
+ * 	- StringBuilder(Hello World).lastIndexOf("o", 6): 4
  * 
  * substring(startIndex, [endIndex EXCLUSIVE]):
  * 	- StringBuilder(Hello World).substring(0,5): hello
  * 	- StringBuilder(Hello World).substring(6): World
  * 
  * setLength(N):
- *	- length set to 5: hello
- *	- length(): 5
- *	- capacity (same): 27
+ * 	- length set to 5: hello
+ * 	- length(): 5
+ * 	- capacity (same): 27
  */

@@ -222,6 +222,11 @@ public class CW81_TricksForDSA {
         System.out.println("Random.nextInt(5, 10) ~ [5, 9]: " + (random.nextInt(5, 10)));
         // Trick: To have an inclusive max, we can use random.nextInt(min, max+1) OR min + random.nextInt(max - min + 1)
 
+        /* Collections.swap(List<> / Object[], int i, int j) */
+        ArrayList<Character> alphabet = new ArrayList<>(); alphabet.add('a'); alphabet.add('b'); alphabet.add('c');
+        Collections.swap(alphabet, 0, 2);
+        System.out.println("Collections.swap({a,b,c}, 0, 2): " + alphabet);
+
         exercises();
 
         // ----------------can skip----------------
@@ -365,7 +370,7 @@ public class CW81_TricksForDSA {
  * int(-1) using getRadixString: 11111111111111111111111111111111
  * binary str(1010) to i2: 10
  * 
- * arr[]: [I@610455d6
+ * arr[]: [I@55f96302
  * Arrays.toString(arr): [1, 2, 3, 4, 5]
  * Arrays.deepToString(arr2D): [[1, 2], [3, 4], [5, 6]]
  * N length string using str.repeat(n): 0000000000
@@ -390,12 +395,13 @@ public class CW81_TricksForDSA {
  * Math.E: 2.718281828459045
  * Math.PI: 3.141592653589793
  * Math.TAU: 6.283185307179586
- * Math.random(): 0.4083565631654592
+ * Math.random(): 0.4434521359091681
  * int random in range [min=5, max=10): 5
  * int random in range [min=5, max=10]: 10
- * Random.nextInt() ~ till INT_MAX: -1379248069
- * Random.nextInt(10) ~ [0, 9]: 4
- * Random.nextInt(5, 10) ~ [5, 9]: 9
+ * Random.nextInt() ~ till INT_MAX: 1629503590
+ * Random.nextInt(10) ~ [0, 9]: 3
+ * Random.nextInt(5, 10) ~ [5, 9]: 8
+ * Collections.swap({a,b,c}, 0, 2): [c, b, a]
  * 
  * -------------Exercises-------------
  */

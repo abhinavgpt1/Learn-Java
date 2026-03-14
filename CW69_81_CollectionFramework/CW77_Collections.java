@@ -86,8 +86,12 @@ public class CW77_Collections {
         // - It is a good practice to maintain the contract between compareTo, equals and hashCode.
         // - IMP: two equal objects (as defined by equals()) will have same hashCode, but not vice-versa.
 
-        // IMP: 9. List<Integer> -> arr[] : use stream() and mapToInt() to convert List<Integer> to IntStream, then use toArray() to convert IntStream to int[].
+        // IMP: 9.1 List<Integer> -> arr[] : use stream() and mapToInt() to convert List<Integer> to IntStream, then use toArray() to convert IntStream to int[].
         int arr[] = list.stream().mapToInt(Integer::intValue).toArray();
+        // IMP: 9.2 <AnyCollection>.toArray() : returns Object[]. Use toArray(Datatype array)
+        List<String> lstr = new ArrayList<>();
+        Object[] objarr = lstr.toArray();
+        String[] larr = lstr.toArray(new String[0]); // or use String[]::new
 
         // 10. Collectors: Used to accumulate elements of a stream into a summary result, such as a List, Set, Map, or even a single value like sum or average.
         // - Collectors.toList()
@@ -109,6 +113,17 @@ public class CW77_Collections {
         System.out.println("Collectors.groupingBy(): x->2x: " + list2.stream().collect(Collectors.groupingBy(x -> 2*x))); // {2=[1], 4=[2, 2], 6=[3, 3, 3]} // groups the elements by their double value
         System.out.println("Collectors.groupingBy() + counting(): x->x: " + list2.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()))); // {1=1, 2=2, 3=3} // counts the frequency of each element. 2=[2,2] changes to 2=2 as [2,2] changes to 2 becoz of counting().
         // Extra: Following can be used with groupingBy() - mapping(), counting(), collectingAndThen(), reducing(), etc.
+
+        // 11. Collections.swap(List<> / Object[], int i, int j)
+        ArrayList<Character> alphabet = new ArrayList<>(); alphabet.add('a'); alphabet.add('b'); alphabet.add('c');
+        Collections.swap(alphabet, 0, 2);
+        System.out.println("Collections.swap({a,b,c}, 0, 2): " + alphabet);
+
+        // Notes from BCE book:
+        // 1. No concrete class in Collections framework DIRECTLY implements the Collection interface.
+        // 2. All concrete classes implement the Serializable and Cloneable interfaces.
+        // 3. Vector is thread-safe / synchronized, hence it is slow than ArrayList.
+        // 4. HashMap allows null as value (in key-pair) and is NOT thread-safe. HashTable is thread-safe and DOES NOT allow null.
 
         System.out.println();
 
@@ -207,10 +222,11 @@ class Student implements Comparable<Student> {
  * Collectors.joining(deli, pre, suff): [1,2,2,3,3,3]
  * Collectors.groupingBy(): x->2x: {2=[1], 4=[2, 2], 6=[3, 3, 3]}
  * Collectors.groupingBy() + counting(): x->x: {1=1, 2=2, 3=3}
+ * Collections.swap({a,b,c}, 0, 2): [c, b, a]
  * 
  * Singleton list (unmodifiable): [2]
  * list before shuffling: [1, 4, 3, 2]
- * list after shuffling: [1, 2, 4, 3]
- * list after rotating by 1 (clockwise): [3, 1, 2, 4]
- * list after rotating by 1 (anti-clockwise): [1, 2, 4, 3]
+ * list after shuffling: [3, 4, 2, 1]
+ * list after rotating by 1 (clockwise): [1, 3, 4, 2]
+ * list after rotating by 1 (anti-clockwise): [3, 4, 2, 1]
  */

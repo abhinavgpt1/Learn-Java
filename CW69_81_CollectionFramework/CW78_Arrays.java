@@ -41,7 +41,7 @@ public class CW78_Arrays {
         Arrays.stream(arr).forEach(x -> System.out.print("2*" + x + " = " + 2 * x + ", "));
         System.out.println();
 
-        // 5.1.2. toArray() : returns datatype[]
+        // 5.1.2. toArray() : returns datatype[]. FYI, this is valid for Arrays.stream(arr) i.e. <Datatype>Stream
         int[] arr2 = Arrays.stream(arr).toArray();
         System.out.println("Arrays.stream(arr).toArray() = same int arr[]: " + Arrays.toString(arr2));
 

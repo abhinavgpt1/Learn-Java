@@ -1,9 +1,13 @@
-public class UpcastingExample {
+public class Upcasting_Downcasting {
     public static void main(String[] args) {
         /* Upcasting: Assigning a derived class object to a base class reference */
         // Base b = new Derived();
 
-        // Why Slicing Doesn't Occur in Java
+        /* Downcasting: Assigning a base class object to a derived class reference */
+        // Derived d = (Derived) b;
+
+        // Why Object Slicing doesn't occur in Java
+        // ----------------------------------------
         // - In languages with value semantics for objects (like C++), "object slicing"
         // refers to the loss of information when an object of a derived class is
         // assigned to an instance of a base class.

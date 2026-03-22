@@ -6,6 +6,8 @@ public class Upcasting_Downcasting {
         /* Downcasting: Assigning a base class object to a derived class reference */
         // Derived d = (Derived) b;
 
+        // Note: Downcasting is explicitly done, whereas Upcasting is implicit (or can be done explicitly eg. Base a1 = (Base) new Derived(); Base a2 = (Base) b;)
+
         // Why Object Slicing doesn't occur in Java
         // ----------------------------------------
         // - In languages with value semantics for objects (like C++), "object slicing"

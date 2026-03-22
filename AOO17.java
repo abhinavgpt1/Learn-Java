@@ -20,7 +20,6 @@ class AOO {
 		for (i = 0; i < E.length; i++) {
 			E[i] = new Employee();
 			E[i].setBS(10000 + i * 5000);
-
 		}
 		showAll(E);
 	}

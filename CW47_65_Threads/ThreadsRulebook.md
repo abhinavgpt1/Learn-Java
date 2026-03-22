@@ -13,6 +13,7 @@ qq: Resources? => A process requires both hardware and software resources to run
 
 A thread is the (smallest) unit of execution WITHIN a process. A process can have multiple threads, each capable of executing independently.
 Threads share the same memory space and resources of the process, which allows for efficient communication and data sharing between them.
+Threads have their own stack => one thread per call stack.
 eg. each tab in chrome runs as a separate thread.
 
 Multitasking allows OS to run multiple procesess simultaneously. On a single-core CPU, multitasking is achieved through time slicing, where the CPU rapidly switches between processes to give the illusion of simultaneous execution.
@@ -56,11 +57,51 @@ Thread.currentThread() returns the currently executing thread object.
 Thread.currentThread().getName() returns the name of the currently executing thread. eg. main, Thread-0, etc.
 PTR: getName() function is available in Thread class and not in Runnable. So, use Thread.currentThread() in Runnable's context.
 
-Check Thread lifecycle theory and program from video: 
-State enum: NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED
-PTR: there is no Running state. Runnable means running or ready to run.
-t1.getState() returns State enum.
-t1.join() inside main() will pause the main thread and the next line of code in main() will be executed only after t1 completes its execution.
+Thread Lifecycle:
+------------------
+Thread states in Java: NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED
+
+1. NEW
+   - A thread is in NEW state when a Thread object is created but start() has not been called yet.
+   - The thread has not yet begun execution.
+
+2. RUNNABLE
+   - A thread is in RUNNABLE state after start() is called.
+   - This state means the thread is either currently running OR ready to run and waiting for CPU time.
+   - PTR: There is no separate "Running" state. RUNNABLE encompasses both executing and ready-to-execute states.
+   - The OS scheduler decides when the thread actually gets CPU time.
+
+3. BLOCKED
+   - A thread is in BLOCKED state when it is waiting to acquire an object's intrinsic lock (synchronized block/method).
+   - The thread will transition to RUNNABLE once it acquires the lock.
+
+4. WAITING
+   - A thread is in WAITING state when it calls wait() without a timeout (in synchronized context).
+   - The thread will remain waiting until another thread calls notify() or notifyAll() on the same object.
+   - Other methods that cause WAITING: join() (without timeout), LockSupport.park().
+
+5. TIMED_WAITING
+   - A thread is in TIMED_WAITING state when it calls sleep(), wait(timeout), join(timeout), or other time-bounded operations.
+   - The thread will automatically transition to RUNNABLE after the specified time expires or when notified.
+
+6. TERMINATED
+   - A thread is in TERMINATED state when run() method completes or if the thread is stopped.
+   - Once terminated, a thread cannot be restarted.
+
+State Transitions:
+- NEW → RUNNABLE: when start() is called
+- RUNNABLE → BLOCKED: when entering a synchronized section and lock is held by another thread
+- RUNNABLE → WAITING: when wait() is called (no timeout)
+- RUNNABLE → TIMED_WAITING: when sleep(), wait(timeout), or join(timeout) is called
+- WAITING/TIMED_WAITING/BLOCKED → RUNNABLE: when notified, time expires, or lock is acquired
+- RUNNABLE → TERMINATED: when run() completes or thread is stopped
+
+Key Methods:
+* t1.getState() - returns the current State enum of the thread t1
+* t1.join() - pauses the calling thread (often main) and waits for t1 to complete execution (TERMINATED state)
+* t1.join(timeout) - pauses the calling thread but proceeds after timeout even if t1 is still running
+
+Good read: https://www.geeksforgeeks.org/java/lifecycle-and-states-of-a-thread-in-java/
 -> Check CW47_ThreadLifecycle.java
 
 qq - Why runnable?
@@ -79,6 +120,9 @@ Thread constructor:
 Thread methods:
 ----------------
 * start() - starts the thread and calls the run() method.
+    * A thread can only be started once. Calling start() a second time on the same Thread object will result in IllegalThreadStateException.
+    * To execute a task multiple times, create new Thread instances for each execution.
+    * Once a thread's run() method completes and the thread terminates, it cannot be restarted.
 * run() - contains the code to be executed by the thread. Do not execute this directtly, else threads won't be threads but some normal method call.
 * sleep(milliseconds) - pauses the thread for a specified time.
 * join() - waits for the thread to finish execution before proceeding.
@@ -93,6 +137,8 @@ Thread methods:
         * If the thread is in a blocking state (e.g., sleep(), wait(), join(), or I/O operations that can throw InterruptedException), calling interrupt() will cause the thread to exit that blocking state by throwing an InterruptedException. This allows the thread to handle the interruption and potentially terminate or change its behavior.
         * If the thread is not in a blocking state, calling interrupt() will simply set the thread's internal "interrupted status" flag to true. The thread will continue its normal execution. It is then up to the thread's code to periodically check this flag using Thread.currentThread().isInterrupted() and respond to the interruption accordingly (e.g., by stopping its work or cleaning up resources).
 * yield() - hints to the scheduler that the current thread is willing to yield/give away its current use of the CPU. It allows other threads to run, but does not guarantee that they will.
+* setDaemon() - marks the thread as either daemon or user thread.
+* currentThread() - returns Thread instance. On sout it prints thread name, priority and origin.
 
 Def: user thread - User-level threads are threads that are managed entirely by the user-level thread library, without any direct intervention from the operating system's kernel.
 * the kernel is unaware of user-level threads and treats the process as single-threaded.
@@ -156,6 +202,8 @@ Checkout methods to prevent deadlock & livelock, Dining philosophers problem, st
 
 Thread Communication
 ----------------------
+Synchronization is more than avoiding race conditions. It also include thread based notification system using wait() and notify() mechanism.
+Each object has a lock that can be obtained and released, and also provides a mechanism that allows it to be in a waiting area.
 Inter-thread communication allows synchronized threads to communicate with each other. This is achieved through methods from Object class:
 PTR: These methods reside in Object class and not Thread class.
 

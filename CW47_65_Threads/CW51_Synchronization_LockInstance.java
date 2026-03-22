@@ -37,6 +37,8 @@ public class CW51_Synchronization_LockInstance {
      * Lock on instance comes in picture for synchronized instance methods and synchronized blocks synchronized on "this" / instance. eg. synchronized(this) {}
      * Lock on class comes in picture for synchronized static methods and synchronized blocks synchronized on the class object. eg. synchronized(ClassName.class) {}
      * 
+     * PTR: if a thread entered in synchronized code and goes to sleep, it does not release the lock even if interrupted.
+     * 
      * More on synchronized block:
      * ---------------------------
      * synchronized(X.class) {}

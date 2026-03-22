@@ -15,6 +15,8 @@ class SampleThread extends Thread {
 // States of a thread: NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED
 public class CW47_ThreadLifecycle {
     public static void main(String[] args) throws InterruptedException {
+        // good read: https://www.geeksforgeeks.org/java/lifecycle-and-states-of-a-thread-in-java/
+        
         SampleThread t1 = new SampleThread();
         System.out.println(t1.getName() + ":" + t1.getState()); // NEW
         t1.start(); // this gets started as soon as JVM gets time which means it might not run immediately

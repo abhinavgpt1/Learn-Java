@@ -1,3 +1,7 @@
+// An interface can extend interface(s), but cannot extend class or abstract class.
+// An abstract class can extend a class and implement interface(s).
+// Interface is like a contract, class is like implementation, and abstract class is like a partial implementation.
+
 interface Shape {
 	float pi = 3.14f;
 

@@ -85,7 +85,7 @@ Thread states in Java: NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATE
    - The thread will automatically transition to RUNNABLE after the specified time expires or when notified.
 
 6. TERMINATED
-   - A thread is in TERMINATED state when run() method completes or if the thread is stopped.
+   - A thread is in TERMINATED state when run() method completes or if the thread is stopped due to some unusual erroneous event, like a segmentation fault or an unhandled exception.
    - Once terminated, a thread cannot be restarted.
 
 State Transitions:

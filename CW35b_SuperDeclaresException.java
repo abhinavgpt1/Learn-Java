@@ -1,9 +1,8 @@
-// // Exception handling in method overriding - Case 2 off 2
+// Exception handling in method overriding - Case 2 off 2
 // SuperClass method declares an exception and variations of Subclass exception declaration
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLException;
 
 class SuperClass {
 	void method() throws IOException {
@@ -24,8 +23,8 @@ class SuperClass {
 }
 
 class SubClass extends SuperClass {
-	// void method() throws SQLException{ // error: method() in SubClass cannot override method() in SuperClass
-	// void method() throws Exception{ // error: method() in SubClass cannot override method() in SuperClass
+	// void method() throws SQLException { // error: method() in SubClass cannot override method() in SuperClass
+	// void method() throws Exception { // error: method() in SubClass cannot override method() in SuperClass
 	void method() throws FileNotFoundException { // child exception works
 		System.out.println("SubClass method");
 	}
@@ -53,8 +52,11 @@ public class CW35b_SuperDeclaresException {
 			refBase.method2();
 			// needs handling as this call is tied to SubClass at compile-time which throws checked exception
 		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
 			System.out.println("Needs handling as refBase.method() and method2() are tied to \"throws\"");
 		}
+
+		System.out.println();
 
 		SubClass refDer = new SubClass();
 		refDer.method3(); // no need of handling checked exception as method3 in SubClass doesn't come in picture
@@ -64,21 +66,28 @@ public class CW35b_SuperDeclaresException {
 			// no need of this handling; runtime polymorphism calls method3() of SubClass
 			System.out.println("Needs handling as refBase.method3() is tied to \"throws\"");
 		}
+		
+		System.out.println();
+
 		refDer.method4(); // no need of handling checked exception, though can handle NullPointerException
+
+		// Tip: run from terminal for correct results
 	}
-	/**
-	 * Tip: run from terminal for correct results
-	 * 
-	 * Output:
-	 * -------
-	 * SubClass method
-	 * SubClass method2
-	 * Needs handling as refBase.method() and method2() are tied to "throws"
-	 * SubClass method3
-	 * SubClass method3
-	 * SubClass method4 with Unchecked exception
-	 * Exception in thread "main" java.lang.NullPointerException: property not found, for example
-	 *         at SubClass.method4(CW35b_SuperDeclaresException.java:44)
-	 *         at CW35b_SuperDeclaresException.main(CW35b_SuperDeclaresException.java:66)
-	 */
 }
+
+/**
+ * Output:
+ * -------
+ * SubClass method
+ * SubClass method2
+ * IOException from SubClass method2
+ * Needs handling as refBase.method() and method2() are tied to "throws"
+ * 
+ * SubClass method3
+ * SubClass method3
+ * 
+ * SubClass method4 with Unchecked exception
+ * Exception in thread "main" java.lang.NullPointerException: property not found, for example
+ * 	at SubClass.method4(CW35b_SuperDeclaresException.java:43)
+ * 	at CW35b_SuperDeclaresException.main(CW35b_SuperDeclaresException.java:72)
+ */

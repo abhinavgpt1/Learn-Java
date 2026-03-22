@@ -1,7 +1,10 @@
-import java.io.FileNotFoundException;
-
-// Exception handling in method overriding - Case 1 off 2
+// Exception handling in method overriding - Case 1 of 2
 // SuperClass method doens't declare exception and variations of Subclass exception declaration
+
+// Key rule illustrated:
+// - If a superclass method declares no checked exceptions, overriding methods in subclasses cannot declare new checked exceptions.
+// - Overriding methods may declare and throw unchecked/runtime exceptions (subtypes of RuntimeException or Error) even if the superclass method does not.
+
 class SuperClass {
 	void method() {
 		System.out.println("SuperClass method");
@@ -13,20 +16,23 @@ class SuperClass {
 }
 
 class SubClass extends SuperClass {
+	// The following method would not compile because FileNotFoundException is a checked exception:
 	// @Override
 	// void method() throws FileNotFoundException {
-	// // error: Exception FileNotFoundException is not compatible with throws clause in SuperClass.method()
+	//     System.out.println("SubClass method");
+	// }
+	// ERROR: Exception FileNotFoundException is not compatible with throws clause in SuperClass.method()
 
-	// no declaration of exception => checked exception
-	
 	@Override
 	void method() {
 		System.out.println("SubClass method");
 	}
 
-	@Override // certifies overriding
+	// Declaring unchecked exception is allowed in override (Throwable is not checked at compile time).
+	@Override
 	void method2() throws NullPointerException {
 		System.out.println("SubClass method2");
+		// Throwing a different runtime exception is also allowed at runtime.
 		throw new ArrayIndexOutOfBoundsException("some runtime exception apart from declared");
 	}
 }
@@ -34,19 +40,17 @@ class SubClass extends SuperClass {
 public class CW35a_ExceptionMethodOverriding {
 	public static void main(String args[]) {
 		SuperClass refBase = new SubClass();
-		refBase.method(); // no declaration of exception => no exception handling (for checked exception)
-		refBase.method2(); // no exception handling required for checked exception, can for Runtime
-							// exceptions (not recommended)
+		refBase.method(); // Calls SubClass.method(), no checked exception in signature
+		refBase.method2(); // method2 may throw runtime exception even though SuperClass.method2() declares none. At compile time, no checked-exception handling is required.
 	}
-	/**
-	 * Output:
-	 * -------
-	 * SubClass method
-	 * SubClass method2
-	 * Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: some
-	 * runtime exception apart from declared
-	 * at SubClass.method2(CW35a_ExceptionMethodOverriding.java:20)
-	 * at
-	 * CW35a_ExceptionMethodOverriding.main(CW35a_ExceptionMethodOverriding.java:28)
-	 */
 }
+
+/**
+ * Output:
+ * -------
+ * SubClass method
+ * SubClass method2
+ * Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: some runtime exception apart from declared
+ * 	at SubClass.method2(CW35a_ExceptionMethodOverriding.java:34)
+ * 	at CW35a_ExceptionMethodOverriding.main(CW35a_ExceptionMethodOverriding.java:42)
+ */

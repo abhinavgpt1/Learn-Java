@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 // Make sure there exist no .class in HW folder (to match output) -> else execute "del /S *.class"
-
+// This program can be extnded to find different kind of extensions by maintaining a Set over every file found.
 public class HW14_GetFolderStructureFullInfo {
 	public static void main(String[] args) throws IOException {
 		// Can take input from user for folder path

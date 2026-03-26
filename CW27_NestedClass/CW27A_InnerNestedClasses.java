@@ -7,15 +7,15 @@ class OC {
         int i = 0;
 
         void access() {
-            System.out.println(a);
-            System.out.println(b);
-            System.out.println(c);
+            System.out.println("a: " + a);
+            System.out.println("b: " + b);
+            System.out.println("c: " + c);
         }
     }
 }
 // driver class = class containing main()
 
-class DriverClass {
+class CW27A_InnerNestedClasses {
     public static void main(String args[]) {
         OC objOC = new OC();
         OC.IC objIC = objOC.new IC();
@@ -23,3 +23,11 @@ class DriverClass {
         // objOC.i = 90; //not possible even if IC class and i are public
     }
 }
+
+/**
+ * Output:
+ * -------
+ * a: 1
+ * b: 2
+ * c: 3
+ */

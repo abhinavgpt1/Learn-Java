@@ -12,7 +12,7 @@
  */
 import java.util.Scanner;
 
-public class Sample {
+public class tech14_ShuffleArrayTechniques_experiment {
     public static void main(String args[]) {
         Scanner cin = new Scanner(System.in);
         // take array input
@@ -27,10 +27,10 @@ public class Sample {
         while (tries > 0) {
             int tech1SimilarityMatch = shuffleAndReturnSimilarityIndexTech1(arr.clone(), arr);
             int tech2SimilarityMatch = shuffleAndReturnSimilarityIndexTech2(arr.clone(), arr);
-//            System.out.println("tech1: " + tech1SimilarityMatch + " tech2: " + tech2SimilarityMatch); // -6
+            // System.out.println("tech1: " + tech1SimilarityMatch + " tech2: " + tech2SimilarityMatch); // -6
             if (tech2SimilarityMatch < tech1SimilarityMatch)
                 score--; // tech2 wins
-            else if(tech1SimilarityMatch < tech2SimilarityMatch)
+            else if (tech1SimilarityMatch < tech2SimilarityMatch)
                 score++; // tech1 wins
 
             tries--;

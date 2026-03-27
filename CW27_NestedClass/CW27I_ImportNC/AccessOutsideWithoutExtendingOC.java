@@ -1,6 +1,6 @@
-package Technicalities.tech9_ImportNC;
+package CW27I_ImportNC.CW27I_ImportNC;
 
-import Technicalities.tech9_ImportNC.pack.PublicOC;
+import CW27I_ImportNC.CW27I_ImportNC.pack.PublicOC;
 
 public class AccessOutsideWithoutExtendingOC {
     public static void main(String[] args) {
@@ -19,30 +19,18 @@ public class AccessOutsideWithoutExtendingOC {
         // PublicOC.ProtectedIC protectedIC = publicOC.new ProtectedIC(); //not visible. similarly for private and pla
         // PublicOC.ProtectedSNC protectedSNC = new PublicOC.ProtectedSNC();
 
-        //all classes form during compilation. Some are not visible, but that's separate concern
+        // all classes form during compilation. Some are not visible, but that's separate concern
     }
-    /**
-     * Classed Formed:
-     *  -> PublicOC.class
-     *  -> PublicOC$PlaIC.class
-     *  -> PublicOC$PlaSNC.class
-     *  -> PublicOC$PrivateIC.class
-     *  -> PublicOC$PrivateSNC.class
-     *  -> PublicOC$ProtectedIC.class
-     *  -> PublicOC$ProtectedSNC.class
-     *  -> PublicOC$PublicIC.class
-     *  -> PublicOC$PublicSNC.class
-     *  -> AccessOutsideWithoutExportingOC.class
-     *
-     * Executing Command
-     * -----------------
-     * javac .\Technicalities\tech9_ImportNC\AccessOutsideWithoutExtendingOC.java
-     * java Technicalities.tech9_ImportNC.AccessOutsideWithoutExtendingOC
-     * 
-     * Output
-     * ------
-     * 10
-     * 10
-     * 
-     */
 }
+
+/**
+ * Executing Command
+ * -----------------
+ * javac .\CW27I_ImportNC\CW27I_ImportNC\AccessOutsideWithoutExtendingOC.java
+ * java CW27I_ImportNC.CW27I_ImportNC.AccessOutsideWithoutExtendingOC
+ * 
+ * Output
+ * ------
+ * 10
+ * 10
+ */

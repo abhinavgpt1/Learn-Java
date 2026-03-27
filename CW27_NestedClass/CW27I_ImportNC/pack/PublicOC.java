@@ -1,4 +1,4 @@
-package Technicalities.tech9_ImportNC.pack;
+package CW27I_ImportNC.CW27I_ImportNC.pack;
 
 public class PublicOC {
     public class PublicIC {

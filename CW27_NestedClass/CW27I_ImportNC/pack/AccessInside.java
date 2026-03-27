@@ -1,8 +1,8 @@
-package Technicalities.tech9_ImportNC.pack;
+package CW27I_ImportNC.CW27I_ImportNC.pack;
 
 public class AccessInside extends PublicOC {
     public static void main(String[] args) {
-        // need not to import PLA/public classes within package
+        // No need to import PLA/public classes within package
         
         PublicOC publicOC = new PublicOC();
         // All except private is accessible
@@ -24,8 +24,8 @@ public class AccessInside extends PublicOC {
         System.out.println("protectedSNC pubx:" + protectedSNC.pubx + ", protx:" + protectedSNC.protx + ", plax:" + protectedSNC.plax);
         System.out.println("plaSNC pubx:" + plaSNC.pubx + ", protx:" + plaSNC.protx + ", plax:" + plaSNC.plax);
         // System.out.println(publicSNC.privx + " " + protectedSNC.privx + " " + plaSNC.privx); // error: not either of them is visible
-        
 
+        System.out.println();
         
         PlaOC plaOC = new PlaOC();
         // All except private is accessible
@@ -48,48 +48,48 @@ public class AccessInside extends PublicOC {
         System.out.println("plaplaSNC pubx:" + plaplaSNC.pubx + ", protx:" + plaplaSNC.protx + ", plax:" + plaplaSNC.plax);
         // System.out.println(plapublicSNC.privx + " " + plaprotectedSNC.privx + " " + plaplaSNC.privx); // error: not either of them is visible        
     }
-    /**
-     * Classed Formed:
-     *  -> AccessInside.class
-     *  -> PlaOC.class
-     *  -> PlaOC$PlaIC.class
-     *  -> PlaOC$PlaSNC.class
-     *  -> PlaOC$PrivateIC.class
-     *  -> PlaOC$PrivateSNC.class
-     *  -> PlaOC$ProtectedIC.class
-     *  -> PlaOC$ProtectedSNC.class
-     *  -> PlaOC$PublicIC.class
-     *  -> PlaOC$PublicSNC.class
-     *  -> PublicOC.class
-     *  -> PublicOC$PlaIC.class
-     *  -> PublicOC$PlaSNC.class
-     *  -> PublicOC$PrivateIC.class
-     *  -> PublicOC$PrivateSNC.class
-     *  -> PublicOC$ProtectedIC.class
-     *  -> PublicOC$ProtectedSNC.class
-     *  -> PublicOC$PublicIC.class
-     *  -> PublicOC$PublicSNC.class
-     *
-     *
-     * Executing Command
-     * -----------------
-     * java Technicalities.tech9_ImportNC.pack.AccessInside
-     * java Technicalities.tech9_ImportNC.pack.AccessInside
-     * 
-     * Output
-     * ------
-     * publicIC pubx:10, protx:20, plax:30
-     * protectedIC pubx:50, protx:60, plax:70    
-     * plaIC pubx:90, protx:100, plax:110        
-     * publicSNC pubx:10, protx:20, plax:30      
-     * protectedSNC pubx:50, protx:60, plax:70   
-     * plaSNC pubx:90, protx:100, plax:110       
-     * plapublicIC pubx:10, protx:10, plax:10    
-     * plaprotectedIC pubx:10, protx:10, plax:10 
-     * plaplaIC pubx:10, protx:10, plax:10       
-     * plapublicSNC pubx:10, protx:10, plax:10   
-     * plaprotectedSNC pubx:10, protx:10, plax:10
-     * plaplaSNC pubx:10, protx:10, plax:10
-     * 
-     */
 }
+
+ /**
+ * Classed Formed:
+ *  -> PlaOC.class
+ *  -> PlaOC$PlaIC.class
+ *  -> PlaOC$PlaSNC.class
+ *  -> PlaOC$PrivateIC.class
+ *  -> PlaOC$PrivateSNC.class
+ *  -> PlaOC$ProtectedIC.class
+ *  -> PlaOC$ProtectedSNC.class
+ *  -> PlaOC$PublicIC.class
+ *  -> PlaOC$PublicSNC.class
+ *  -> PublicOC.class
+ *  -> PublicOC$PlaIC.class
+ *  -> PublicOC$PlaSNC.class
+ *  -> PublicOC$PrivateIC.class
+ *  -> PublicOC$PrivateSNC.class
+ *  -> PublicOC$ProtectedIC.class
+ *  -> PublicOC$ProtectedSNC.class
+ *  -> PublicOC$PublicIC.class
+ *  -> PublicOC$PublicSNC.class
+ *  -> AccessInside.class
+ *
+ * Executing Command
+ * -----------------
+ * java CW27I_ImportNC.CW27I_ImportNC.pack.AccessInside
+ * java CW27I_ImportNC.CW27I_ImportNC.pack.AccessInside
+ * 
+ * Output
+ * ------
+ * publicIC pubx:10, protx:20, plax:30
+ * protectedIC pubx:50, protx:60, plax:70    
+ * plaIC pubx:90, protx:100, plax:110        
+ * publicSNC pubx:10, protx:20, plax:30      
+ * protectedSNC pubx:50, protx:60, plax:70
+ * plaSNC pubx:90, protx:100, plax:110
+ *
+ * plapublicIC pubx:10, protx:10, plax:10    
+ * plaprotectedIC pubx:10, protx:10, plax:10 
+ * plaplaIC pubx:10, protx:10, plax:10       
+ * plapublicSNC pubx:10, protx:10, plax:10   
+ * plaprotectedSNC pubx:10, protx:10, plax:10
+ * plaplaSNC pubx:10, protx:10, plax:10
+ */

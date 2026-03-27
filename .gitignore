@@ -1,6 +1,7 @@
 .idea
 .vscode
 .metadata
+out
 
 *.class
 *.bak

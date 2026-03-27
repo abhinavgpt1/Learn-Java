@@ -1,7 +1,7 @@
-package Technicalities.tech9_ImportNC;
+package CW27I_ImportNC.CW27I_ImportNC;
 
-// import Technicalities.tech9_ImportNC.pack.PlaOC; // error: not visible -> all cases in it cancelled
-import Technicalities.tech9_ImportNC.pack.PublicOC;
+// import CW27I_ImportNC.CW27I_ImportNC.pack.PlaOC; // error: not visible -> all cases in it cancelled
+import CW27I_ImportNC.CW27I_ImportNC.pack.PublicOC;
 
 public class AccessOutside extends PublicOC {
     public static void main(String[] args) {
@@ -44,32 +44,24 @@ public class AccessOutside extends PublicOC {
         System.out.println(protectedSNC2 instanceof PublicOC.ProtectedSNC); // true
         System.out.println(protectedSNC2 instanceof AccessOutside.ProtectedSNC); // true
     }
-    /**
-     * Classed Formed:
-     *  -> PublicOC.class
-     *  -> PublicOC$PlaIC.class
-     *  -> PublicOC$PlaSNC.class
-     *  -> PublicOC$PrivateIC.class
-     *  -> PublicOC$PrivateSNC.class
-     *  -> PublicOC$ProtectedIC.class
-     *  -> PublicOC$ProtectedSNC.class
-     *  -> PublicOC$PublicIC.class
-     *  -> PublicOC$PublicSNC.class
-     *  -> AccessOutside.class
-     *
-     * Executing Command
-     * -----------------
-     * javac .\Technicalities\tech9_ImportNC\AccessOutside.java
-     * java Technicalities.tech9_ImportNC.AccessOutside
-     * 
-     * Output
-     * ------
-     * publicIC pubx:10
-     * publicSNC pubx:10
-     * protectedIC pubx:50
-     * protectedSNC pubx:50
-     * protectedIC pubx from Driver:50
-     * protectedSNC pubx from Driver:50
-     * 
-     */
 }
+
+/**
+ * Executing Command
+ * -----------------
+ * javac .\CW27I_ImportNC\CW27I_ImportNC\AccessOutside.java
+ * java CW27I_ImportNC.CW27I_ImportNC.AccessOutside
+ * 
+ * Output
+ * ------
+ * publicIC pubx:10
+ * publicSNC pubx:10
+ * protectedIC pubx:50
+ * protectedSNC pubx:50
+ * protectedIC pubx from Driver:50
+ * protectedSNC pubx from Driver:50
+ * true
+ * true
+ * true
+ * true
+ */

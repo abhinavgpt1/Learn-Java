@@ -2,6 +2,7 @@
 .vscode
 .metadata
 out
+target
 
 *.class
 *.bak

@@ -165,18 +165,18 @@ public class HW12_SortStringArr_StrategyDP {
 		String[] tc3_arr = { "orange", "kiwi", "grape", "banana", "banana", "apple", "apple", "apple" };
 		String[] tc3_expected_arr = { "apple", "apple", "apple", "banana", "banana", "grape", "kiwi", "orange" };
 
-		System.out.println(assertTestCase(tc1_arr, new BubbleSort(), tc1_expected_arr) == true);
-		System.out.println(assertTestCase(tc1_arr, new QuickSort(), tc1_expected_arr) == true);
-		System.out.println(assertTestCase(tc1_arr, new MergeSort(), tc1_expected_arr) == true);
-		System.out.println(assertTestCase(tc2_arr, new BubbleSort(), tc2_expected_arr) == true);
-		System.out.println(assertTestCase(tc2_arr, new QuickSort(), tc2_expected_arr) == true);
-		System.out.println(assertTestCase(tc2_arr, new MergeSort(), tc2_expected_arr) == true);
-		System.out.println(assertTestCase(tc3_arr, new BubbleSort(), tc3_expected_arr) == true);
-		System.out.println(assertTestCase(tc3_arr, new QuickSort(), tc3_expected_arr) == true);
-		System.out.println(assertTestCase(tc3_arr, new MergeSort(), tc3_expected_arr) == true);
+		System.out.println(verifyTestCase(tc1_arr, new BubbleSort(), tc1_expected_arr) == true);
+		System.out.println(verifyTestCase(tc1_arr, new QuickSort(), tc1_expected_arr) == true);
+		System.out.println(verifyTestCase(tc1_arr, new MergeSort(), tc1_expected_arr) == true);
+		System.out.println(verifyTestCase(tc2_arr, new BubbleSort(), tc2_expected_arr) == true);
+		System.out.println(verifyTestCase(tc2_arr, new QuickSort(), tc2_expected_arr) == true);
+		System.out.println(verifyTestCase(tc2_arr, new MergeSort(), tc2_expected_arr) == true);
+		System.out.println(verifyTestCase(tc3_arr, new BubbleSort(), tc3_expected_arr) == true);
+		System.out.println(verifyTestCase(tc3_arr, new QuickSort(), tc3_expected_arr) == true);
+		System.out.println(verifyTestCase(tc3_arr, new MergeSort(), tc3_expected_arr) == true);
 	}
 
-	public static boolean assertTestCase(String[] arr, SortingAlgo sortingAlgo, String[] expectedArr) {
+	public static boolean verifyTestCase(String[] arr, SortingAlgo sortingAlgo, String[] expectedArr) {
 		// Copy the original array to avoid modifying it during sorting
 		String[] arrCopy = Arrays.copyOf(arr, arr.length);
 		sortingAlgo.sort(arrCopy);

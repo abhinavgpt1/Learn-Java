@@ -26,6 +26,13 @@ public class AccessInside extends PublicClass {
 		// Result: 
 		// ------------------------------
 		// All members except private are accessible inside package including when extending
+
+		// PTR: Hierarchy of access modifiers is as follows:
+		// 1. public
+		// 2. protected
+		// 3. default / PLA
+		// 4. private
+		// => protected members are accessible in same package. In short, protected = PLA + subclass
 	}
 }
 /**

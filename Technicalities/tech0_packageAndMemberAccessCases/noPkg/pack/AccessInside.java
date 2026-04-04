@@ -21,6 +21,13 @@ public class AccessInside {
 		// PublicClass.staticPrivate(); // not visible
 
 		// same results for PLA class
+
+		// PTR: Hierarchy of access modifiers is as follows:
+		// 1. public
+		// 2. protected
+		// 3. default / PLA
+		// 4. private
+		// => protected members are accessible in same package. In short, protected = PLA + subclass
 	}
 }
 /**

@@ -13,5 +13,27 @@ class JSG2 {
 		System.out.println(x + "" + y);
 		System.out.println("" + x + y);
 		System.out.println(x + y + "");
+
+		System.out.println();
+
+		// Block comment is ignored in sout
+		System.out.println(/*this will be ignored*/"Hello World");
 	}
 }
+
+/**
+ * Output:
+ * -------
+ * Hello World!Hello Again
+ * Bye World!
+ * Sum5
+ * 5is Sum
+ * Sum23
+ * Sum5
+ * Prod6
+ * 23
+ * 23
+ * 5
+ * 
+ * Hello World
+ */

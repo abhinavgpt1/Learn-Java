@@ -1,6 +1,6 @@
-package CW27I_ImportNC.CW27I_ImportNC;
+package CW27_NestedClass.CW27I_ImportNC;
 
-import static CW27I_ImportNC.CW27I_ImportNC.pack.PublicOC.PublicSNC;
+import static CW27_NestedClass.CW27I_ImportNC.pack.PublicOC.PublicSNC;
 
 // Test: if IC and SNC can be accessed without importing OC
 public class AccessOutsideWithoutImportOC {
@@ -29,8 +29,8 @@ public class AccessOutsideWithoutImportOC {
 /**
  * Executing Command
  * -----------------
- * javac .\CW27I_ImportNC\CW27I_ImportNC\AccessOutsideWithoutImportOC.java
- * java CW27I_ImportNC.CW27I_ImportNC.AccessOutsideWithoutImportOC
+ * Learn-Java.git> javac .\CW27_NestedClass\CW27I_ImportNC\AccessOutsideWithoutImportOC.java
+ * Learn-Java.git> java CW27_NestedClass.CW27I_ImportNC.AccessOutsideWithoutImportOC
  * 
  * Output
  * ------

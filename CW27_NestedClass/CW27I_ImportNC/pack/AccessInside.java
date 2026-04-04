@@ -1,4 +1,4 @@
-package CW27I_ImportNC.CW27I_ImportNC.pack;
+package CW27_NestedClass.CW27I_ImportNC.pack;
 
 public class AccessInside extends PublicOC {
     public static void main(String[] args) {
@@ -74,8 +74,8 @@ public class AccessInside extends PublicOC {
  *
  * Executing Command
  * -----------------
- * java CW27I_ImportNC.CW27I_ImportNC.pack.AccessInside
- * java CW27I_ImportNC.CW27I_ImportNC.pack.AccessInside
+ * Learn-Java.git> javac .\CW27_NestedClass\CW27I_ImportNC\pack\AccessInside.java
+ * Learn-Java.git> java CW27_NestedClass.CW27I_ImportNC.pack.AccessInside
  * 
  * Output
  * ------

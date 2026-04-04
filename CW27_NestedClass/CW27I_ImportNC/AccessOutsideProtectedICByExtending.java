@@ -1,6 +1,6 @@
-package CW27I_ImportNC.CW27I_ImportNC;
+package CW27_NestedClass.CW27I_ImportNC;
 
-import CW27I_ImportNC.CW27I_ImportNC.pack.PublicOC;
+import CW27_NestedClass.CW27I_ImportNC.pack.PublicOC;
 
 public class AccessOutsideProtectedICByExtending extends PublicOC {
     void accessProtectIC(){
@@ -26,8 +26,8 @@ public class AccessOutsideProtectedICByExtending extends PublicOC {
  *
  * Executing Command
  * -----------------
- * javac .\CW27I_ImportNC\CW27I_ImportNC\AccessOutsideProtectedICByExtending.java
- * java CW27I_ImportNC.CW27I_ImportNC.AccessOutsideProtectedICByExtending
+ * Learn-Java.git> javac .\CW27_NestedClass\CW27I_ImportNC\AccessOutsideProtectedICByExtending.java
+ * Learn-Java.git> java CW27_NestedClass.CW27I_ImportNC.AccessOutsideProtectedICByExtending
  * 
  * Output
  * ------

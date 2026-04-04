@@ -1,7 +1,7 @@
-package CW27I_ImportNC.CW27I_ImportNC;
+package CW27_NestedClass.CW27I_ImportNC;
 
-// import CW27I_ImportNC.CW27I_ImportNC.pack.PlaOC; // error: not visible -> all cases in it cancelled
-import CW27I_ImportNC.CW27I_ImportNC.pack.PublicOC;
+// import CW27_NestedClass.CW27I_ImportNC.pack.PlaOC; // error: not visible -> all cases in it cancelled
+import CW27_NestedClass.CW27I_ImportNC.pack.PublicOC;
 
 public class AccessOutside extends PublicOC {
     public static void main(String[] args) {
@@ -49,8 +49,8 @@ public class AccessOutside extends PublicOC {
 /**
  * Executing Command
  * -----------------
- * javac .\CW27I_ImportNC\CW27I_ImportNC\AccessOutside.java
- * java CW27I_ImportNC.CW27I_ImportNC.AccessOutside
+ * Learn-Java.git> javac .\CW27_NestedClass\CW27I_ImportNC\AccessOutside.java
+ * Learn-Java.git> java CW27_NestedClass.CW27I_ImportNC.AccessOutside
  * 
  * Output
  * ------

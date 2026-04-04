@@ -1,4 +1,4 @@
-package CW27I_ImportNC.CW27I_ImportNC.pack;
+package CW27_NestedClass.CW27I_ImportNC.pack;
 
 class PlaOC {
     public class PublicIC {

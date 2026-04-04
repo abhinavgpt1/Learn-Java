@@ -1,6 +1,6 @@
-package CW27I_ImportNC.CW27I_ImportNC;
+package CW27_NestedClass.CW27I_ImportNC;
 
-import CW27I_ImportNC.CW27I_ImportNC.pack.PublicOC;
+import CW27_NestedClass.CW27I_ImportNC.pack.PublicOC;
 
 public class AccessOutsideWithoutExtendingOC {
     public static void main(String[] args) {
@@ -26,8 +26,8 @@ public class AccessOutsideWithoutExtendingOC {
 /**
  * Executing Command
  * -----------------
- * javac .\CW27I_ImportNC\CW27I_ImportNC\AccessOutsideWithoutExtendingOC.java
- * java CW27I_ImportNC.CW27I_ImportNC.AccessOutsideWithoutExtendingOC
+ * Learn-Java.git> javac .\CW27_NestedClass\CW27I_ImportNC\AccessOutsideWithoutExtendingOC.java
+ * Learn-Java.git> java CW27_NestedClass.CW27I_ImportNC.AccessOutsideWithoutExtendingOC
  * 
  * Output
  * ------

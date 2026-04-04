@@ -35,6 +35,7 @@ public class CW34a_checkedException {
 	}
 
 	public static void main(String[] args) {
+		// NOTE: try-with-resources works on classes which implement AutoCloseable => no need for finally.
 		try {
 			doDiv(0.0);
 		} catch (DivModException ex) {

@@ -80,6 +80,9 @@ public class CW38_String5_utilFunctions3 {
         // --------
         // Theory - creates a formatted string using the specified format string and arguments. We can concatenate, format using options such as width, alignment, decimal places, and more.
         // src - https://www.geeksforgeeks.org/java/java-string-format-method-with-examples/
+        
+        // String interpolation: process of replacing placeholders in a string with variable values to create dynamic, concise, and readable text output.
+        // eg: System.out.printf("My name is %s and I am %d years old", "John", 30);
 
         // Example 1
         String formattedString = String.format("%.2f | %10s | %-5d|extra", 123.4567, "Hello", 42);

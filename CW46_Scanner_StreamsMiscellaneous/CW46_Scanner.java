@@ -110,6 +110,52 @@ public class CW46_Scanner {
         // ans - Yes, calling in.close() will also close System.in.
         // calling close() on the Scanner, closes the underlying input stream (System.in). 
         // After that, you cannot read from System.in again in your program.
+
+        sampleProgram();
+    }
+
+    public static void sampleProgram() {
+        /**
+         * if additional sc.nextLine(); is not added:
+         *  For an input like:
+         *  1
+         *  Hello World
+         *  
+         *  nextInt() reads till 1
+         *  nextLine() reads \n and stops
+         *  
+         *  For an input like:
+         *  1 Hello World
+         *  
+         *  nextInt() reads till 1
+         *  nextLine() reads till Hello World starting from space
+         * 
+         * If additional sc.nextLine(); is added:
+         *  For an input like:
+         *  1
+         *  Hello World
+         *  
+         *  nextInt() reads till 1
+         *  nextLine() reads till Hello World starting from H
+         * > additional nextLine() consumed \n akak Enter
+         *  
+         *  For an input like:
+         *  1 Hello World
+         *  qwerty
+         *  
+         *  nextInt() reads till 1
+         *  nextLine() reads till qwerty starting from q
+         * > additional nextLine() consumed <space>Hello World<enter>
+         */
+        System.out.println("Enter a number and string separated by Enter:");
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        sc.nextLine();
+        String y = sc.nextLine();
+        System.out.println(x);
+        System.out.println(y);
+        System.out.println(y.length());
+        sc.close();
     }
 }
 

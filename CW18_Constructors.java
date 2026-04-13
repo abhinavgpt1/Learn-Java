@@ -26,6 +26,31 @@ class D extends B {
 		// eg. D calls super() for A, A calls super for Object => there is multilevel inheritance
 
 		// PTR: this() will call the default constructor of current class
+
+		/**
+		 * Java 25 feature:
+		 * ----------------
+		 * Java25 allows for statements before super().
+		 * eg. There's a VIP bank account which needs atleast 1lakh balance to open an account. 
+		 * 
+		 * class VIPAccount extends Account {
+		 *	 VIPAccount(int initialAmount) {
+		 *	 	// This condition results in compilation error for java version < 25. So we use a hack i.e. a static function for it
+		 *	 	// if (initialAmount < 1e5) {
+		 *	 	// 	throw IllegalArgumentException("Minimum balance to open VIP account is 1 lakh");
+		 *	 	// }
+		 *	 	super(isValidInitialAmount(initialAmount));
+		 *	 	////But now for java version >= 25, we can use the if condition, and no need of the static function. We can simply do super(initialAmount);
+		 *	 }
+		 * 
+		 *	 public static int isValidInitialAmount(int amount) {
+		 *	 	if (amount < 1e5) {
+		 *	 		throw IllegalArgumentException("Minimum balance to open VIP account is 1 lakh");
+		 *	 	}
+		 *	 	return amount;
+		 *	 }
+		 * }
+		*/
 	}
 };
 

@@ -130,7 +130,15 @@ public class CW39_StringBuilder_StringBuffer {
          * 
          */ 
 
-        // PTR: replace() at particular index, reverse(), setLength() and setCharAt() are not available in String.class.
+        // | Feature           | String                  | StringBuilder                          | StringBuffer                         |
+        // |------------------ |-------------------------|----------------------------------------|--------------------------------------|
+        // | **Mutability**    | Immutable               | Mutable                                | Mutable                              |
+        // | **Thread Safety** | Thread-safe             | Not thread-safe                        | Thread-safe                          |
+        // | **Performance**   | Slow for concatenations | Fast                                   | Moderate                             |
+        // | **Memory Usage**  | High (new obj creation) | Low                                    | Low                                  |
+        // | **When to Use**   | Few modifications       | Single-threaded frequent modifications | Multi-threaded frequent modifications|
+
+        // PTR: replace() at particular index, reverse(), setLength() and setCharAt() are not available in String.class.        
     }
 }
 

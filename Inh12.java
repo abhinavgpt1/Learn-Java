@@ -10,11 +10,15 @@ class Circle extends RECT {
 	}
 };
 
-class Inh {
+class Inh12 {
 	public static void main(String[] args) {
 		Circle obj = new Circle();
 		obj.Rarea();
 		obj.Carea();
-
 	}
 }
+/**
+ * Output:
+ * Le Rect
+ * Le Circle
+ */

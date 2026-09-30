@@ -10,7 +10,7 @@ class Circle extends RECT {
 	}
 };
 
-class Inh12 {
+class CW12_Inheritance {
 	public static void main(String[] args) {
 		Circle obj = new Circle();
 		obj.Rarea();

@@ -23,7 +23,7 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
 
         /**
          * Definition:
-         * Method Overriding: When a subclass provides its own implementation of an
+         * Method Overriding: Happens when a subclass provides its own implementation of an
          * inherited method with the same signature and a same or covariant return type,
          * enabling runtime polymorphism through dynamic method dispatch.
          * 

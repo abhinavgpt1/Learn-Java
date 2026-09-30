@@ -33,10 +33,10 @@ class CW13A_Inheritance_CompiletimePolymorphism_MethodOverloading {
 
 		/**
 		 * Definition:
-		 * Method Overloading: Defining multiple methods with the same name but
-		 * different parameter lists (number, type, or order), enabling compile-time
-		 * polymorphism. Return type can be the same or different, but it does not
-		 * contribute to method overloading.
+		 * Method Overloading: Happens when a subclass provides multiple methods with
+		 * the same name but different parameter lists (number, type, or order of
+		 * parameters), enabling compile-time polymorphism. Return type can be the same
+		 * or different, but it does not contribute to method overloading.
 		 */
 	}
 }

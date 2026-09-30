@@ -19,9 +19,15 @@ class JSG3 {
 			System.out.println("All long representations are equal");
 			System.out.println("Representation with L is recommended since 89l looks like 891");
 		}
-		// Narrowing / Widening -> Casting between primitive data types
-		// != 
-		// Autoboxing (Boxing) / Unboxing -> Wrapper classes
+		// Narrowing / Widening => Primitive data type interconversion != Autoboxing (Boxing) / Unboxing => Wrapper classes to primitive interconversion
+
+		/**
+		 * Definitions:
+		 * Widening: Converting a smaller primitive type to a larger compatible primitive type, usually automatically.
+		 * Narrowing: Converting a larger primitive type to a smaller primitive type using explicit casting.
+		 * Autoboxing: Automatically converting a primitive type into its corresponding wrapper class.
+		 * Unboxing: Automatically converting a wrapper class into its corresponding primitive type.
+		 */
 	}
 }
 

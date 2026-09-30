@@ -12,9 +12,9 @@ class Employee {
 	}
 };
 
-class AOO {
+class CW17_ArrayManipulation_UDDT {
 	public static void main(String[] ary) {
-		System.out.println(ary.length);
+		System.out.println(ary.length); // 0
 		int i;
 		Employee[] E = new Employee[3];
 		for (i = 0; i < E.length; i++) {
@@ -30,3 +30,11 @@ class AOO {
 		}
 	}
 }
+
+/**
+ * Output:
+ * 0
+ * 10000 5000 15000
+ * 15000 7500 22500
+ * 20000 10000 30000
+ */

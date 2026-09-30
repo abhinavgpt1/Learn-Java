@@ -14,11 +14,11 @@ class D extends B {
 	}
 
 	D(float f, int i) {
-		// super();
+		// super(); // can call; it's commented since I want to call the parameterized one of base class
 		super(i);
 		System.out.println(f);
 
-		// Rule: super() if mentioned needs to be the first line of method, else compilation error.
+		// Rule (till Java 25): super() if mentioned needs to be the first line of method, else compilation error.
 		// eg. sout(f); super(); [WRONG]
 
 		// PTR: every class in java extends Object class, so we're calling super() of
@@ -54,7 +54,7 @@ class D extends B {
 	}
 };
 
-public class CW18_Constructors {
+public class CW18_Constructors_SuperKeyword {
 	public static void main(String[] args) {
 		D obj = new D();
 		D obj1 = new D(2.6f, 6);

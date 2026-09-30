@@ -8,7 +8,6 @@ class Product {
 	public String toString() {
 		return ("Price:" + p + " Qty:" + q);
 	}
-
 };
 
 class overrideTS {
@@ -20,5 +19,13 @@ class overrideTS {
 
 		System.out.println(lap);
 		System.out.println(lap.toString());
+
+		// Rule: Signature of toString() method in Object.class = "public String toString()"
+
+		/**
+		 * Definition:
+		 * toString(): A method from Object that returns a string representation of an
+		 * object, commonly overridden to provide meaningful object information.
+		 */
 	}
 }

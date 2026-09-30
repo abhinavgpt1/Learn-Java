@@ -28,10 +28,9 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
          * enabling runtime polymorphism through dynamic method dispatch.
          * 
          * - Add-on:- The method in the subclass must have the same name, return type
-         * (or covariant return type),
-         * and parameters as the method in the superclass. This allows the subclass to
-         * provide its own behavior for the method while still maintaining the same
-         * interface as the superclass.
+         * (or covariant return type), and parameters as the method in the superclass. 
+         * This allows the subclass to provide its own behavior for the method while 
+         * still maintaining the same interface as the superclass.
          * 
          * Method Signature: The combination of method name and parameter list. It
          * doesn't include the return type or access modifiers. eg. for method "public

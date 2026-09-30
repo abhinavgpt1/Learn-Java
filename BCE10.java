@@ -1,5 +1,5 @@
 class PRODUCT {
-	int p = 5, q = 10;
+	int p = 5, q = 10; // Instance Primitive Variable (IPV)
 
 	void bill() {
 		int amt = p * q;
@@ -9,9 +9,9 @@ class PRODUCT {
 
 class MALL {
 	void billing() {
-		Product pen = new Product();
+		Product pen = new Product(); // Local Reference Variable (LRV)
 		pen.bill();
-		static int code = 11;
+		// static int code = 11; // error: static variable cannot be declared inside a method
 	}
 };
 

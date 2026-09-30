@@ -1,4 +1,4 @@
-class BCE7 {
+class CW7_ObjectMethodParamPass {
 	public static void main(String[] args) {
 		int x = 7;
 		Product ref = new Product();

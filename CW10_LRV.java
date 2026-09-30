@@ -1,4 +1,4 @@
-class PRODUCT {
+class Product {
 	int p = 5, q = 10; // Instance Primitive Variable (IPV)
 
 	void bill() {
@@ -15,9 +15,15 @@ class MALL {
 	}
 };
 
-class BCE10 {
+class CW10_LRV {
 	public static void main(String[] args) {
 		MALL mm = new MALL();
-		mm.bill();
+		mm.billing();
+		// Note: Mall mm = new Mall() is wrong syntax because class names in Java are case-sensitive.
 	}
 }
+
+/**
+ * Output:
+ * 50
+ */

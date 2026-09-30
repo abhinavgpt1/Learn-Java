@@ -13,13 +13,15 @@ class MALL {
 	static Product lap = new Product(); // Class Reference Variable (CRV)
 };
 
-class BCE9 {
+class CW9_LPV_LRV_IPV_IRV_CPV_CRV {
 	public static void main(String args[]) {
 		MALL mm = new MALL(); // Local Reference Variable (LRV)
-		System.out.println(mm.pen.p);
-		mm.pen.bill();
-		System.out.println(MALL.code);
-		MALL.lap.bill();
+		System.out.println(mm.pen.p); // 5
+		mm.pen.bill(); // 50
+		System.out.println(MALL.code); // 11
+		MALL.lap.bill(); // 50
+
+		// Note: Mall mm = new Mall() is wrong syntax because class names in Java are case-sensitive.
 
 		/**
 		 * Definitions:

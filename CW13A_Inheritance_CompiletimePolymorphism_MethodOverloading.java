@@ -37,6 +37,10 @@ class CW13A_Inheritance_CompiletimePolymorphism_MethodOverloading {
 		 * the same name but different parameter lists (number, type, or order of
 		 * parameters), enabling compile-time polymorphism. Return type can be the same
 		 * or different, but it does not contribute to method overloading.
+		 * 
+		 * Compile-time polymorphism (also called static polymorphism or early binding)
+		 * is a process where the compiler decides which function or method to call
+		 * during compilation based on the method signature.
 		 */
 	}
 }

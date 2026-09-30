@@ -23,13 +23,13 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
 
         /**
          * Definition:
-         * Method Overriding: Happens when a subclass provides its own implementation of an
-         * inherited method with the same signature and a same or covariant return type,
+         * Method Overriding: Happens when a subclass provides its own implementation of
+         * an inherited method with the same signature and a same or covariant return type,
          * enabling runtime polymorphism through dynamic method dispatch.
          * 
          * - Add-on:- The method in the subclass must have the same name, return type
-         * (or covariant return type), and parameters as the method in the superclass. 
-         * This allows the subclass to provide its own behavior for the method while 
+         * (or covariant return type), and parameters as the method in the superclass.
+         * This allows the subclass to provide its own behavior for the method while
          * still maintaining the same interface as the superclass.
          * 
          * Method Signature: The combination of method name and parameter list. It
@@ -39,6 +39,10 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
          * Dynamic Method Dispatch: The mechanism by which Java determines at runtime
          * which overridden method implementation to execute based on the actual object
          * type, not the reference type.
+         * 
+         * Runtime polymorphism (also called dynamic polymorphism or late binding) is a
+         * process where the exact method to execute is determined while the program is
+         * running rather than at compile time.
          */
     }
 }

@@ -8,7 +8,7 @@ class product2 {
 
 };
 
-class BCE8 {
+class CW8_ObjectParamsRefactor {
 	public static void main(String[] args) {
 		product2 ref = new product2();
 		int x = 7;

@@ -1,4 +1,4 @@
-class Process5 {
+class CW5_ObjectMethodReturn {
 	public static void main(String[] args) {
 		RECT ref = new RECT();
 		int a = ref.area(2, 3);

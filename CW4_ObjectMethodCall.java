@@ -1,6 +1,6 @@
-class RECT4 {
+class CW4_ObjectMethodCall {
 	public static void main(String obj[]) {
-		RECT4 ref = new RECT4();
+		CW4_ObjectMethodCall ref = new CW4_ObjectMethodCall();
 		ref.area();
 	}
 

@@ -1,4 +1,4 @@
-class JSG3 {
+class CW3_JSG {
 	public static void main(String obj[]) {
 		int a = 2, b = 7;
 		int x, y, z;

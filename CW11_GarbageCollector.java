@@ -7,7 +7,7 @@ class Product {
 	}
 };
 
-class Gcoll11 {
+class CW11_GarbageCollector {
 	public static void main(String obj[]) {
 		Product p1 = new Product();
 		Product p2 = new Product();

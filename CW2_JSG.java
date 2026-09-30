@@ -1,4 +1,4 @@
-class JSG2 {
+class CW2_JSG {
 	public static void main(String obj[]) {
 		System.out.print("Hello World!");
 		System.out.println("Hello Again");

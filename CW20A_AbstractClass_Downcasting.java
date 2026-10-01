@@ -16,17 +16,17 @@ class Rect extends Shape {
 	}
 };
 
-class CW20A_AbstractClass {
+class CW20A_AbstractClass_Downcasting {
 	public static void main(String[] args) {
 		Rect robj = new Rect();
 		robj.area();
 		robj.line();
 		robj.dline();
 
-		Shape ref = new Rect();
+		Shape ref = new Rect(); // upcasting (def in CW13B)
 		ref.area();
 		ref.line();
-		((Rect) ref).dline();
+		((Rect) ref).dline(); // downcasting
 		System.out.println("Hello World!");
 
 		// FYI: An abstract class can have a constructor in Java, which is automatically
@@ -34,17 +34,17 @@ class CW20A_AbstractClass {
 		// While an abstract class cannot be directly instantiated, its constructor
 		// serves to initialize fields of its class & perform setup tasks for its subclasses.
 
-		// An interface can extend interface(s), but cannot extend class or abstract class.
-		// An abstract class can extend a class and implement interface(s).
-		// 
-		// Rule: Interface is like a contract, class is like implementation, 
-		// and abstract class is like a partial implementation.
-
 		/**
 		 * Definition:
 		 * Abstract class: An abstract class is a class declared with the abstract keyword 
 		 * that cannot be instantiated and may contain both abstract and concrete methods; 
 		 * it is used as a base class for inheritance and acts as a restricted blueprint for other classes.
+		 * 
+		 * Downcasting: The process of converting a reference of a superclass type to a
+		 * subclass type,
+		 * allowing access to subclass-specific methods and fields, but requires
+		 * explicit casting and can lead to
+		 * ClassCastException if the cast is invalid.
 		 * 
 		 */
 	}

@@ -22,7 +22,6 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
         obj.Rarea(); // Le Circle
                      // Le Rect
 
-        // Runtime polymorphism = Overriding + superclass/interface reference pointing to a subclass object
         RECT rectRef = new Circle(); // upcasting
         rectRef.area(); // runtime polymorphism happens because compiler see RECT ref at compile-time
                         // and at runtime the actual object is Circle, so Java invokes Circle.area() =>
@@ -32,13 +31,19 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
 
         /**
          * Definition:
+         * Runtime polymorphism (also called dynamic polymorphism or late binding) is a
+         * process where the exact method to execute is determined while the program is
+         * running rather than at compile time.
+         * - Runtime polymorphism = Overriding + Upcasting
+         * 
+		 * Upcasting: Converting a subclass reference to a superclass reference thus treating
+		 * the object as an instance of the superclass; it is implicit and generally
+         * safe.
+         * 
          * Method Overriding: Happens when a subclass provides its own implementation of
          * an inherited method with the same signature and a same or covariant return type,
          * enabling runtime polymorphism through dynamic method dispatch.
-         * 
-         * - Add-on:- The method in the subclass must have the same name, return type
-         * (or covariant return type), and parameters as the method in the superclass.
-         * This allows the subclass to provide its own behavior for the method while
+         * - This allows the subclass to provide its own behavior for the method while
          * still maintaining the same interface as the superclass.
          * 
          * Method Signature: The combination of method name and parameter list. It
@@ -46,12 +51,7 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
          * void func(int a, String b)", the signature is "func(int, String)".
          * 
          * Dynamic Method Dispatch: The mechanism by which Java determines at runtime
-         * which overridden method implementation to execute based on the actual object
-         * type, not the reference type.
-         * 
-         * Runtime polymorphism (also called dynamic polymorphism or late binding) is a
-         * process where the exact method to execute is determined while the program is
-         * running rather than at compile time.
+         * which overridden method implementation to execute based on actual object type, not the reference type.
          * 
          * Object Slicing (in C++): A situation in object-oriented programming where a subclass
          * object is assigned to a superclass reference, causing the loss of

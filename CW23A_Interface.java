@@ -34,11 +34,15 @@ class CW23A_Interface {
 		// and abstract class is like a partial implementation.
 
 		/**
-		 * Definition:
-		 * Interface: It's a reference type that acts as strict behavioral contract
-		 * which specifies method signatures a class must implement, enabling
-		 * abstraction and multiple inheritance.
+		 * Definitions:
+		 * Interface: A reference type that defines a behavioral contract by specifying
+		 * method signatures that implementing classes must implement, enabling 
+		 * abstraction and multiple inheritance of type in Java.
 		 * 
+		 * Contract vs Blueprint
+		 * Contract → emphasizes what a class must provide. eg. interface for a class.
+		 * Blueprint → emphasizes the structure/behavioral design that implementing
+		 * classes follow. eg. class for an object.
 		 */
 	}
 }

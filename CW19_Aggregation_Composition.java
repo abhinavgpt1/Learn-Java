@@ -33,7 +33,7 @@ class University {
 		System.out.println(Prof.name);
 
 		/**
-		 * Definition:
+		 * Definitions:
 		 * Aggregation: A relationship where one class (the whole) contains a reference
 		 * to another class (the part), but the part can exist independently of the whole.
 		 * 

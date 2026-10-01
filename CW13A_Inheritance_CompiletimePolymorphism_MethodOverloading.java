@@ -32,15 +32,17 @@ class CW13A_Inheritance_CompiletimePolymorphism_MethodOverloading {
 		obj.Rarea();
 
 		/**
-		 * Definition:
-		 * Method Overloading: Happens when a subclass provides multiple methods with
-		 * the same name but different parameter lists (number, type, or order of
-		 * parameters), enabling compile-time polymorphism. Return type can be the same
-		 * or different, but it does not contribute to method overloading.
+		 * Definitions:
+		 * Method Overloading: A compile-time polymorphism mechanism where a class
+		 * defines multiple methods with the same name but different parameter lists
+		 * (number, type, or order of parameters), allowing the compiler to determine
+		 * which method to invoke based on the arguments passed.
+		 * - Return type being same or different doesn't contribute to method
+		 * overloading.
 		 * 
-		 * Compile-time polymorphism (also called static polymorphism or early binding)
-		 * is a process where the compiler decides which function or method to call
-		 * during compilation based on the method signature.
+		 * Compile-time Polymorphism: A form of polymorphism where the method to be
+		 * invoked is determined by the compiler at compile time based on the method
+		 * signature. It is also known as static polymorphism or early binding.
 		 */
 	}
 }

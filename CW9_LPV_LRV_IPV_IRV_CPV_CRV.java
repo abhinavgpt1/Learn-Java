@@ -25,12 +25,12 @@ class CW9_LPV_LRV_IPV_IRV_CPV_CRV {
 
 		/**
 		 * Definitions:
-		 * Local Primitive Variable (LPV): A primitive variable declared inside a method; accessible only within that method.
-		 * Local Reference Variable (LRV): A reference variable referencing an object declared inside a method; accessible only within that method.
-		 * Instance Primitive Variable (IPV): A non-static primitive field; each object has its own copy.
-		 * Instance Reference Variable (IRV): A non-static reference field; each object has its own reference, which can refer to an object.
-		 * Class Primitive Variable (CPV): A static primitive field; one shared copy exists for the entire class.
-		 * Class Reference Variable (CRV): A static reference field; one shared reference exists for the entire class.
+		 * Local Primitive Variable (LPV): A primitive variable declared inside a method which is accessible only within that method.
+		 * Local Reference Variable (LRV): A reference variable referencing an object declared inside a method which is accessible only within that method.
+		 * Instance Primitive Variable (IPV): A non-static primitive field where each object has its own independent copy.
+		 * Instance Reference Variable (IRV): A non-static reference field where each object has its own independent reference, which can refer to an object.
+		 * Class Primitive Variable (CPV): A static primitive field with one shared copy per class.
+		 * Class Reference Variable (CRV): A static reference field with one shared reference per class.
 		 */
 	}
 }

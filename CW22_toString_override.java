@@ -23,9 +23,9 @@ class overrideTS {
 		// Rule: Signature of toString() method in Object.class = "public String toString()"
 
 		/**
-		 * Definition:
-		 * toString(): A method from Object that returns a string representation of an
-		 * object, commonly overridden to provide meaningful object information.
+		 * Definitions:
+		 * toString(): A method from Object class that returns a string representation
+		 * of an object, commonly overridden to provide meaningful object information.
 		 */
 	}
 }

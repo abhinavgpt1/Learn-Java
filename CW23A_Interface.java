@@ -14,7 +14,7 @@ class Circle implements Shape {
 	}
 };
 
-class CW23_Interface {
+class CW23A_Interface {
 	public static void main(String[] args) {
 		Shape sRef = new Circle();
 		sRef.area(10); // runtime polymorphism happens despite area() being empty in interface because
@@ -42,3 +42,11 @@ class CW23_Interface {
 		 */
 	}
 }
+/**
+ * Output:
+ * -------
+ * 314.0
+ * ==========
+ * ==========
+ * Hello World!
+ */

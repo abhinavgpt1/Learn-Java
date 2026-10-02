@@ -37,8 +37,8 @@ class CW20A_AbstractClass_Downcasting {
 		/**
 		 * Definitions:
 		 * Abstract Class: A class declared with the abstract keyword that cannot be
-		 * instantiated and may contain both abstract and concrete methods; it serves as
-		 * a base class for inheritance and a partial blueprint for its subclasses.
+		 * instantiated which serves as a base class for inheritance and a partial blueprint
+		 * for its subclasses. It may contain both abstract and concrete methods.
 		 * 
 		 * Downcasting: The process of converting a superclass reference to a subclass
 		 * reference, allowing access to subclass-specific methods and fields, but

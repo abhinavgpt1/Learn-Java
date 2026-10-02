@@ -25,7 +25,7 @@ class overrideTS {
 		/**
 		 * Definitions:
 		 * toString(): A method from Object class that returns a string representation
-		 * of an object, commonly overridden to provide meaningful object information.
+		 * of an object. It is commonly overridden to provide meaningful object information.
 		 */
 	}
 }

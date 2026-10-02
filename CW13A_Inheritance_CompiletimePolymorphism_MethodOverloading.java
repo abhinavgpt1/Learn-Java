@@ -41,8 +41,8 @@ class CW13A_Inheritance_CompiletimePolymorphism_MethodOverloading {
 		 * overloading.
 		 * 
 		 * Compile-time Polymorphism: A form of polymorphism where the method to be
-		 * invoked is determined by the compiler at compile time based on the method
-		 * signature. It is also known as static polymorphism or early binding.
+		 * invoked is determined by the compiler at compile time instead of at runtime. 
+		 * It is also known as static polymorphism or early binding.
 		 */
 	}
 }

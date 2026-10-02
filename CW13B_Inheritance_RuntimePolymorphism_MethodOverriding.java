@@ -42,10 +42,10 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
          * 
          * Method Overriding: A runtime polymorphism mechanism where a subclass
          * redefines an inherited method with the same signature and a same or covariant
-         * return type, allowing the JVM to determine the method implementation at
-         * runtime through dynamic method dispatch.
+         * return type, without reducing its access visibility, allowing the JVM to 
+         * determine the method implementation at runtime through dynamic method dispatch.
          * - This allows the subclass to provide its own behavior for the method while
-         * still maintaining the same interface as the superclass.
+         * keeping the same interface as the superclass.
          * 
          * Method Signature: The combination of method name and parameter list. It
          * doesn't include the return type or access modifiers. eg. for method "public
@@ -57,9 +57,7 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
          * 
          * Object Slicing (in C++): A situation in object-oriented programming where a
          * subclass object is assigned to a superclass reference, causing the loss of
-         * subclass-specific attributes and methods, leading to potential limitations in
-         * accessing the full functionality of the subclass. Java equivalent is
-         * upcasting.
+         * subclass-specific attributes and methods. Java equivalent is upcasting.
          * 
          * Object: An instance of a class that has its own state (fields/attributes)
          * and behavior (methods/properties) and occupies memory at runtime.

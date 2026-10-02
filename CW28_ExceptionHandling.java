@@ -1,4 +1,4 @@
-public class CW28 {
+public class CW28_ExceptionHandling {
 	public static void main(String[] args) {
 		System.out.println("Start");
 		int d = 0;
@@ -14,3 +14,12 @@ public class CW28 {
 		System.out.println("End");
 	}
 }
+
+/**
+ * Output:
+ * Start
+ * / by zero
+ * Division by zero not allowed, Sir
+ * java.lang.ArithmeticException: / by zero
+ * End
+ */

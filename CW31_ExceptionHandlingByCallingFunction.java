@@ -1,10 +1,10 @@
 // Exception handling after exception handling
-public class CW31 {
+public class CW31_ExceptionHandlingByCallingFunction {
 	public static void main(String[] args) {
 		System.out.println("Start");
 		try {
 			doDiv(0);
-			System.out.println("sljflskd");
+			System.out.println("lorem ipsum");
 		} catch (ArrayIndexOutOfBoundsException exp) {
 			exp.printStackTrace();
 		}
@@ -28,10 +28,10 @@ public class CW31 {
  * Output:
  * Start
  * java.lang.ArithmeticException: / by zero
- * 	at CW31.doDiv(CW31.java:16)
- * 	at CW31.main(CW31.java:6)
+ * 	at CW31_ExceptionHandlingByCallingFunction.doDiv(CW31_ExceptionHandlingByCallingFunction.java:16)
+ * 	at CW31_ExceptionHandlingByCallingFunction.main(CW31_ExceptionHandlingByCallingFunction.java:6)
  * java.lang.ArrayIndexOutOfBoundsException: Index 10 out of bounds for length 2
- * 	at CW31.doDiv(CW31.java:22)
- * 	at CW31.main(CW31.java:6)
+ * 	at CW31_ExceptionHandlingByCallingFunction.doDiv(CW31_ExceptionHandlingByCallingFunction.java:22)
+ * 	at CW31_ExceptionHandlingByCallingFunction.main(CW31_ExceptionHandlingByCallingFunction.java:6)
  * End
  */

@@ -1,5 +1,4 @@
-// Throw exception
-public class CW32 {
+public class ExceptionHandlingByCallingFunction {
 	public static void main(String[] args) {
 		System.out.println("Start");
 		try {

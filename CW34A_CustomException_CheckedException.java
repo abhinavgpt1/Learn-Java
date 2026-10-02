@@ -1,4 +1,3 @@
-// custom checked exception
 class DivModException extends Exception {
 	DivModException() {
 		super();
@@ -9,15 +8,7 @@ class DivModException extends Exception {
 	}
 }
 
-// Trick qq: How to check if an exception is checked or unchecked at runtime?
-// Ans: Check if it is an instance of java.lang.RuntimeException or java.lang.Error
-/**
- * public static boolean isChecked(Throwable e) {
- * return !(e instanceof RuntimeException || e instanceof Error);
- * }
- */
-
-public class CW34a_checkedException {
+public class CW34A_CheckedException_CustomException {
 	static void doDiv(double denominator) throws DivModException {
 		if (denominator == 0.0) {
 			throw new DivModException("Division by 0(double) not allowed");
@@ -35,7 +26,6 @@ public class CW34a_checkedException {
 	}
 
 	public static void main(String[] args) {
-		// NOTE: try-with-resources works on classes which implement AutoCloseable => no need for finally.
 		try {
 			doDiv(0.0);
 		} catch (DivModException ex) {
@@ -48,6 +38,27 @@ public class CW34a_checkedException {
 				exc.printStackTrace();
 			}
 		}
+		// NOTE: try-with-resources works on classes which implement AutoCloseable,
+		// hence no need for finally block.
+
+		/**
+		 * Trick QQ: How to check if an exception is checked or unchecked at runtime?
+		 * Ans: Check if it is an instance of java.lang.RuntimeException or java.lang.Error
+		 * 
+		 * public static boolean isChecked(Throwable e) {
+		 * 	return !(e instanceof RuntimeException || e instanceof Error);
+		 * }
+		 * 
+		 */
+
+		/**
+		 * Definitions:
+		 * Checked Exception: An exception that the compiler requires the programmer to
+		 * handle explicitly using try-catch or declare using throws at compile time.
+		 * - Checked exceptions are subclasses of java.lang.Exception but not subclasses of
+		 * java.lang.RuntimeException.
+		 *
+		 */
 	}
 }
 

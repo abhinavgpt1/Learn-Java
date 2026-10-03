@@ -26,8 +26,8 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
         rectRef.area(); // runtime polymorphism happens because compiler see RECT ref at compile-time
                         // and at runtime the actual object is Circle, so Java invokes Circle.area() =>
                         // dynamic method dispatch
-        // rectRef.Rarea(); // compile-time error because RECT class doesn't have
-        // Rarea() method due to Object slicing / Upcasting.
+        // rectRef.Rarea(); // compile-time error because RECT class doesn't have Rarea() method due to Object slicing (C++) / Upcasting.
+        // Actual reason: The compiler checks the reference type at compile time to determine which members you can access, not the actual object's type.
 
         /**
          * Definitions:
@@ -59,8 +59,6 @@ class CW13B_Inheritance_RuntimePolymorphism_MethodOverriding {
          * subclass object is assigned to a superclass reference, causing the loss of
          * subclass-specific attributes and methods. Java equivalent is upcasting.
          * 
-         * Object: An instance of a class that has its own state (fields/attributes)
-         * and behavior (methods/properties) and occupies memory at runtime.
          */
     }
 }

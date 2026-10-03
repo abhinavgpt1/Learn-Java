@@ -1,10 +1,3 @@
-// Exception handling in method overriding - Case 1 of 2
-// SuperClass method doens't declare exception and variations of Subclass exception declaration
-
-// Key rule illustrated:
-// - If a superclass method declares no checked exceptions, overriding methods in subclasses cannot declare new checked exceptions.
-// - Overriding methods may declare and throw unchecked/runtime exceptions (subtypes of RuntimeException or Error) even if the superclass method does not.
-
 class SuperClass {
 	void method() {
 		System.out.println("SuperClass method");
@@ -37,11 +30,19 @@ class SubClass extends SuperClass {
 	}
 }
 
-public class CW35a_ExceptionMethodOverriding {
+public class CW35A_ExceptionHandling_MethodOverriding {
 	public static void main(String args[]) {
+		// Exception handling in method overriding - Case 1 of 2
+		// SuperClass method doesn't declare exception and variations of Subclass exception declaration
+			
+		// Key rule illustrated:
+		// - If a superclass method declares no checked exceptions, overriding methods in subclasses cannot declare new checked exceptions.
+		// - Overriding methods may declare and throw unchecked/runtime exceptions (subtypes of RuntimeException or Error) even if the superclass method does not.
+
 		SuperClass refBase = new SubClass();
 		refBase.method(); // Calls SubClass.method(), no checked exception in signature
-		refBase.method2(); // method2 may throw runtime exception even though SuperClass.method2() declares none. At compile time, no checked-exception handling is required.
+		refBase.method2(); // method2 may throw runtime exception despite SuperClass.method2() declares none.
+						   // At compile time, no checked-exception handling is required.
 	}
 }
 
@@ -51,6 +52,6 @@ public class CW35a_ExceptionMethodOverriding {
  * SubClass method
  * SubClass method2
  * Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: some runtime exception apart from declared
- * 	at SubClass.method2(CW35a_ExceptionMethodOverriding.java:34)
- * 	at CW35a_ExceptionMethodOverriding.main(CW35a_ExceptionMethodOverriding.java:42)
+ * 	at SubClass.method2(CW35A_ExceptionHandling_MethodOverriding.java:34)
+ * 	at CW35A_ExceptionHandling_MethodOverriding.main(CW35A_ExceptionHandling_MethodOverriding.java:42)
  */

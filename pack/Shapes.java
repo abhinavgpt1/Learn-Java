@@ -1,8 +1,7 @@
 package pack;
-public class Shapes
-{
-	public static void line()
-	{
+
+public class Shapes {
+	public static void line() {
 		System.out.println("=-=-=-=-=-=-=");
 	}
 };

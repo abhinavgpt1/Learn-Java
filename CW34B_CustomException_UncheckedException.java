@@ -23,7 +23,7 @@ public class CW34B_CustomException_UncheckedException {
         doDiv(0);
 
         /**
-         * Defintions:
+         * Definitions:
          * Unchecked exceptions are runtime errors that the compiler does not force you
          * to catch or declare.
          * - Unchecked exceptions are subclasses of java.lang.RuntimeException or java.lang.Error.

@@ -26,6 +26,8 @@ public class CW46_Scanner {
         // IMP: PTR: sc.nextLine() after sc.nextInt() can cause issues due to the newline
         // character left in the input buffer; use sc.nextLine() to consume it before
         // reading the next line.
+        // - nextInt(), nextDouble(), next() → consume tokens, not the line.
+        // - nextLine() → consumes the rest of the current line, including the linefeed.
         
         // Standard scanner creation for keyboard input: Scanner sc = new Scanner(System.in);
         System.out.println("Scanner using file input:");

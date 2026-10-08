@@ -145,6 +145,12 @@ public class CW38_String5_utilFunctions {
         // %tF: Formats the date in ISO 8601 format (YYYY-MM-DD)
         // %tT: Formats the time in 24-hour format (HH:MM:SS)
 
+        System.out.println();
+
+        // TIP: Use SOUP instead of SOUT if you don't want to do String.format
+        System.out.println(String.format("%.2f", 123.4567)); // 123.46
+        System.out.printf("%.2f", 123.4567); // 123.46
+
         /**
          * Definitions:
          * String interpolation: A programming technique that allows embedding of variables or expressions directly within a string.
@@ -194,4 +200,7 @@ public class CW38_String5_utilFunctions {
  * Octal representation of 255 is: 377
  * Hexadecimal representation of 255 is: ff
  * Current date and time: 2026-10-03 19:48:34
+ * 
+ * 123.46
+ * 123.46
  */

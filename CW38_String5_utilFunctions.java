@@ -106,7 +106,10 @@ public class CW38_String5_utilFunctions {
         String s2 = String.format("%1$,10.2f", d2); // 1,200,345.68
         System.out.println("Formatted string output 2: " + s2);
         // Explanation:
-        // %1$: It refers to the first argument (d), the price value.
+        // %: This is the format specifier.
+        // 1$: It's the argument index marker which refers to the first argument (d), the price value.
+        // - It is only helpful in case of multiple usage of same arg.
+        // - An expression like "%,10.2f" would give same result.
         // ,: It groups digits with a comma as a thousands separator.
         // 10.2f: It ensures that the floating-point number takes at least 10 characters, with 2 decimal places.
         
@@ -117,7 +120,8 @@ public class CW38_String5_utilFunctions {
         String s3 = "kilometers";
         String res = String.format("%1$,7.1f %2$s", d3, s3);
         System.out.println("Formatted string output 3:" + res); // one extra space before 150.8 since "150.8" is 6 characters long and we specified minimum width of 7
-        // %1$: It refers to the first argument.
+        // %: This is the format specifier.
+        // 1$: It refers to the first argument. It is only helpful in case of multiple usage of same arg.
         // ,: Groups digits with a comma as a thousands separator.
         // 7.1f: This ensures that the floating-point number takes at least 7 characters in total, with 1 decimal place.
         // %2$s: Refers to the second argument i.e. "d" the distance. "s" is the format specifier for strings.

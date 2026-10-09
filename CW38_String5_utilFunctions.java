@@ -86,6 +86,8 @@ public class CW38_String5_utilFunctions {
         // Creates a formatted string using the specified format string and arguments. 
         // We can concatenate, format using options such as width, alignment, decimal places, and more.
         // https://www.geeksforgeeks.org/java/java-string-format-method-with-examples/
+
+        // PTR: to print % character, use %%
         
         // Example 1
         String formattedString = String.format("%.2f | %10s | %-5d|extra", 123.4567, "Hello", 42);

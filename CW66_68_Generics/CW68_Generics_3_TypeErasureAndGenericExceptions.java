@@ -70,6 +70,26 @@ public class CW68_Generics_3_TypeErasureAndGenericExceptions {
          * Integer intValue = (Integer) intBox.get();
          */
 
+        // Type erasure in Data Structures
+        /* Type Erasure - Example 3 */
+        class MyArrayList<T> {
+            private T[] arr;
+            public MyArrayList() {
+                arr = (T[]) new Object[10]; // T is erased at runtime, so effectively you're creating an Object array afterall.
+                // Standard way of collections is to use Object[] and cast to T / T[] when needed. eg. return (T) arr[i];
+                
+                // QQ - Why is T[] arr = new T[10]; wrong?
+                // Ans - Generics are compile-time only; arrays need a real runtime type since
+                // they are reified (concrete). Java won't let you create "new T[]"" because T doesn't exist at runtime — it becomes Object.
+                // - If you write String[] arr = new String[10];, the runtime type of that array is explicitly [Ljava.lang.String;
+                // - If you write Object[] arr = new Object[10];, the runtime type is explicitly [Ljava.lang.Object;
+                // - If the compiler allowed new T[10] to compile down to new Object[10], it would be lying about the array's true identity.
+                // Soln:
+                // 1. Use a collection class like ArrayList<T> instead of arrays, which handles type erasure internally.
+                // 2. Use Object[] and cast to T[] when needed, as shown above.
+            }
+        }
+
         /* Type erasure - T super Number */
         // --------------------------------
         // PTR: The super keyword is only allowed with wildcards (?)

@@ -87,6 +87,11 @@ public class CW68_Generics_3_TypeErasureAndGenericExceptions {
                 // Soln:
                 // 1. Use a collection class like ArrayList<T> instead of arrays, which handles type erasure internally.
                 // 2. Use Object[] and cast to T[] when needed, as shown above.
+
+                // QQ - How do functions like public T get(int index) {} work? Don't they return Object everytime?
+                // Ans - Yes, at runtime, the return type is Object. But the compiler inserts
+                // casts automatically based on the generic type used when calling the method. 
+                // eg. String str = myArrayList.get(0); is effectively compiled to String str = (String) myArrayList.get(0);
             }
         }
 

@@ -93,6 +93,12 @@ public class CW38_String4_utilFunctions {
         System.out.println("ASCII of A: " + ascii_A + ", ASCII of a: " + ascii_a); // 65, 97
         System.out.println("char of 65: " + ch_65 + ", char of 97: " + ch_97); // A, a
         System.out.println("diff of char (ch_97 - ch_65): " + (ch_97 - ch_65)); // 32
+
+        // PTR: Java automatically promotes char to int when used as an array index.
+        // Internally:
+        // - 'A' has ASCII value 65.
+        // - freq['A']++ is equivalent to freq[65]++.
+        // - An int array of size 256 is good enough to store frequency of all ASCII (not unicode) characters in a string.
         
         System.out.println();
 

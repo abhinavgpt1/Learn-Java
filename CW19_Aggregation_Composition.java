@@ -36,9 +36,11 @@ class University {
 		 * Definitions:
 		 * Aggregation: A relationship where one class (the whole) contains a reference
 		 * to another class (the part), but the part can exist independently of the whole.
+		 * Establishes a Weak HAS-A relationship
 		 * 
 		 * Composition: A relationship where one class (the whole) contains a reference
 		 * to another class (the part), and the part cannot exist independently of the whole.
+		 * Establishes a Strong HAS-A relationship
 		 */
 	}
 }

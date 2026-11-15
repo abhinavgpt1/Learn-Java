@@ -144,9 +144,10 @@ public class CW39_StringBuilder_StringBuffer {
          * modified without creating new objects for each change; it is not thread-safe
          * and is generally faster than StringBuffer.
          * 
-         * StringBuffer: A mutable, thread-safe sequence of characters whose methods are
-         * synchronized, making it suitable for use by multiple threads accessing the
-         * same instance.
+         * StringBuffer: A thread-safe, mutable sequence of characters that allows
+         * strings to be modified without creating new objects for each change; its
+         * methods are synchronized, making it safe for multi-threaded use at the cost
+         * of being slightly slower than StringBuilder.
          */
     }
 }
